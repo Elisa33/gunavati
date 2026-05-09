@@ -1,10 +1,11 @@
-import { FaInstagram, FaFacebookF, FaSpotify } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 import { HiMiniEnvelope } from "react-icons/hi2";
 
 export default function Home() {
   return (
     // 👉 CAMBIO 1: min-h-dvh en vez de min-h-screen para arreglar el scroll de iOS
-    <main className="min-h-dvh bg-[url(/img/bg-mobile.jpeg)] md:bg-[url(/img/bg-desktop.png)] bg-cover bg-center flex flex-col md:flex-row text-white w-full">
+
+    <main className="min-h-dvh bg-black bg-[url(/img/bg-mobile.jpeg)] md:bg-[url(/img/bg-desktop.png)] bg-cover bg-center flex flex-col md:flex-row text-white w-full overscroll-none">
       {/* Columna principal (Texto y Email) */}
       <div className="w-full md:w-7/12 grow md:grow-0 md:min-h-dvh flex flex-col justify-center p-8 md:px-16 lg:px-24 bg-linear-to-b from-black/60 via-black/40 to-transparent md:bg-linear-to-r md:from-black/80 md:via-black/50 md:to-transparent">
         <div>
@@ -46,7 +47,7 @@ export default function Home() {
         <div className="flex gap-4">
           {/* Instagram */}
           <a
-            href="#"
+            href="https://www.instagram.com/gunavati_kyiv?igsh=MW5lcXVscnNvZHFqMg==&utm_source=ig_contact_invite"
             className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary-500 hover:scale-110 transition-all"
           >
             <FaInstagram className="text-white text-xl" />
@@ -54,18 +55,18 @@ export default function Home() {
 
           {/* Facebook */}
           <a
-            href="#"
+            href="https://www.facebook.com/share/1XVn8Uu1ps/?mibextid=wwXIfr"
             className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary-500 hover:scale-110 transition-all"
           >
             <FaFacebookF className="text-white text-xl" />
           </a>
 
-          {/* Spotify */}
+          {/* youtube */}
           <a
-            href="#"
+            href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
             className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary-500 hover:scale-110 transition-all"
           >
-            <FaSpotify className="text-white text-xl" />
+            <FaYoutube className="text-white text-xl" />
           </a>
         </div>
       </div>
