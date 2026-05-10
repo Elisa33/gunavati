@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="en" className="scroll-smooth">
       {/* Pasamos las variables al body */}
       <body
         className={`${passionsConflict.variable} ${raleway.variable} ${lavishlyYours.variable} antialiased`}

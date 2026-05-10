@@ -1,16 +1,20 @@
 import ComingSoon from "../app/components/ComingSoon";
+import Hero from "../app/components/sections/Hero";
+import About from "../app/components/sections/About";
+import Art from "../app/components/sections/Art";
+import Contact from "../app/components/sections/Contact";
 
 export default function Home() {
-  const showComingSoon = true;
+  const showComingSoon = false;
 
-  if (showComingSoon) {
-    return <ComingSoon />;
-  }
+  if (showComingSoon) return <ComingSoon />;
 
   return (
-    <main className="min-h-dvh bg-surface-50">
-      <h1 className="text-4xl text-primary-500">¡Acá va el sitio real!</h1>
-      <p>Empezá a maquetar tu one-page acá...</p>
+    <main>
+      <Hero />
+      <About />
+      <Art />
+      <Contact />
     </main>
   );
 }
