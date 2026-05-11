@@ -15,7 +15,10 @@ const Hero = () => {
       <header className="sticky top-0 z-50 bg-accent/70 backdrop-blur-md h-16 text-background-100">
         <div className="flex items-center justify-between h-full mx-auto w-11/12 max-w-7xl">
           {/* Logo */}
-          <a href="#hero" className="font-script text-5xl font-semibold">
+          <a
+            href="#hero"
+            className="font-script text-3xl md:text-4xl font-semibold"
+          >
             Gunavati
           </a>
 
@@ -115,23 +118,23 @@ const Hero = () => {
         <div className="w-full hidden md:block md:w-5/12"></div>
 
         <div className="w-full md:w-7/12 flex flex-col justify-center p-8 md:px-16 lg:px-24 text-background-100">
-          <h1 className="text-5xl md:text-7xl font-script drop-shadow-lg leading-tight">
+          <h1 className="text-5xl md:text-7xl font-script drop-shadow-lg leading-none">
             Sacred art
             <span className="block">for the heart's journey</span>
           </h1>
 
-          <p className="text-lg md:text-xl mt-8 font-body">
+          <p className="text-lg md:text-xl mt-10 font-body">
             Discover healing sounds and words that embrace the soul in every
             note.
           </p>
           <a
             href="#"
-            className="group flex items-center gap-4 mt-6 p-3 px-5 -m-3 rounded-full w-fit transition-all bg-background-100/90 hover:bg-background-100"
+            className="group flex items-center gap-2  mt-6 p-2 px-5 rounded-full w-fit transition-all bg-background-100/90 hover:bg-background-100"
           >
             <div className="group-hover:text-primary-500 transition-colors">
-              <FaPlay className="text-secondary-500 group-hover:text-primary-500 text-3xl" />
+              <FaPlay className="h-6 text-secondary-500 group-hover:text-primary-500 text-3xl" />
             </div>
-            <span className="text-xl text-primary-500">Listen now</span>
+            <span className="text-lg text-primary-500">Listen now</span>
           </a>
         </div>
       </div>
