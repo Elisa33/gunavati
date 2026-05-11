@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { FaBars, FaTimes, FaPlay } from "react-icons/fa"; // Íconos para el menú
-import { HiMiniEnvelope } from "react-icons/hi2";
 
 const Hero = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
