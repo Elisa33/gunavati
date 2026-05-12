@@ -124,8 +124,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg md:text-xl mt-10 font-body">
-            Discover healing sounds and words that embrace the soul in every
-            note.
+            Discover healing sounds and words that embrace your soul and fill
+            your heart.
           </p>
           <a
             href="#"
