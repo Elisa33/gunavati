@@ -107,7 +107,7 @@ const AudioPlayer = ({ videoId }: { videoId: string }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-12 w-full">
+    <div className="flex flex-col items-center justify-center py-8 w-full max-w-md mx-auto">
       {/* Hidden YouTube player */}
       <div
         id="yt-audio-player"
@@ -118,7 +118,7 @@ const AudioPlayer = ({ videoId }: { videoId: string }) => {
         Close your eyes and just listen
       </p>
 
-      <div className="flex items-center gap-6 w-full max-w-md">
+      <div className="flex items-center gap-6 w-full">
         {/* Play/Pause */}
         <button
           onClick={togglePlay}
