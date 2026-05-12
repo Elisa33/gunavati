@@ -107,7 +107,7 @@ const AudioPlayer = ({ videoId }: { videoId: string }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-12">
+    <div className="flex flex-col items-center justify-center p-12 w-full">
       {/* Hidden YouTube player */}
       <div
         id="yt-audio-player"
