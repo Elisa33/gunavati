@@ -139,37 +139,33 @@ const Shop = () => {
 
         {/* Albums grid */}
         <div className="mb-12">
-          {/* Mobile: 2 cols, 4 albums + last one centered */}
-          <div className="flex flex-col items-center gap-8 gap-y-12 md:hidden">
-            <div className="grid grid-cols-2 gap-4 w-full max-w-md">
-              {albums.slice(0, 4).map((album) => (
-                <div key={album.id} className="w-[calc(50%-0.5rem)]">
-                  <AlbumCard
-                    key={album.id}
-                    album={album}
-                    onDonate={openDonate}
-                  />
+          {/* Mobile */}
+          <div className="grid grid-cols-2 gap-6 md:hidden">
+            {albums.map((album, index) => (
+              <div
+                key={album.id}
+                className={index === 4 ? "col-span-2 flex justify-center" : ""}
+              >
+                <div className={index === 4 ? "w-1/2" : "w-full"}>
+                  <AlbumCard album={album} onDonate={openDonate} />
                 </div>
-              ))}
-            </div>
-            <div className="w-full max-w-md flex justify-center">
-              <div className="w-[calc(50%-1rem)]">
-                <AlbumCard album={albums[4]} onDonate={openDonate} />
               </div>
-            </div>
+            ))}
           </div>
 
           {/* Desktop: 3 top + 2 interleaved below */}
-          <div className="hidden md:flex flex-col items-center gap-14">
-            <div className="grid grid-cols-3 gap-14 w-full max-w-3xl">
+          <div className="hidden md:flex flex-col items-center gap-10">
+            <div className="grid grid-cols-3 gap-8 w-full">
               {albums.slice(0, 3).map((album) => (
                 <AlbumCard key={album.id} album={album} onDonate={openDonate} />
               ))}
             </div>
-            <div className="grid grid-cols-2 gap-14 w-full max-w-md">
+            <div className="grid grid-cols-3 gap-8 w-full">
+              <div />
               {albums.slice(3).map((album) => (
                 <AlbumCard key={album.id} album={album} onDonate={openDonate} />
               ))}
+              <div />
             </div>
           </div>
         </div>
