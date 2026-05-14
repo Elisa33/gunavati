@@ -22,9 +22,9 @@ const Contact = () => {
         />
       </div>
       <div className="mx-auto w-11/12 max-w-7xl pt-12 md:pt-20 pb-8 text-background-100">
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ">
           <span className="uppercase text-lg">GET IN TOUCH</span>
-          <h3 className="font-lavishly-yours text-8xl -translate-y-4 text-secondary-500">
+          <h3 className="font-lavishly-yours text-6xl -translate-y-3 text-secondary-500">
             let’s connect
           </h3>
           <p className="w-2/3 text-center">
@@ -33,7 +33,7 @@ const Contact = () => {
           </p>
           <a
             href="mailto:gunavati.art@gmail.com"
-            className="group flex items-center gap-4 py-2 px-3 -m-3 rounded-xl w-fit transition-all hover:bg-white/10 mt-4"
+            className="group flex items-center gap-4 py-2 px-4 rounded-xl w-fit transition-all hover:bg-white/20 mt-4"
           >
             <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-primary-500 transition-colors">
               <HiMiniEnvelope className="text-white text-xl" />
