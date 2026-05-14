@@ -27,7 +27,7 @@ const Contact = () => {
           <h3 className="font-lavishly-yours text-6xl -translate-y-3 text-secondary-500">
             let’s connect
           </h3>
-          <p className="w-2/3 text-xl text-center">
+          <p className="md:w-2/3 text-xl text-center">
             For collaborations, ceremonies, or simply to share light.
             <span className="block">Reach out through e-mail:</span>
           </p>
@@ -45,6 +45,27 @@ const Contact = () => {
         </div>
         <div className=" flex items-center justify-center p-8 py-16 md:pb-8">
           <div className="flex gap-6">
+            {/* spotify */}
+            <a
+              href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
+              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
+            >
+              <FaSpotify className="text-white text-xl" />
+            </a>
+            {/* youtube */}
+            <a
+              href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
+              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
+            >
+              <FaYoutube className="text-white text-xl" />
+            </a>
+            {/* apple music */}
+            <a
+              href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
+              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
+            >
+              <BsAppleMusic className="text-white text-xl" />
+            </a>
             {/* Instagram */}
             <a
               href="https://www.instagram.com/gunavati_kyiv?igsh=MW5lcXVscnNvZHFqMg==&utm_source=ig_contact_invite"
@@ -60,33 +81,36 @@ const Contact = () => {
             >
               <FaFacebookF className="text-white text-xl" />
             </a>
-
-            {/* youtube */}
-            <a
-              href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
-            >
-              <FaYoutube className="text-white text-xl" />
-            </a>
-            {/* apple music */}
-            <a
-              href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
-            >
-              <BsAppleMusic className="text-white text-xl" />
-            </a>
-            {/* spotify */}
-            <a
-              href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
-            >
-              <FaSpotify className="text-white text-xl" />
-            </a>
           </div>
         </div>
-        <p className="text-center pt-12">
-          © 2026 Gunavati. Made with ✦ by Elisa
-        </p>
+        <div className="flex items-center justify-center text-center gap-1 w-full pt-12 text-sm">
+          <p>© 2026 Gunavati.</p>
+          <p className="text-white"> Made with </p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="size-4 mx-1 animate-bounce"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"
+              clipRule="evenodd"
+            />
+          </svg>
+
+          <p className="text-white">
+            {" "}
+            by{" "}
+            <a
+              href="https://elisa33.github.io/portfolio/"
+              className="text-[#00caee]"
+              aria-label="Portfolio Elisa"
+            >
+              Elisa
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );
