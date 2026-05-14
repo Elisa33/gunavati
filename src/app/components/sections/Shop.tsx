@@ -9,7 +9,7 @@ const albums = [
     id: 1,
     title: "Album One",
     year: "2024",
-    cover: "/img/albums/album-01.webp",
+    cover: "/img/album-01.webp",
     minPrice: 4,
     tracks: 8,
   },
@@ -146,9 +146,9 @@ const Shop = () => {
             <h3 className="font-script text-6xl text-primary-600 mt-2">
               the full journey
             </h3>
-            <p className="text-lg max-w-xl mx-auto mt-4 text-primary-500 pt-6">
-              All albums, one place. Download the complete collection and carry
-              the whole journey with you.
+            <p className="text-lg mt-4 text-primary-500 pt-6">
+              <span className="block">All albums, one place.</span> Download the
+              complete collection and carry the whole journey with you.
             </p>
           </div>
         </div>
