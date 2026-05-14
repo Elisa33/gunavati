@@ -47,7 +47,7 @@ const Contact = () => {
           <div className="flex gap-6">
             {/* spotify */}
             <a
-              href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
+              href="https://open.spotify.com/artist/7oIXVcqgLhHQFudWozZAIU?si=MsL-VwTDTD-pRx4BNwh8ZQ"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaSpotify className="text-white text-xl" />
@@ -61,7 +61,7 @@ const Contact = () => {
             </a>
             {/* apple music */}
             <a
-              href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
+              href="https://music.apple.com/ua/artist/gunavati/1768795053?l=ru"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <BsAppleMusic className="text-white text-xl" />
