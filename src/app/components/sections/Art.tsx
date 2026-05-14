@@ -14,13 +14,13 @@ const videos = [
   },
   {
     id: "sIJZRo3NVp4",
-    title: "The World I'll Give",
+    title: "Когда я буду уходить",
     description:
       "Repetitive sacred syllables invoking inner peace and spiritual awakening.",
   },
   {
     id: "IMbZCh0apa8",
-    title: "Когда я буду уходить",
+    title: "The World I'll Give",
     description: "Spoken wisdom and poetic verses guiding the soul inward.",
   },
 ];
