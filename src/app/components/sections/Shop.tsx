@@ -99,7 +99,7 @@ const Shop = () => {
           </h2>
           <p className="text-lg max-w-xl mx-auto mt-4 text-primary-500">
             If this music has touched you, you can help it continue. Every
-            contribution goes directly into creating new work — so that more
+            contribution goes directly into creating new work, so that more
             songs can find their way to those who need them.
           </p>
         </div>
