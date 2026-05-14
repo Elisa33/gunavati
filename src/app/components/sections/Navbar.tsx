@@ -13,7 +13,7 @@ const Navbar = () => {
           {/* Logo */}
           <a
             href="#hero"
-            className="font-script text-3xl md:text-4xl font-semibold"
+            className="font-gunavati text-3xl md:text-5xl font-semibold"
           >
             Gunavati
           </a>

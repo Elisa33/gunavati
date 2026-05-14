@@ -33,12 +33,12 @@ const Contact = () => {
           </p>
           <a
             href="mailto:gunavati.art@gmail.com"
-            className="group flex items-center gap-4 p-3 -m-3 rounded-xl w-fit transition-all hover:bg-white/10"
+            className="group flex items-center gap-4 py-2 px-3 -m-3 rounded-xl w-fit transition-all hover:bg-white/10 mt-4"
           >
             <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-primary-500 transition-colors">
               <HiMiniEnvelope className="text-white text-xl" />
             </div>
-            <div className="text-lg md:text-xl font-medium text-white/90 group-hover:text-primary-300 transition-colors">
+            <div className="text-lg md:text-xl font-medium text-white/90 transition-colors">
               gunavati.art@gmail.com
             </div>
           </a>
@@ -48,7 +48,7 @@ const Contact = () => {
             {/* Instagram */}
             <a
               href="https://www.instagram.com/gunavati_kyiv?igsh=MW5lcXVscnNvZHFqMg==&utm_source=ig_contact_invite"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary-500 hover:scale-110 transition-all"
+              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaInstagram className="text-white text-xl" />
             </a>
@@ -56,7 +56,7 @@ const Contact = () => {
             {/* Facebook */}
             <a
               href="https://www.facebook.com/share/1XVn8Uu1ps/?mibextid=wwXIfr"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary-500 hover:scale-110 transition-all"
+              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaFacebookF className="text-white text-xl" />
             </a>
@@ -64,21 +64,21 @@ const Contact = () => {
             {/* youtube */}
             <a
               href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary-500 hover:scale-110 transition-all"
+              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaYoutube className="text-white text-xl" />
             </a>
             {/* apple music */}
             <a
               href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary-500 hover:scale-110 transition-all"
+              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <BsAppleMusic className="text-white text-xl" />
             </a>
             {/* spotify */}
             <a
               href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-primary-500 hover:scale-110 transition-all"
+              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaSpotify className="text-white text-xl" />
             </a>

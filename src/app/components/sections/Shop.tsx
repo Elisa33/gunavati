@@ -94,7 +94,7 @@ const Shop = () => {
           <span className="uppercase text-lg text-primary-400 tracking-wider">
             keep this music alive
           </span>
-          <h2 className="font-script text-8xl text-primary-600 -translate-y-4">
+          <h2 className="font-script text-8xl text-secondary-600 -translate-y-4">
             my vision
           </h2>
           <p className="text-lg max-w-xl mx-auto mt-4 text-primary-500">
