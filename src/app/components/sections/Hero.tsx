@@ -10,7 +10,7 @@ const Hero = () => {
       <div className="w-full grow flex">
         <div className="hidden md:block md:w-4/12"></div>
 
-        <div className="w-full md:w-8/12 flex flex-col justify-between p-8 md:px-16 lg:px-24 text-background-100">
+        <div className="w-full md:w-8/12 flex flex-col justify-between pt-20 py-12 md:px-16 lg:px-24 text-background-100">
           <h1 className="text-6xl md:text-8xl font-script drop-shadow-lg leading-none">
             Sacred art
             <span className="block">for the heart's journey</span>

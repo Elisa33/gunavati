@@ -11,10 +11,7 @@ const Navbar = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-accent/80 backdrop-blur-xs h-16 text-background-100">
         <div className="flex items-center justify-between h-full mx-auto w-11/12 max-w-7xl">
           {/* Logo */}
-          <a
-            href="#hero"
-            className="font-gunavati text-4xl md:text-5xl font-semibold"
-          >
+          <a href="#hero" className="font-gunavati text-4xl md:text-6xl">
             Gunavati
           </a>
 
@@ -24,25 +21,25 @@ const Navbar = () => {
               href="#music"
               className="hover:text-secondary-400 transition-colors"
             >
-              My Offering
+              my voice
             </a>
             <a
               href="#about"
               className="hover:text-secondary-400 transition-colors"
             >
-              My Path
+              my story
             </a>
             <a
               href="#shop"
               className="hover:text-secondary-400 transition-colors"
             >
-              My Purpose
+              my vision
             </a>
             <a
               href="#contact"
               className="hover:text-secondary-400 transition-colors"
             >
-              Contact
+              contact
             </a>
           </nav>
 
@@ -78,28 +75,28 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors"
           >
-            My Offering
+            my voice
           </a>
           <a
             href="#about"
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors"
           >
-            My Path
+            my story
           </a>
           <a
             href="#shop"
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors"
           >
-            My Purpose
+            my vision
           </a>
           <a
             href="#contact"
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors"
           >
-            Contact
+            contact
           </a>
 
           <div className="text-sm mt-8">EN | UK | FR</div>
