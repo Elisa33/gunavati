@@ -139,33 +139,41 @@ const Shop = () => {
 
         {/* Albums grid */}
         <div className="mb-12">
-          {/* Mobile */}
+          {/* Mobile: 2 cols, last centered same size */}
           <div className="grid grid-cols-2 gap-6 md:hidden">
             {albums.map((album, index) => (
               <div
                 key={album.id}
                 className={index === 4 ? "col-span-2 flex justify-center" : ""}
               >
-                <div className={index === 4 ? "w-1/2" : "w-full"}>
+                <div
+                  className={index === 4 ? "w-[calc(50%-0.75rem)]" : "w-full"}
+                >
                   <AlbumCard album={album} onDonate={openDonate} />
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Desktop: 3 top + 2 interleaved below */}
-          <div className="hidden md:flex flex-col items-center gap-10">
-            <div className="grid grid-cols-3 gap-8 w-full">
-              {albums.slice(0, 3).map((album) => (
-                <AlbumCard key={album.id} album={album} onDonate={openDonate} />
-              ))}
+          {/* Desktop: interleaved layout */}
+          <div className="hidden md:grid grid-cols-6 gap-8 max-w-4xl mx-auto">
+            {/* Row 1 */}
+            <div className="col-start-1 col-span-2">
+              <AlbumCard album={albums[0]} onDonate={openDonate} />
             </div>
-            <div className="grid grid-cols-3 gap-8 w-full">
-              <div />
-              {albums.slice(3).map((album) => (
-                <AlbumCard key={album.id} album={album} onDonate={openDonate} />
-              ))}
-              <div />
+            <div className="col-start-3 col-span-2">
+              <AlbumCard album={albums[1]} onDonate={openDonate} />
+            </div>
+            <div className="col-start-5 col-span-2">
+              <AlbumCard album={albums[2]} onDonate={openDonate} />
+            </div>
+
+            {/* Row 2 - interleaved */}
+            <div className="col-start-2 col-span-2">
+              <AlbumCard album={albums[3]} onDonate={openDonate} />
+            </div>
+            <div className="col-start-4 col-span-2">
+              <AlbumCard album={albums[4]} onDonate={openDonate} />
             </div>
           </div>
         </div>
