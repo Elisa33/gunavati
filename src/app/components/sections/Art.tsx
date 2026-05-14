@@ -156,27 +156,3 @@ const Videos = () => {
 };
 
 export default Videos;
-
-/* import React from 'react'
-
-const Art = () => {
-  return (
-    <section id="art" className="min-h-screen">
-      <div className="flex flex-col gap-3 items-center mx-auto w-11/12 max-w-7xl">
-        <span className="uppercase text-lg text-accent">LISTEN</span>
-        <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-500">
-          my voice
-        </h2>
-        <p className="md:w-2/3 text-center text-accent">
-          This music was made to return you to yourself — to the quiet place
-          within where you are already whole, already connected. Let the sound
-          meet you wherever you are right now, and see where it takes you.
-        </p>
-      </div>
-      <div className="grid grid-cols-3"></div>
-    </section>
-    
-  );
-}
-
-export default Art */

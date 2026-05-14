@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col bg-[url(/img/bg-mobile.jpeg)] md:bg-[url(/img/bg-desktop.png)] bg-cover"
+      className="min-h-screen flex flex-col bg-[url(/img/bg-mobile.webp)] md:bg-[url(/img/bg-desktop.webp)] bg-cover"
     >
       {/* HEADER: Sticky aplicado acá para que toda la barra quede fija */}
       <header className="sticky top-0 z-50 bg-accent/70 backdrop-blur-md h-16 text-background-100">
