@@ -66,7 +66,7 @@ const AlbumCard = ({
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
-    <h3 className="mt-3 text-base font-semibold text-primary-700 text-center">
+    <h3 className="mt-3 text-base text-primary-700 text-center">
       {album.title}
     </h3>
     <p className="text-xs text-primary-400">{album.year}</p>
@@ -121,7 +121,7 @@ const Shop = () => {
       id="shop"
       className="relative py-20 bg-background-100 text-primary-700"
     >
-      <div className="mx-auto w-11/12 max-w-7xl px-6">
+      <div className="mx-auto w-11/12 max-w-7xl px-5">
         {/* Header */}
         <div className="text-center mb-16">
           <span className="uppercase text-lg text-primary-400 tracking-wider">
@@ -141,7 +141,7 @@ const Shop = () => {
         <div className="mb-12">
           {/* Mobile: 2 cols, 4 albums + last one centered */}
           <div className="flex flex-col items-center gap-8 md:hidden">
-            <div className="grid grid-cols-2 gap-8 w-full max-w-md">
+            <div className="grid grid-cols-2 gap-4 w-full max-w-md">
               {albums.slice(0, 4).map((album) => (
                 <AlbumCard key={album.id} album={album} onDonate={openDonate} />
               ))}

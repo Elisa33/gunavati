@@ -49,7 +49,7 @@ const Videos = () => {
       </div>
 
       {/* Video grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 md:mt-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 md:mt-20 px-6">
         {videos.map((video) => (
           <div
             key={video.id}

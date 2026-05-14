@@ -57,7 +57,7 @@ const About = () => {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col justify-between px-6 md:px-16 py-4">
+        <div className="flex flex-col justify-between md:px-16 py-4">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3 w-11/12 max-w-7xl">
               <span className="uppercase text-lg text-background-100">
