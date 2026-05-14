@@ -121,9 +121,9 @@ const Shop = () => {
       id="shop"
       className="relative py-20 bg-background-100 text-primary-700"
     >
-      <div className="mx-auto w-11/12 max-w-7xl px-5">
+      <div className="mx-auto w-11/12 max-w-7xl px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 px-6">
           <span className="uppercase text-lg text-primary-400 tracking-wider">
             keep this music alive
           </span>
