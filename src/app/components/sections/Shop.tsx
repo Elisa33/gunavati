@@ -11,15 +11,13 @@ const albums = [
     year: "2020",
     cover: "/img/album-01.webp",
     minPrice: 4,
-    tracks: 8,
   },
   {
     id: 2,
-    title: "The light of Awakening",
+    title: "The Light of Awakening",
     year: "2021",
     cover: "/img/album-02.webp",
     minPrice: 4,
-    tracks: 6,
   },
   {
     id: 3,
@@ -27,7 +25,6 @@ const albums = [
     year: "2022",
     cover: "/img/album-03.webp",
     minPrice: 4,
-    tracks: 7,
   },
   {
     id: 4,
@@ -35,7 +32,6 @@ const albums = [
     year: "2023",
     cover: "/img/album-04.webp",
     minPrice: 4,
-    tracks: 9,
   },
   {
     id: 5,
@@ -43,11 +39,47 @@ const albums = [
     year: "2025",
     cover: "/img/album-05.webp",
     minPrice: 4,
-    tracks: 5,
   },
 ];
 
 const BUY_ALL_MIN = 15;
+
+
+const AlbumCard = ({
+  album,
+  onDonate,
+}: {
+  album: (typeof albums)[0];
+  onDonate: (album: {
+    title: string;
+    minPrice: number;
+    isAll?: boolean;
+  }) => void;
+}) => (
+  <div className="group flex flex-col items-center">
+    <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
+      <Image
+        src={album.cover}
+        alt={album.title}
+        fill
+        sizes="(max-width: 768px) 50vw, 20vw"
+        className="object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+    <h3 className="mt-3 text-base font-semibold text-primary-700 text-center">
+      {album.title}
+    </h3>
+    <p className="text-xs text-primary-400">{album.year}</p>
+    <button
+      onClick={() => onDonate(album)}
+      className="mt-2 flex items-center gap-2 text-sm px-4 py-1.5 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+    >
+      <FaDownload className="text-xs" />
+      Download €{album.minPrice}+
+    </button>
+  </div>
+);
+
 
 const Shop = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<{
@@ -83,12 +115,13 @@ const Shop = () => {
     }
   };
 
+
   return (
     <section
       id="shop"
       className="relative py-20 bg-background-100 text-primary-700"
     >
-      <div className="mx-auto w-11/12 max-w-7xl">
+      <div className="mx-auto w-11/12 max-w-7xl px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <span className="uppercase text-lg text-primary-400 tracking-wider">
@@ -99,49 +132,44 @@ const Shop = () => {
           </h2>
           <p className="text-lg max-w-xl mx-auto mt-4 text-primary-500">
             If this music has touched you, you can help it continue. Every
-            contribution goes directly into creating new work, so that more
+            contribution goes directly into creating new work — so that more
             songs can find their way to those who need them.
           </p>
         </div>
 
         {/* Albums grid */}
-        <div className="flex flex-col items-center gap-6 mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-14 w-full max-w-3xl pb-8 md:pb-14">
-            {albums.map((album, index) => (
-              <div
-                key={album.id}
-                className={`group flex flex-col items-center ${
-                  index === 4 ? "col-span-2 md:col-span-1" : ""
-                }`}
-              >
-                <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                  <Image
-                    src={album.cover}
-                    alt={album.title}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 20vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <h3 className="mt-3 text-base font-semibold text-primary-700 text-center">
-                  {album.title}
-                </h3>
-                <p className="text-xs text-primary-400">{album.year}</p>
-                <button
-                  onClick={() => openDonate(album)}
-                  className="mt-2 flex items-center gap-2 text-sm px-4 py-1.5 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
-                >
-                  <FaDownload className="text-xs" />
-                  Download €{album.minPrice}+
-                </button>
+        <div className="mb-12">
+          {/* Mobile: 2 cols, 4 albums + last one centered */}
+          <div className="flex flex-col items-center gap-8 md:hidden">
+            <div className="grid grid-cols-2 gap-8 w-full max-w-md">
+              {albums.slice(0, 4).map((album) => (
+                <AlbumCard key={album.id} album={album} onDonate={openDonate} />
+              ))}
+            </div>
+            <div className="w-full max-w-md flex justify-center">
+              <div className="w-[calc(50%-1rem)]">
+                <AlbumCard album={albums[4]} onDonate={openDonate} />
               </div>
-            ))}
+            </div>
+          </div>
+
+          {/* Desktop: 3 top + 2 interleaved below */}
+          <div className="hidden md:flex flex-col items-center gap-14">
+            <div className="grid grid-cols-3 gap-14 w-full max-w-3xl">
+              {albums.slice(0, 3).map((album) => (
+                <AlbumCard key={album.id} album={album} onDonate={openDonate} />
+              ))}
+            </div>
+            <div className="grid grid-cols-2 gap-14 w-full max-w-md">
+              {albums.slice(3).map((album) => (
+                <AlbumCard key={album.id} album={album} onDonate={openDonate} />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Buy all */}
-
-        <div className="mx-auto w-11/12 max-w-7xl mt-20">
+        <div className="mx-auto w-11/12 max-w-7xl mt-20 px-6">
           <div className="text-center mb-8">
             <h3 className="font-script text-6xl text-primary-600 mt-2">
               the full journey
@@ -194,7 +222,6 @@ const Shop = () => {
               work
             </p>
 
-            {/* Quick amounts */}
             <div className="grid grid-cols-4 gap-3 mb-6">
               {[selectedAlbum.minPrice, 5, 10, 20].map((amount) => (
                 <button
@@ -207,7 +234,6 @@ const Shop = () => {
               ))}
             </div>
 
-            {/* Custom amount */}
             <div className="flex gap-3">
               <div className="relative flex-1">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-400">

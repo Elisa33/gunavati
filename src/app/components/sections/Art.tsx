@@ -34,8 +34,8 @@ const Videos = () => {
   const closeModal = () => setModal(null);
 
   return (
-    <section id="music" className="py-20 px-6 md:px-16 max-w-7xl mx-auto">
-      <div className="flex flex-col gap-3 items-center mx-auto w-11/12 max-w-7xl">
+    <section id="music" className="py-20 px-6">
+      <div className="flex flex-col gap-3 items-center mx-auto w-11/12 max-w-7xl px-6">
         <span className="uppercase text-lg text-accent">LISTEN</span>
         <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-500">
           my voice

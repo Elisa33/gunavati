@@ -21,7 +21,7 @@ const Contact = () => {
           className="object-cover opacity-15"
         />
       </div>
-      <div className="mx-auto w-11/12 max-w-7xl pt-12 md:pt-20 pb-8 text-background-100">
+      <div className="mx-auto w-11/12 max-w-7xl pt-12 md:pt-20 pb-8 text-background-100 px-6">
         <div className="flex flex-col items-center ">
           <span className="uppercase text-lg">GET IN TOUCH</span>
           <h3 className="font-lavishly-yours text-6xl -translate-y-3 text-secondary-500">
