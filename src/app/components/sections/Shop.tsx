@@ -89,6 +89,7 @@ const Shop = () => {
   } | null>(null);
 
   const [customAmount, setCustomAmount] = useState("");
+  const [IsDonateOpen, setIsDonateOpen] = useState(false);
 
   const openDonate = (album: {
     title: string;
@@ -99,14 +100,24 @@ const Shop = () => {
     setCustomAmount("");
   };
 
-  const handleDonate = (amount: number) => {
-    window.open(
-      `https://paypal.me/gunavati/${amount}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
-    setSelectedAlbum(null);
-  };
+ const PAYPAL_BUTTON_ID = "G8J5W73XEY5TY";
+
+const handleDonate = (amount: number) => {
+  const params = new URLSearchParams({
+    hosted_button_id: PAYPAL_BUTTON_ID,
+    amount: amount.toString(),
+    currency_code: "EUR",
+    return: `${window.location.origin}/thank-you`,
+  });
+
+  window.open(
+    `https://www.paypal.com/donate/?${params.toString()}`,
+    "_blank",
+    "noopener,noreferrer",
+  );
+
+  setIsDonateOpen(false);
+};
 
   const handleCustomDonate = () => {
     const amount = parseFloat(customAmount);
