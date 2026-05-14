@@ -106,38 +106,14 @@ const Shop = () => {
 
         {/* Albums grid */}
         <div className="flex flex-col items-center gap-6 mb-12">
-          {/* Top row: 3 albums */}
-          <div className="grid grid-cols-3 gap-14 w-full max-w-3xl pb-14">
-            {albums.slice(0, 3).map((album) => (
-              <div key={album.id} className="group flex flex-col items-center">
-                <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
-                  <Image
-                    src={album.cover}
-                    alt={album.title}
-                    fill
-                    sizes="(max-width: 768px) 33vw, 20vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <h3 className="mt-3 text-base font-semibold text-primary-700 text-center">
-                  {album.title}
-                </h3>
-                <p className="text-xs text-primary-400">{album.year}</p>
-                <button
-                  onClick={() => openDonate(album)}
-                  className="mt-2 flex items-center gap-2 text-sm px-4 py-1.5 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
-                >
-                  <FaDownload className="text-xs" />
-                  Download €{album.minPrice}+
-                </button>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom row: 2 albums centered */}
-          <div className="grid grid-cols-2 gap-14 w-full max-w-md">
-            {albums.slice(3, 5).map((album) => (
-              <div key={album.id} className="group flex flex-col items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-14 w-full max-w-3xl pb-8 md:pb-14">
+            {albums.map((album, index) => (
+              <div
+                key={album.id}
+                className={`group flex flex-col items-center ${
+                  index === 4 ? "col-span-2 md:col-span-1" : ""
+                }`}
+              >
                 <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
                   <Image
                     src={album.cover}
@@ -155,7 +131,8 @@ const Shop = () => {
                   onClick={() => openDonate(album)}
                   className="mt-2 flex items-center gap-2 text-sm px-4 py-1.5 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
                 >
-                  <FaDownload className="text-xs" /> Download €{album.minPrice}+
+                  <FaDownload className="text-xs" />
+                  Download €{album.minPrice}+
                 </button>
               </div>
             ))}
