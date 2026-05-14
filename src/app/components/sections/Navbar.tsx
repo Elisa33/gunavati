@@ -11,7 +11,7 @@ const Navbar = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-accent/80 backdrop-blur-xs h-16 text-background-100">
         <div className="flex items-center justify-between h-full mx-auto w-11/12 max-w-7xl">
           {/* Logo */}
-          <a href="#hero" className="font-gunavati text-4xl md:text-6xl">
+          <a href="#hero" className="font-gunavati text-5xl md:text-6xl">
             Gunavati
           </a>
 

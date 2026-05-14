@@ -42,8 +42,9 @@ const Videos = () => {
         </h2>
         <p className="md:w-2/3 text-center text-accent">
           This music was made to return you to yourself — to the quiet place
-          within where you are already whole, already connected. Let the sound
-          meet you wherever you are right now, and see where it takes you.
+          within where you are already whole, already connected.{" "}
+          {/* Let the sound
+          meet you wherever you are right now, and see where it takes you. */}
         </p>
       </div>
 

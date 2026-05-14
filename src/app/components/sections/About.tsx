@@ -44,7 +44,7 @@ const About = () => {
         />
       </div>
 
-      <div className="relative grid md:grid-cols-2 mx-auto w-11/12 max-w-7xl py-20">
+      <div className="relative grid md:grid-cols-2 gap-6 md:gap-0 mx-auto w-11/12 max-w-7xl py-20">
         {/* Image wrapper con alto controlado */}
         <div className="max-h-[80vh] flex justify-end rounded-3xl overflow-hidden">
           <Image

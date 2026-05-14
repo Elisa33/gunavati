@@ -27,7 +27,7 @@ const Contact = () => {
           <h3 className="font-lavishly-yours text-6xl -translate-y-3 text-secondary-500">
             let’s connect
           </h3>
-          <p className="w-2/3 text-center">
+          <p className="w-2/3 text-xl text-center">
             For collaborations, ceremonies, or simply to share light.
             <span className="block">Reach out through e-mail:</span>
           </p>
