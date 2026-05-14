@@ -66,7 +66,7 @@ const AlbumCard = ({
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
-    <h3 className="mt-3 text-base text-primary-700 text-center">
+    <h3 className="mt-3 text-base text-primary-700 text-center line-clamp-2 min-h-[2.5rem]">
       {album.title}
     </h3>
     <p className="text-xs text-primary-400">{album.year}</p>
@@ -140,10 +140,16 @@ const Shop = () => {
         {/* Albums grid */}
         <div className="mb-12">
           {/* Mobile: 2 cols, 4 albums + last one centered */}
-          <div className="flex flex-col items-center gap-8 md:hidden">
+          <div className="flex flex-col items-center gap-8 gap-y-12 md:hidden">
             <div className="grid grid-cols-2 gap-4 w-full max-w-md">
               {albums.slice(0, 4).map((album) => (
-                <AlbumCard key={album.id} album={album} onDonate={openDonate} />
+                <div key={album.id} className="w-[calc(50%-0.5rem)]">
+                  <AlbumCard
+                    key={album.id}
+                    album={album}
+                    onDonate={openDonate}
+                  />
+                </div>
               ))}
             </div>
             <div className="w-full max-w-md flex justify-center">
