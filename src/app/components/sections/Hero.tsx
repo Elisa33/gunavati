@@ -118,7 +118,7 @@ const Hero = () => {
         <div className="w-full hidden md:block md:w-5/12"></div>
 
         <div className="w-full md:w-7/12 flex flex-col justify-center p-8 md:px-16 lg:px-24 text-background-100">
-          <h1 className="text-5xl md:text-7xl font-script drop-shadow-lg leading-none">
+          <h1 className="text-5xl md:text-8xl font-script drop-shadow-lg leading-none">
             Sacred art
             <span className="block">for the heart's journey</span>
           </h1>

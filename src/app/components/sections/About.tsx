@@ -45,13 +45,16 @@ const About = () => {
       </div>
 
       <div className="relative grid md:grid-cols-2 mx-auto w-11/12 max-w-7xl py-20">
-        <Image
-          src="/img/about-image.webp"
-          alt=""
-          width={424}
-          height={540}
-          className="w-full rounded-3xl"
-        />
+        {/* Image wrapper con alto controlado */}
+        <div className="max-h-[80vh] flex justify-end rounded-3xl overflow-hidden">
+          <Image
+            src="/img/about-image.webp"
+            alt=""
+            width={424}
+            height={540}
+            className="h-full w-auto rounded-3xl"
+          />
+        </div>
 
         {/* Content */}
         <div className="flex flex-col justify-between px-6 md:px-16 py-4">

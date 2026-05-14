@@ -127,7 +127,8 @@ const Shop = () => {
                   onClick={() => openDonate(album)}
                   className="mt-2 flex items-center gap-2 text-sm px-4 py-1.5 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
                 >
-                  <FaDownload className="text-xs" />Download €{album.minPrice}+
+                  <FaDownload className="text-xs" />
+                  Download €{album.minPrice}+
                 </button>
               </div>
             ))}
@@ -165,9 +166,9 @@ const Shop = () => {
 
         <div className="mx-auto w-11/12 max-w-7xl mt-20">
           <div className="text-center mb-8">
-            <h2 className="font-script text-8xl text-primary-600 mt-2">
+            <h3 className="font-script text-6xl text-primary-600 mt-2">
               the full journey
-            </h2>
+            </h3>
             <p className="text-lg max-w-xl mx-auto mt-4 text-primary-500 pt-6">
               All albums, one place. Download the complete collection and carry
               the whole journey with you.
@@ -186,7 +187,7 @@ const Shop = () => {
             className="flex items-center gap-3 px-8 py-3 rounded-full bg-secondary-500 text-white text-lg font-semibold hover:bg-secondary-600 transition-colors shadow-md"
           >
             <FaDownload />
-            Buy all discography — €{BUY_ALL_MIN}+
+            Buy all discography €{BUY_ALL_MIN}+
           </button>
         </div>
       </div>
@@ -194,7 +195,7 @@ const Shop = () => {
       {/* Donate Modal */}
       {selectedAlbum && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
           onClick={() => setSelectedAlbum(null)}
         >
           <div
