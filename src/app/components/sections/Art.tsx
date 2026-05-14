@@ -56,7 +56,6 @@ const Videos = () => {
           >
             {/* Thumbnail */}
             <div className="relative aspect-video bg-primary-100 cursor-pointer overflow-hidden">
-              <div className="w-full h-full bg-secondary-500/50 absolute top-0 left-0 z-50"></div>
               <Image
                 src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                 alt={video.title}
@@ -64,6 +63,9 @@ const Videos = () => {
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
+
+              {/* Color blend layer */}
+              <div className="absolute inset-0 bg-secondary-500/30 mix-blend-multiply pointer-events-none" />
 
               {/* Play overlay */}
               <div
