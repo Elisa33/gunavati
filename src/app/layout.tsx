@@ -26,8 +26,36 @@ const lavishlyYours = Lavishly_Yours({
 });
 
 export const metadata: Metadata = {
-  title: "Gunavati",
-  description: "Próximamente",
+  title: "Gunavati — Sacred Art for the Heart's Journey",
+  description:
+    "Spiritual music and poetry by Gunavati. Download albums, listen to sacred songs, and support the creation of more music.",
+  keywords: [
+    "spiritual music",
+    "sacred art",
+    "kirtan",
+    "mantra",
+    "meditation music",
+    "Gunavati",
+  ],
+  authors: [{ name: "Gunavati" }],
+  creator: "Gunavati",
+  openGraph: {
+    title: "Gunavati — Sacred Art for the Heart's Journey",
+    description:
+      "Spiritual music and poetry by Gunavati. Download albums, listen to sacred songs, and support the creation of more music.",
+    url: "https://gunavati.art",
+    siteName: "Gunavati",
+    locale: "en_US",
+    type: "website",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
