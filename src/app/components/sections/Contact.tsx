@@ -27,7 +27,7 @@ const Contact = () => {
           <h3 className="font-lavishly-yours text-6xl -translate-y-3 text-secondary-500">
             let’s connect
           </h3>
-          <p className="md:w-2/3 text-xl text-center">
+          <p className="md:w-2/3 text-lg text-center">
             For collaborations, ceremonies, or simply to share light.
             <span className="block">Reach out through e-mail:</span>
           </p>
@@ -38,7 +38,7 @@ const Contact = () => {
             <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-primary-500 transition-colors">
               <HiMiniEnvelope className="text-white text-xl" />
             </div>
-            <div className="text-lg md:text-xl font-medium text-white/90 transition-colors">
+            <div className="text-lg md:text-xl font-medium text-secondary-500 transition-colors">
               gunavati.art@gmail.com
             </div>
           </a>
@@ -104,7 +104,7 @@ const Contact = () => {
             by{" "}
             <a
               href="https://elisa33.github.io/portfolio/"
-              className="text-[#00caee]"
+              className="text-secondary-500"
               aria-label="Portfolio Elisa"
             >
               Elisa
