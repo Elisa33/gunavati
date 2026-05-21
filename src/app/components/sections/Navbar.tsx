@@ -1,7 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+//import { FaBars, FaTimes } from "react-icons/fa";
+import { LuMenu } from "react-icons/lu";
+import { IoClose } from "react-icons/io5";
+
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,7 +55,8 @@ const Navbar = () => {
               className="md:hidden text-2xl z-70"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <FaTimes /> : <FaBars />}
+              {isMenuOpen ? <IoClose /> : <LuMenu />}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             </button>
           </div>
         </div>
@@ -65,7 +70,7 @@ const Navbar = () => {
       >
         <div className="flex justify-end p-6">
           <button onClick={() => setIsMenuOpen(false)} className="text-2xl">
-            <FaTimes />
+            <IoClose />
           </button>
         </div>
 
