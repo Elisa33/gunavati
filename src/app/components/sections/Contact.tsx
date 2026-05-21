@@ -14,7 +14,7 @@ const Contact = () => {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/img/contact-bg.jpg"
+          src="/img/contact-bg.webp"
           alt=""
           fill
           sizes="100vw"
@@ -48,6 +48,8 @@ const Contact = () => {
             {/* spotify */}
             <a
               href="https://open.spotify.com/artist/7oIXVcqgLhHQFudWozZAIU?si=MsL-VwTDTD-pRx4BNwh8ZQ"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaSpotify className="text-white text-xl" />
@@ -55,6 +57,8 @@ const Contact = () => {
             {/* youtube */}
             <a
               href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaYoutube className="text-white text-xl" />
@@ -62,6 +66,8 @@ const Contact = () => {
             {/* apple music */}
             <a
               href="https://music.apple.com/ua/artist/gunavati/1768795053?l=ru"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <BsAppleMusic className="text-white text-xl" />
@@ -69,6 +75,8 @@ const Contact = () => {
             {/* Instagram */}
             <a
               href="https://www.instagram.com/gunavati_kyiv?igsh=MW5lcXVscnNvZHFqMg==&utm_source=ig_contact_invite"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaInstagram className="text-white text-xl" />
@@ -77,6 +85,8 @@ const Contact = () => {
             {/* Facebook */}
             <a
               href="https://www.facebook.com/share/1XVn8Uu1ps/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
             >
               <FaFacebookF className="text-white text-xl" />
