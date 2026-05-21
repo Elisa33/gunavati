@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section id="hero" className="min-h-screen flex flex-col pt-16">
+    <section id="hero" className="relative min-h-screen flex flex-col pt-16">
       <Image
         src="/img/bg-mobile.webp"
         alt="Background"

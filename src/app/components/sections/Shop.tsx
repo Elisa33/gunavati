@@ -69,7 +69,7 @@ const AlbumCard = ({
     <h3 className="mt-3 text-base text-primary-700 text-center line-clamp-2 min-h-[2.5rem]">
       {album.title}
     </h3>
-    <p className="text-xs text-primary-400">{album.year}</p>
+    <p className="text-xs text-primary-600">{album.year}</p>
     <button
       onClick={() => onDonate(album)}
       className="mt-2 flex items-center gap-2 text-sm px-4 py-1.5 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
@@ -135,13 +135,13 @@ const handleDonate = (amount: number) => {
       <div className="mx-auto w-11/12 max-w-7xl px-4">
         {/* Header */}
         <div className="text-center mb-16 px-6">
-          <span className="uppercase text-lg text-primary-400 tracking-wider">
+          <span className="uppercase text-lg text-primary-600 tracking-wider">
             keep this music alive
           </span>
-          <h2 className="font-script text-8xl text-secondary-600 -translate-y-4">
+          <h2 className="font-script text-8xl text-secondary-700 -translate-y-4">
             my vision
           </h2>
-          <p className="text-lg max-w-xl mx-auto mt-4 text-primary-500">
+          <p className="text-lg max-w-xl mx-auto mt-4 text-primary-600">
             If this music has touched you, you can help it continue. Every
             contribution goes directly into creating new work — so that more
             songs can find their way to those who need them.
@@ -195,7 +195,7 @@ const handleDonate = (amount: number) => {
             <h3 className="font-script text-6xl text-primary-600 mt-2">
               the full journey
             </h3>
-            <p className="text-lg mt-4 text-primary-500 pt-6">
+            <p className="text-lg mt-4 text-primary-600 pt-6">
               <span className="block">All albums, one place.</span> Download the
               complete collection and carry the whole journey with you.
             </p>

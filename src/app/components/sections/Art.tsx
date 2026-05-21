@@ -37,10 +37,10 @@ const Videos = () => {
     <section id="music" className="py-20 px-6">
       <div className="flex flex-col gap-3 items-center mx-auto w-11/12 max-w-7xl px-6">
         <span className="uppercase text-lg text-accent">LISTEN</span>
-        <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-500">
+        <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-700">
           my voice
         </h2>
-        <p className="md:w-2/3 text-center text-accent">
+        <p className="md:w-2/3 text-center text-accent2">
           This music was made to return you to yourself to the quiet place
           within where you are already whole, already connected.
           {/* Let the sound
@@ -81,7 +81,7 @@ const Videos = () => {
               <h3 className="text-xl font-semibold text-primary-700 mb-1">
                 {video.title}
               </h3>
-              <p className="text-sm text-primary-800/60 mb-4">
+              <p className="text-sm text-primary-700 mb-4">
                 {video.description}
               </p>
               <div className="flex gap-3">
