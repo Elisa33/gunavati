@@ -23,25 +23,25 @@ const Navbar = () => {
           <nav className="hidden md:flex gap-8 text-lg font-medium">
             <a
               href="#music"
-              className="hover:text-secondary-400 transition-colors"
+              className="hover:text-secondary-300 transition-colors"
             >
               my voice
             </a>
             <a
               href="#about"
-              className="hover:text-secondary-400 transition-colors"
+              className="hover:text-secondary-300 transition-colors"
             >
               my story
             </a>
             <a
               href="#shop"
-              className="hover:text-secondary-400 transition-colors"
+              className="hover:text-secondary-300 transition-colors"
             >
               my vision
             </a>
             <a
               href="#contact"
-              className="hover:text-secondary-400 transition-colors"
+              className="hover:text-secondary-300 transition-colors"
             >
               contact
             </a>
