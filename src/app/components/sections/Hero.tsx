@@ -1,12 +1,24 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa";
+import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex flex-col pt-16 bg-[url(/img/bg-mobile.webp)] md:bg-[url(/img/bg-desktop.webp)] bg-cover"
-    >
+    <section id="hero" className="min-h-screen flex flex-col pt-16">
+      <Image
+        src="/img/bg-mobile.webp"
+        alt="Background"
+        fill
+        className="object-cover md:hidden -z-10"
+        priority
+      />
+      <Image
+        src="/img/bg-desktop.webp"
+        alt="Background"
+        fill
+        className="object-cover hidden md:block -z-10"
+        priority
+      />
       <div className="w-full grow flex">
         <div className="hidden md:block md:w-4/12"></div>
 
