@@ -54,9 +54,9 @@ const Navbar = () => {
             <button
               className="md:hidden text-2xl z-70"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMenuOpen ? <IoClose /> : <LuMenu />}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             </button>
           </div>
         </div>

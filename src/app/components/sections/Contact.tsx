@@ -33,6 +33,7 @@ const Contact = () => {
           </p>
           <a
             href="mailto:gunavati.art@gmail.com"
+            aria-label="Send email"
             className="group flex items-center gap-4 py-2 px-4 rounded-xl w-fit transition-all hover:bg-white/20 mt-4"
           >
             <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-primary-500 transition-colors">
@@ -48,6 +49,7 @@ const Contact = () => {
             {/* spotify */}
             <a
               href="https://open.spotify.com/artist/7oIXVcqgLhHQFudWozZAIU?si=MsL-VwTDTD-pRx4BNwh8ZQ"
+              aria-label="Spotify"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -57,6 +59,7 @@ const Contact = () => {
             {/* youtube */}
             <a
               href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
+              aria-label="You tube"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -66,6 +69,7 @@ const Contact = () => {
             {/* apple music */}
             <a
               href="https://music.apple.com/ua/artist/gunavati/1768795053?l=ru"
+              aria-label="Apple music"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -75,6 +79,7 @@ const Contact = () => {
             {/* Instagram */}
             <a
               href="https://www.instagram.com/gunavati_kyiv?igsh=MW5lcXVscnNvZHFqMg==&utm_source=ig_contact_invite"
+              aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -85,6 +90,7 @@ const Contact = () => {
             {/* Facebook */}
             <a
               href="https://www.facebook.com/share/1XVn8Uu1ps/?mibextid=wwXIfr"
+              aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
