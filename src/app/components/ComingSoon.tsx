@@ -3,9 +3,7 @@ import { HiMiniEnvelope } from "react-icons/hi2";
 
 export default function ComingSoon() {
   return (
-    // 👉 CAMBIO 1: min-h-dvh en vez de min-h-screen para arreglar el scroll de iOS
-
-    <main className="min-h-dvh bg-black bg-[url(/img/bg-mobile.jpeg)] md:bg-[url(/img/bg-desktop.png)] bg-cover bg-center flex flex-col md:flex-row text-white w-full overscroll-none">
+    <main className="min-h-dvh bg-black bg-[url(/img/bg-mobile.webp)] md:bg-[url(/img/bg-desktop-flip.webp)] bg-cover bg-center flex flex-col md:flex-row text-white w-full overscroll-none">
       {/* Columna principal (Texto y Email) */}
       <div className="w-full md:w-7/12 grow md:grow-0 md:min-h-dvh flex flex-col justify-center p-8 md:px-16 lg:px-24 bg-linear-to-b from-black/60 via-black/40 to-transparent md:bg-linear-to-r md:from-black/80 md:via-black/50 md:to-transparent">
         <div>
