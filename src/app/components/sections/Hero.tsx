@@ -14,7 +14,7 @@ const Hero = () => {
         fill
         className="object-cover md:hidden z-0"
         priority
-        sizes="100vw"
+        sizes="(max-width: 767px) 100vw, 0px"
       />
       <Image
         src="/img/bg-desktop.webp"
@@ -22,7 +22,7 @@ const Hero = () => {
         fill
         className="object-cover hidden md:block z-0"
         priority
-        sizes="100vw"
+        sizes="(min-width: 768px) 100vw, 0px"
       />
       <div className="relative z-10 w-full grow flex">
         <div className="hidden md:block md:w-4/12"></div>

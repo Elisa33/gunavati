@@ -37,7 +37,7 @@ const Videos = () => {
     <section id="music" className="py-20 px-6">
       <div className="flex flex-col gap-3 items-center mx-auto w-11/12 max-w-7xl px-6">
         <span className="uppercase text-lg text-accent">LISTEN</span>
-        <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-700">
+        <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-500">
           my voice
         </h2>
         <p className="md:w-2/3 text-center text-accent2">
@@ -49,7 +49,7 @@ const Videos = () => {
       </div>
 
       {/* Video grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 md:mt-20 px-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 md:mt-20 px-6 mx-auto max-w-5xl">
         {videos.map((video) => (
           <div
             key={video.id}

@@ -138,7 +138,7 @@ const handleDonate = (amount: number) => {
           <span className="uppercase text-lg text-primary-600 tracking-wider">
             keep this music alive
           </span>
-          <h2 className="font-script text-8xl text-secondary-700 -translate-y-4">
+          <h2 className="font-script text-8xl text-secondary-500 -translate-y-4">
             my vision
           </h2>
           <p className="text-lg max-w-xl mx-auto mt-4 text-primary-600">
