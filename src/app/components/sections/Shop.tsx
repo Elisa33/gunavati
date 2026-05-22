@@ -66,7 +66,7 @@ const AlbumCard = ({
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
-    <h3 className="mt-3 text-base text-primary-700 text-center line-clamp-2 min-h-[2.5rem]">
+    <h3 className="mt-3 text-base text-primary-700 text-center line-clamp-2 min-h-10">
       {album.title}
     </h3>
     <p className="text-xs text-primary-600">{album.year}</p>
