@@ -48,8 +48,10 @@ const Navbar = () => {
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-6">
-            <div className="hidden md:block text-sm">EN | UK | FR</div>
+          <div className="flex items-center gap-6 ">
+            <div className="hidden md:block text-sm invisible">
+              EN | UK | FR
+            </div>
 
             <button
               className="md:hidden text-2xl z-70"
@@ -104,7 +106,7 @@ const Navbar = () => {
             contact
           </a>
 
-          <div className="text-sm mt-8">EN | UK | FR</div>
+          <div className="text-sm mt-8 invisible">EN | UK | FR</div>
         </nav>
       </div>
     </>
