@@ -40,6 +40,12 @@ const Navbar = () => {
               my vision
             </a>
             <a
+              href="#support"
+              className="hover:text-secondary-300 transition-colors"
+            >
+              support
+            </a>
+            <a
               href="#contact"
               className="hover:text-secondary-300 transition-colors"
             >
@@ -97,6 +103,13 @@ const Navbar = () => {
             className="hover:text-primary-800 transition-colors"
           >
             my vision
+          </a>
+          <a
+            href="#support"
+            onClick={() => setIsMenuOpen(false)}
+            className="hover:text-primary-800 transition-colors"
+          >
+            support
           </a>
           <a
             href="#contact"

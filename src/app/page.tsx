@@ -4,6 +4,7 @@ import Hero from "../app/components/sections/Hero";
 import Art from "../app/components/sections/Art";
 import About from "../app/components/sections/About";
 import Shop from "../app/components/sections/Shop";
+import Support from "../app/components/sections/Support";
 import Contact from "../app/components/sections/Contact";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Art />
       <About />
       <Shop />
+      <Support />
       <Contact />
     </main>
   );
