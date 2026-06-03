@@ -24,11 +24,11 @@ const Contact = () => {
       <div className="mx-auto w-11/12 max-w-7xl pt-12 md:pt-20 pb-8 text-background-100 px-6">
         <div className="flex flex-col items-center ">
           <span className="uppercase text-lg">GET IN TOUCH</span>
-          <h3 className="font-lavishly-yours text-6xl -translate-y-3 text-secondary-500">
+          <h3 className="font-lavishly-yours text-7xl -translate-y-3 text-secondary-500">
             let’s connect
           </h3>
           <p className="md:w-2/3 text-lg text-center">
-            For collaborations, ceremonies, or simply to share light.
+            For collaborations, events, or simply to share light.
             <span className="block">Reach out through e-mail:</span>
           </p>
           <a

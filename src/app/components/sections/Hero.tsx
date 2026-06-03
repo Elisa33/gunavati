@@ -24,6 +24,8 @@ const Hero = () => {
         priority
         sizes="(min-width: 768px) 100vw, 0px"
       />
+      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent md:from-black/50 md:via-black/0 md:to-transparent z-1"></div>
+
       <div className="relative z-10 w-full grow flex">
         <div className="hidden md:block md:w-4/12"></div>
 
@@ -33,7 +35,7 @@ const Hero = () => {
             <span className="block">for the heart's journey</span>
           </h1>
           <div>
-            <p className="text-lg md:text-xl font-body">
+            <p className="text-lg md:text-xl font-body drop-shadow-md">
               Discover healing sounds and words that embrace your soul and fill
               your heart.
             </p>
