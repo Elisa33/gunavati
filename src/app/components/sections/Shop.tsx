@@ -8,42 +8,41 @@ const albums = [
   {
     id: 1,
     title: "My Only Hope",
-    year: "2020",
+    year: "2026",
     cover: "/img/album-01.webp",
-    minPrice: 4,
+    minPrice: 8,
   },
   {
     id: 2,
     title: "The Light of Awakening",
-    year: "2021",
+    year: "2025",
     cover: "/img/album-02.webp",
     minPrice: 4,
   },
   {
     id: 3,
     title: "A New World",
-    year: "2022",
+    year: "2024",
     cover: "/img/album-03.webp",
-    minPrice: 4,
+    minPrice: 2,
   },
   {
     id: 4,
     title: "Again",
-    year: "2023",
+    year: "2024",
     cover: "/img/album-04.webp",
     minPrice: 4,
   },
   {
     id: 5,
-    title: "Kirtan Live",
-    year: "2025",
+    title: "Kirtan Live Ananda Gaori",
+    year: "2026",
     cover: "/img/album-05.webp",
-    minPrice: 4,
+    minPrice: 8,
   },
 ];
 
-const BUY_ALL_MIN = 15;
-
+const BUY_ALL_MIN = 16;
 
 const AlbumCard = ({
   album,
@@ -56,7 +55,9 @@ const AlbumCard = ({
     isAll?: boolean;
   }) => void;
 }) => (
-  <div className="group flex flex-col items-center">
+  // 👉 AGREGADO w-full aquí: Esto fuerza a que la tarjeta ocupe todo el ancho disponible,
+  // haciendo que el aspect-square de la imagen sea idéntico en todas las tarjetas.
+  <div className="group flex flex-col items-center w-full">
     <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow">
       <Image
         src={album.cover}
@@ -72,9 +73,9 @@ const AlbumCard = ({
     <p className="text-xs text-primary-600">{album.year}</p>
     <button
       onClick={() => onDonate(album)}
-      className="mt-2 flex items-center gap-2 text-sm px-4 py-1.5 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+      className="mt-2 flex items-center gap-2 text-sm px-5 py-2 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
     >
-      <FaDownload className="text-xs" />
+      <FaDownload className="text-xs hidden lg:block" />
       Download €{album.minPrice}+
     </button>
   </div>
@@ -89,7 +90,6 @@ const Shop = () => {
   } | null>(null);
 
   const [customAmount, setCustomAmount] = useState("");
-  const [IsDonateOpen, setIsDonateOpen] = useState(false);
 
   const openDonate = (album: {
     title: string;
@@ -100,24 +100,28 @@ const Shop = () => {
     setCustomAmount("");
   };
 
- const PAYPAL_BUTTON_ID = "G8J5W73XEY5TY";
+  const PAYPAL_EMAIL = "belotel13@gmail.com";
 
-const handleDonate = (amount: number) => {
-  const params = new URLSearchParams({
-    hosted_button_id: PAYPAL_BUTTON_ID,
-    amount: amount.toString(),
-    currency_code: "EUR",
-    return: `${window.location.origin}/thank-you`,
-  });
+  const handleDonate = (amount: number) => {
+    const params = new URLSearchParams({
+      cmd: "_donations",
+      business: PAYPAL_EMAIL,
+      item_name: selectedAlbum?.isAll
+        ? "Complete Discography"
+        : selectedAlbum?.title || "Donation",
+      amount: amount.toString(),
+      currency_code: "EUR",
+      return: `${window.location.origin}/thank-you`,
+    });
 
-  window.open(
-    `https://www.paypal.com/donate/?${params.toString()}`,
-    "_blank",
-    "noopener,noreferrer",
-  );
+    window.open(
+      `https://www.paypal.com/cgi-bin/webscr?${params.toString()}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
 
-  setIsDonateOpen(false);
-};
+    setSelectedAlbum(null);
+  };
 
   const handleCustomDonate = () => {
     const amount = parseFloat(customAmount);
@@ -125,7 +129,6 @@ const handleDonate = (amount: number) => {
       handleDonate(amount);
     }
   };
-
 
   return (
     <section
@@ -135,12 +138,13 @@ const handleDonate = (amount: number) => {
       <div className="mx-auto w-11/12 max-w-7xl px-4">
         {/* Header */}
         <div className="text-center mb-16 px-6">
-          <span className="uppercase text-lg text-primary-600 tracking-wider">
-            keep this music alive
+          <span className="uppercase lg:text-lg text-primary-600 tracking-wider">
+            take the journey with you
           </span>
           <h2 className="font-script text-8xl text-secondary-500 -translate-y-4">
-            my vision
+            the music
           </h2>
+          {/* Corregido el typo "f this" -> "If this" */}
           <p className="text-lg max-w-xl mx-auto mt-4 text-primary-600">
             If this music has touched you, you can help it continue. Every
             contribution goes directly into creating new work — so that more
@@ -221,7 +225,7 @@ const handleDonate = (amount: number) => {
       {/* Donate Modal */}
       {selectedAlbum && (
         <div
-          className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
           onClick={() => setSelectedAlbum(null)}
         >
           <div
@@ -235,7 +239,7 @@ const handleDonate = (amount: number) => {
               <FaTimes className="text-xl" />
             </button>
 
-            <h3 className="font-script text-3xl text-primary-600 mb-1">
+            <h3 className="text-3xl text-primary-600 mb-1">
               {selectedAlbum.title}
             </h3>
             <p className="text-sm text-primary-400 mb-6">
@@ -244,15 +248,17 @@ const handleDonate = (amount: number) => {
             </p>
 
             <div className="grid grid-cols-4 gap-3 mb-6">
-              {[selectedAlbum.minPrice, 5, 10, 20].map((amount) => (
-                <button
-                  key={amount}
-                  onClick={() => handleDonate(amount)}
-                  className="py-3 rounded-xl border-2 border-primary-200 text-primary-600 font-semibold hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-all"
-                >
-                  €{amount}
-                </button>
-              ))}
+              {[selectedAlbum.minPrice, selectedAlbum.minPrice * 2, 20, 30].map(
+                (amount) => (
+                  <button
+                    key={amount}
+                    onClick={() => handleDonate(amount)}
+                    className="py-3 rounded-xl border-2 border-primary-200 text-primary-600 font-semibold hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-all"
+                  >
+                    €{amount}
+                  </button>
+                ),
+              )}
             </div>
 
             <div className="flex gap-3">

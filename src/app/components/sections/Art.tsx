@@ -8,20 +8,19 @@ import AudioPlayer from "../AudioPlayer";
 const videos = [
   {
     id: "fjZ6YY8FrU8",
-    title: "Mystery Kiirtan",
-    description:
-      "Ethereal vocals weaving sacred melodies into transcendent spiritual communion.",
+    title: "Mantras",
+    description: "Sacred sounds of Baba Nam Kevalam, woven into many melodies.",
   },
   {
     id: "sIJZRo3NVp4",
-    title: "Когда я буду уходить",
+    title: "Spiritual Poetry",
     description:
-      "Repetitive sacred syllables invoking inner peace and spiritual awakening.",
+      "Sacred words exploring the soul's journey toward truth and meaning.",
   },
   {
     id: "IMbZCh0apa8",
-    title: "The World I'll Give",
-    description: "Spoken wisdom and poetic verses guiding the soul inward.",
+    title: "Devotional Songs",
+    description: "Sacred melodies of love, longing and devotion.",
   },
 ];
 
@@ -36,15 +35,13 @@ const Videos = () => {
   return (
     <section id="music" className="py-20 px-6">
       <div className="flex flex-col gap-3 items-center mx-auto w-11/12 max-w-7xl px-6">
-        <span className="uppercase text-lg text-accent">LISTEN</span>
+        <span className="uppercase lg:text-lg text-accent">LISTEN</span>
         <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-500">
           my voice
         </h2>
         <p className="md:w-2/3 text-center text-accent2">
-          This music was made to return you to yourself to the quiet place
-          within where you are already whole, already connected.
-          {/* Let the sound
-          meet you wherever you are right now, and see where it takes you. */}
+          Let my music and poetry guide you on the path to your true self, to
+          the quite place within, full of love and peace
         </p>
       </div>
 
