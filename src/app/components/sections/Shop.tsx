@@ -7,42 +7,48 @@ import { FaPaypal, FaTimes, FaDownload } from "react-icons/fa";
 const albums = [
   {
     id: 1,
-    title: "My Only Hope",
-    year: "2026",
-    cover: "/img/album-01.webp",
-    minPrice: 8,
-  },
-  {
-    id: 2,
-    title: "The Light of Awakening",
-    year: "2025",
-    cover: "/img/album-02.webp",
-    minPrice: 4,
-  },
-  {
-    id: 3,
     title: "A New World",
+    slug: "a-new-world",
     year: "2024",
     cover: "/img/album-03.webp",
     minPrice: 2,
   },
   {
-    id: 4,
+    id: 2,
     title: "Again",
+    slug: "again",
     year: "2024",
     cover: "/img/album-04.webp",
     minPrice: 4,
   },
   {
+    id: 3,
+    title: "The Light of Awakening",
+    slug: "the-light-of-awakening",
+    year: "2025",
+    cover: "/img/album-02.webp",
+    minPrice: 4,
+  },
+  {
+    title: "My Only Hope",
+    slug: "my-only-hope",
+    year: "2026",
+    cover: "/img/album-01.webp",
+    minPrice: 8,
+  },
+  {
     id: 5,
     title: "Kirtan Live Ananda Gaori",
+    slug: "kirtan-live-ananda-gaori",
     year: "2026",
     cover: "/img/album-05.webp",
     minPrice: 8,
   },
 ];
 
-const BUY_ALL_MIN = 16;
+const BUY_ALL_SLUG = "full-discography";
+
+const BUY_ALL_MIN = 20;
 
 const AlbumCard = ({
   album,
@@ -67,7 +73,7 @@ const AlbumCard = ({
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
-    <h3 className="mt-3 text-base text-primary-700 text-center line-clamp-2 min-h-10">
+    <h3 className="mt-3 text-sm md:text-base text-primary-700 text-center line-clamp-2 min-h-10">
       {album.title}
     </h3>
     <p className="text-xs text-primary-600">{album.year}</p>
@@ -87,6 +93,7 @@ const Shop = () => {
     title: string;
     minPrice: number;
     isAll: boolean;
+    slug?: string;
   } | null>(null);
 
   const [customAmount, setCustomAmount] = useState("");
@@ -95,6 +102,7 @@ const Shop = () => {
     title: string;
     minPrice: number;
     isAll?: boolean;
+    slug?: string;
   }) => {
     setSelectedAlbum({ ...album, isAll: album.isAll || false });
     setCustomAmount("");
@@ -103,6 +111,12 @@ const Shop = () => {
   const PAYPAL_EMAIL = "belotel13@gmail.com";
 
   const handleDonate = (amount: number) => {
+    const downloadSlug = selectedAlbum?.isAll
+      ? BUY_ALL_SLUG
+      : selectedAlbum?.slug;
+    const returnUrl = selectedAlbum
+      ? `${window.location.origin}/download/${downloadSlug}` // Los lleva a la nueva página
+      : `${window.location.origin}/thank-you`; // Para las donaciones generales
     const params = new URLSearchParams({
       cmd: "_donations",
       business: PAYPAL_EMAIL,
@@ -111,7 +125,7 @@ const Shop = () => {
         : selectedAlbum?.title || "Donation",
       amount: amount.toString(),
       currency_code: "EUR",
-      return: `${window.location.origin}/thank-you`,
+      return: returnUrl,
     });
 
     window.open(
@@ -137,15 +151,15 @@ const Shop = () => {
     >
       <div className="mx-auto w-11/12 max-w-7xl px-4">
         {/* Header */}
-        <div className="text-center mb-16 px-6">
+        <div className="text-center mb-16">
           <span className="uppercase lg:text-lg text-primary-600 tracking-wider">
             take the journey with you
           </span>
-          <h2 className="font-script text-8xl text-secondary-500 -translate-y-4">
-            the music
+          <h2 className="font-script text-7xl md:text-8xl text-secondary-500">
+            my music
           </h2>
           {/* Corregido el typo "f this" -> "If this" */}
-          <p className="text-lg max-w-xl mx-auto mt-4 text-primary-600">
+          <p className="md:text-lg max-w-xl mx-auto mt-4 text-primary-600">
             If this music has touched you, you can help it continue. Every
             contribution goes directly into creating new work — so that more
             songs can find their way to those who need them.
@@ -171,7 +185,7 @@ const Shop = () => {
           </div>
 
           {/* Desktop: interleaved layout */}
-          <div className="hidden md:grid grid-cols-6 gap-8 max-w-4xl mx-auto">
+          <div className="hidden md:grid grid-cols-6 gap-14 max-w-4xl mx-auto">
             {/* Row 1 */}
             <div className="col-start-1 col-span-2">
               <AlbumCard album={albums[0]} onDonate={openDonate} />
@@ -196,12 +210,13 @@ const Shop = () => {
         {/* Buy all */}
         <div className="mx-auto w-11/12 max-w-7xl mt-20 px-6">
           <div className="text-center mb-8">
-            <h3 className="font-script text-6xl text-primary-600 mt-2">
+            <h3 className="font-script text-5xl md:text-6xl text-primary-600 mt-2">
               the full journey
             </h3>
-            <p className="text-lg mt-4 text-primary-600 pt-6">
+            <p className="md:text-lg mt-4 text-primary-600 pt-6">
               <span className="block">All albums, one place.</span> Download the
-              complete collection and carry the whole journey with you.
+              complete collection and carry{" "}
+              <span className="sm:block"> the whole journey with you.</span>
             </p>
           </div>
         </div>
@@ -212,9 +227,10 @@ const Shop = () => {
                 title: "Complete Discography",
                 minPrice: BUY_ALL_MIN,
                 isAll: true,
+                slug: "full-discography",
               })
             }
-            className="flex items-center gap-3 px-8 py-3 rounded-full bg-secondary-500 text-white text-lg font-semibold hover:bg-secondary-600 transition-colors shadow-md"
+            className="flex items-center gap-3 px-8 py-3 rounded-full bg-secondary-500 text-white md:text-lg font-semibold hover:bg-secondary-600 transition-colors shadow-md"
           >
             <FaDownload />
             Buy all discography €{BUY_ALL_MIN}+

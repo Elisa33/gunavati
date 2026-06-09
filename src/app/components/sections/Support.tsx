@@ -1,11 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { FaPaypal, FaTimes } from "react-icons/fa"; // Agregamos FaTimes para el modal
+import { FaPaypal, FaTimes } from "react-icons/fa";
 
 const donationAmounts = [5, 10, 20, 50];
 
-// ⚠️ IMPORTANTE: Cambiá esto al email real de PayPal de tu clienta
-// para que los montos dinámicos y la página de retorno funcionen.
 const PAYPAL_EMAIL = "belotel13@gmail.com"; 
 
 const Support = () => {
@@ -43,26 +41,29 @@ const Support = () => {
 
   return (
     <>
-      <section id="support" className="relative py-24 bg-secondary-100 text-primary-700">
+      <section
+        id="support"
+        className="relative py-24 bg-secondary-100 text-primary-700"
+      >
         <div className="mx-auto w-11/12 max-w-4xl text-center">
           <span className="uppercase lg:text-lg text-primary-600 tracking-wider">
             keep this music alive
           </span>
-          <h2 className="font-script text-7xl text-primary-700 -translate-y-4 mt-2 p-4">
-            Support the vision
+          <h2 className="font-script text-7xl text-primary-700 p-4">
+            Support <span className="block sm:inline">the vision</span>
           </h2>
-          <p className="text-lg max-w-xl mx-auto mt-6 text-primary-600">
+          <p className="md:text-lg max-w-xl mx-auto mt-6 text-primary-600">
             If this work resonates with you and supports your own inner journey,
-            your contribution helps sustain this creative offering and allows new
-            songs, poems, recordings, and projects to come into being.
+            your contribution helps sustain this creative offering and allows
+            new songs, poems, recordings, and projects to come into being.
           </p>
-          
+
           {/* Botón único que abre el modal */}
           <button
             onClick={() => setIsDonateOpen(true)}
             className="mt-10 flex items-center gap-3 mx-auto px-8 py-3 rounded-full bg-primary-700 text-white text-lg font-semibold hover:bg-primary-600 transition-colors shadow-md"
           >
-            Donate
+            Support
           </button>
         </div>
       </section>
@@ -85,7 +86,7 @@ const Support = () => {
               <FaTimes className="text-xl" />
             </button>
 
-            <h3 className="font-script text-4xl text-primary-600 mb-1">
+            <h3 className="text-xl text-primary-600 mb-1">
               Support the vision
             </h3>
             <p className="text-sm text-primary-400 mb-6">

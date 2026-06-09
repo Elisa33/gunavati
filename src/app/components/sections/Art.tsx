@@ -9,18 +9,19 @@ const videos = [
   {
     id: "fjZ6YY8FrU8",
     title: "Mantras",
-    description: "Sacred sounds of Baba Nam Kevalam, woven into many melodies.",
+    description:
+      "Sacred sounds of the mantra Baba Nam Kevalam, woven into many melodies.",
   },
   {
     id: "sIJZRo3NVp4",
     title: "Spiritual Poetry",
     description:
-      "Sacred words exploring the soul's journey toward truth and meaning.",
+      "Sacred words inspired by the soul's journey toward truth and meaning.",
   },
   {
     id: "IMbZCh0apa8",
     title: "Devotional Songs",
-    description: "Sacred melodies of love, longing and devotion.",
+    description: "Sacred melodies of love, longing, and devotion.",
   },
 ];
 
@@ -34,19 +35,21 @@ const Videos = () => {
 
   return (
     <section id="music" className="py-20 px-6">
-      <div className="flex flex-col gap-3 items-center mx-auto w-11/12 max-w-7xl px-6">
+      <div className="flex flex-col gap-3 items-center mx-auto max-w-7xl px-6">
         <span className="uppercase lg:text-lg text-accent">LISTEN</span>
         <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-500">
           my voice
         </h2>
         <p className="md:w-2/3 text-center text-accent2">
           Let my music and poetry guide you on the path to your true self, to
-          the quite place within, full of love and peace
+          <span className="lg:block">
+            the quite place within, full of love and peace
+          </span>
         </p>
       </div>
 
       {/* Video grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 md:mt-20 px-6 mx-auto max-w-5xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 md:mt-20 px-6 mx-auto max-w-5xl">
         {videos.map((video) => (
           <div
             key={video.id}
@@ -81,7 +84,7 @@ const Videos = () => {
               <p className="text-sm text-primary-700 mb-4">
                 {video.description}
               </p>
-              <div className="flex gap-3">
+              <div className="flex md:gap-2 lg:gap-3 gap-3 mt-auto">
                 <button
                   onClick={() => setModal({ type: "video", id: video.id })}
                   className="flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"

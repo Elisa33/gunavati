@@ -18,7 +18,7 @@ const About = () => {
         />
       </div>
 
-      <div className="relative grid md:grid-cols-2 gap-6 md:gap-0 mx-auto w-11/12 max-w-7xl py-20 px-6">
+      <div className="relative grid sm:grid-cols-2 gap-6 md:gap-0 mx-auto max-w-7xl py-20 px-6">
         {/* Image wrapper con alto controlado - Ajustado justify para mobile/desktop */}
         <div className="max-h-[80vh] flex justify-center md:justify-end rounded-3xl overflow-hidden">
           {/* Imagen Mobile (Oculta en desktop) */}
@@ -27,7 +27,7 @@ const About = () => {
             alt="Gunavati portrait"
             width={424}
             height={540}
-            className="h-full w-auto rounded-3xl md:hidden"
+            className="h-full w-auto rounded-3xl sm:hidden"
           />
 
           {/* Imagen Desktop (Oculta en mobile) */}
@@ -36,28 +36,28 @@ const About = () => {
             alt="Gunavati portrait"
             width={424}
             height={540}
-            className="h-full w-auto rounded-3xl hidden md:block"
+            className="h-full w-auto object-cover rounded-3xl hidden sm:block"
           />
         </div>
 
         {/* Content */}
-        <div className="flex flex-col justify-center md:px-16 py-4">
+        <div className="flex flex-col justify-center md:px-12 py-4 md:py-0">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3 w-11/12 max-w-7xl">
               <span className="uppercase lg:text-lg text-background-100">
                 about me
               </span>
-              <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-500">
+              <h2 className="font-lavishly-yours text-8xl sm:text-7xl xl:text-8xl -translate-y-8 text-secondary-500">
                 my story
               </h2>
             </div>
 
-            <p className="text-lg leading-7">
+            <p className="lg:text-lg leading-7">
               Through original mantra melodies, heartfelt songs, and
               contemplative verse, I weave music and poetry into invitations for
               reflection, connection, and a deeper experience of the sacred.
             </p>
-            <p className="text-lg leading-7">
+            <p className="lg:text-lg leading-7">
               Music and poetry are not simply creative expressions for me—they
               are a path of devotion, self-discovery, and service. Each melody
               and each verse arises from a sincere desire to bring more peace,

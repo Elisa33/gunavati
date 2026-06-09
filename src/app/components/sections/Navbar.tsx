@@ -13,14 +13,14 @@ const Navbar = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-accent/80 backdrop-blur-xs h-16 text-background-100">
-        <div className="flex items-center justify-between h-full mx-auto w-11/12 max-w-7xl px-4">
+        <div className="flex items-center justify-between h-full mx-auto w-11/12 lg:w-10/12 xl:max-w-7xl px-4">
           {/* Logo */}
-          <a href="#hero" className="font-gunavati text-5xl md:text-6xl">
+          <a href="#hero" className="font-gunavati text-5xl sm:text-6xl">
             Gunavati
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex gap-8 text-lg font-medium">
+          <nav className="hidden lg:flex gap-8 text-lg font-medium">
             <a
               href="#music"
               className="hover:text-secondary-300 transition-colors"
@@ -37,7 +37,7 @@ const Navbar = () => {
               href="#shop"
               className="hover:text-secondary-300 transition-colors"
             >
-              my vision
+              my music
             </a>
             <a
               href="#support"
@@ -49,18 +49,16 @@ const Navbar = () => {
               href="#contact"
               className="hover:text-secondary-300 transition-colors"
             >
-              contact
+              contact me
             </a>
           </nav>
 
           {/* Right side */}
           <div className="flex items-center gap-6 ">
-            <div className="hidden md:block text-sm invisible">
-              EN | UK | FR
-            </div>
+            <div className="hidden text-sm">EN | UK | FR</div>
 
             <button
-              className="md:hidden text-2xl z-70"
+              className="lg:hidden text-2xl z-70"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -72,7 +70,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-1/2 bg-secondary-500 z-60 transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 right-0 h-full w-1/2 bg-secondary-500 z-60 transition-transform duration-300 ease-in-out lg:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -102,7 +100,7 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors"
           >
-            my vision
+            my music
           </a>
           <a
             href="#support"
@@ -116,7 +114,7 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors"
           >
-            contact
+            contact me
           </a>
 
           <div className="text-sm mt-8 invisible">EN | UK | FR</div>
