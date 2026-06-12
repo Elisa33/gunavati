@@ -39,6 +39,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Gunavati" }],
   creator: "Gunavati",
+  alternates: {
+    canonical: "https://gunavati.art",
+  },
   openGraph: {
     title: "Gunavati — Sacred Art for the Heart's Journey",
     description:
@@ -47,6 +50,14 @@ export const metadata: Metadata = {
     siteName: "Gunavati",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/img/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Gunavati — Sacred Art for the Heart's Journey",
+      },
+    ],
   },
   icons: {
     icon: [

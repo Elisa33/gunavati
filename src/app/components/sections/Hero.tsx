@@ -22,6 +22,7 @@ const Hero = () => {
         fill
         className="object-cover hidden md:block object-[15%] z-0"
         priority
+        fetchPriority="high"
         sizes="(min-width: 768px) 100vw, 0px"
       />
       <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent md:from-black/50 md:via-black/0 md:to-transparent z-1"></div>

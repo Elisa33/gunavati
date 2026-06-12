@@ -50,7 +50,7 @@ const Contact = () => {
             {/* spotify */}
             <a
               href="https://open.spotify.com/artist/7oIXVcqgLhHQFudWozZAIU?si=MsL-VwTDTD-pRx4BNwh8ZQ"
-              aria-label="Spotify"
+              aria-label="Listen on Spotify"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -60,7 +60,7 @@ const Contact = () => {
             {/* youtube */}
             <a
               href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
-              aria-label="You tube"
+              aria-label="Watch on You tube"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -70,7 +70,7 @@ const Contact = () => {
             {/* apple music */}
             <a
               href="https://music.apple.com/ua/artist/gunavati/1768795053?l=ru"
-              aria-label="Apple music"
+              aria-label="Listen on Apple music"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"

@@ -73,7 +73,7 @@ const AlbumCard = ({
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
-    <h3 className="mt-3 text-sm md:text-base text-primary-700 text-center line-clamp-2 min-h-10">
+    <h3 className="mt-3 text-sm sm:text-base lg:text-lg text-primary-700 text-center line-clamp-2 min-h-10">
       {album.title}
     </h3>
     <p className="text-xs text-primary-600">{album.year}</p>
@@ -172,7 +172,7 @@ const Shop = () => {
           <div className="grid grid-cols-2 gap-6 md:hidden">
             {albums.map((album, index) => (
               <div
-                key={album.id}
+                key={index}
                 className={index === 4 ? "col-span-2 flex justify-center" : ""}
               >
                 <div
@@ -264,17 +264,18 @@ const Shop = () => {
             </p>
 
             <div className="grid grid-cols-4 gap-3 mb-6">
-              {[selectedAlbum.minPrice, selectedAlbum.minPrice * 2, 20, 30].map(
-                (amount) => (
-                  <button
-                    key={amount}
-                    onClick={() => handleDonate(amount)}
-                    className="py-3 rounded-xl border-2 border-primary-200 text-primary-600 font-semibold hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-all"
-                  >
-                    €{amount}
-                  </button>
-                ),
-              )}
+              {(selectedAlbum.isAll
+                ? [20, 25, 30, 35]
+                : [selectedAlbum.minPrice, selectedAlbum.minPrice * 2, 20, 30]
+              ).map((amount) => (
+                <button
+                  key={amount}
+                  onClick={() => handleDonate(amount)}
+                  className="py-3 rounded-xl border-2 border-primary-200 text-primary-600 font-semibold hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-all"
+                >
+                  €{amount}
+                </button>
+              ))}
             </div>
 
             <div className="flex gap-3">
