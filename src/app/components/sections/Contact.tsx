@@ -21,7 +21,7 @@ const Contact = () => {
           className="object-cover opacity-15"
         />
       </div>
-      <div className="mx-auto w-11/12 max-w-7xl pt-12 md:pt-20 pb-8 text-background-100 px-6">
+      <div className="mx-auto w-11/12 max-w-7xl pt-12 md:pt-20 pb-8 text-background-100 px-6 z-10">
         <div className="flex flex-col items-center ">
           <span className="uppercase text-lg">GET IN TOUCH</span>
           <h3 className="font-lavishly-yours text-7xl text-secondary-500">
@@ -116,17 +116,16 @@ const Contact = () => {
             />
           </svg>
 
-          <p className="text-white">
-            {" "}
-            by{" "}
-            <a
-              href="https://elisa33.github.io/portfolio/"
-              className="text-secondary-500"
-              aria-label="Portfolio Elisa"
-            >
-              Elisa
-            </a>
-          </p>
+          <p className="text-white">by</p>
+          <a
+            href="https://elisa33.github.io/portfolio/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-secondary-500 hover:text-secondary-300 hover:underline transition-colors"
+            aria-label="Portfolio Elisa"
+          >
+            Elisa
+          </a>
         </div>
       </div>
     </section>

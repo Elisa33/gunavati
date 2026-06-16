@@ -70,14 +70,13 @@ export default async function DownloadPage({ params }: { params: { slug: string 
   return (
     <main className="min-h-dvh bg-background-100 flex items-center justify-center text-primary-700 p-6">
       <div className="max-w-lg w-full text-center bg-white p-10 md:p-12 rounded-3xl shadow-xl">
-        
         <h1 className="font-script text-7xl text-secondary-600 mb-4">
           Thank you
         </h1>
-        
+
         <p className="text-lg text-primary-600 mb-8">
-          Your purchase of <strong>{album.title}</strong> is complete. 
-          Here are your download links:
+          Your purchase of <strong>{album.title}</strong> is complete. Here are
+          your download links:
         </p>
 
         <div className="flex flex-col gap-4">
@@ -96,9 +95,10 @@ export default async function DownloadPage({ params }: { params: { slug: string 
         </div>
 
         <div className="mt-10 p-4 bg-secondary-100 rounded-xl text-sm text-primary-700 flex items-start gap-3 text-left">
-          <FaShieldAlt className="text-secondary-600 mt-0.5 flex-shrink-0" />
+          <FaShieldAlt className="text-secondary-600 mt-0.5 shrink-0" />
           <p>
-            Thank you for respecting copyright and not sharing this link with anyone.
+            Thank you for respecting copyright and not sharing this link with
+            anyone.
           </p>
         </div>
 
