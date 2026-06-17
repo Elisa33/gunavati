@@ -32,7 +32,7 @@ const About = () => {
 
           {/* Imagen Desktop (Oculta en mobile) */}
           <Image
-            src="/img/about-image.webp"
+            src="/img/about-image3.jpeg"
             alt="Gunavati portrait"
             width={424}
             height={540}
