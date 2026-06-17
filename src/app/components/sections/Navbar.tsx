@@ -80,7 +80,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <nav className="flex flex-col items-center justify-center h-3/4 gap-8 text-2xl text-primary-600">
+        <nav className="flex flex-col items-left justify-center pl-5 h-3/4 gap-4 text-xl text-primary-600">
           <a
             href="#music"
             onClick={() => setIsMenuOpen(false)}
