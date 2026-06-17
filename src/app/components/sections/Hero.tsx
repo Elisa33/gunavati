@@ -1,8 +1,29 @@
-import React from "react";
-import { FaPlay } from "react-icons/fa";
+"use client";
+import React, { useState, useRef } from "react";
+import { FaPause, FaPlay } from "react-icons/fa";
 import Image from "next/image";
 
 const Hero = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null); // Referencia al reproductor invisible
+
+  // Función para reproducir o pausar
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  // Cuando el audio termina sola, volvemos a poner el botón en "Play"
+  const handleAudioEnd = () => {
+    setIsPlaying(false);
+  };
+
   return (
     <section
       id="hero"
@@ -46,16 +67,28 @@ const Hero = () => {
                 that embrace your soul and fill your heart.
               </span>
             </p>
-            <a
-              href="#music"
-              className="group flex items-center gap-2 mt-6 p-2 px-4 md:px-5 rounded-full w-fit transition-all bg-background-100/90 hover:bg-background-100"
+            <button
+              onClick={toggleAudio}
+              className="group flex items-center gap-3 mt-3 p-2 pl-5 pr-6 rounded-full w-fit transition-all bg-background-100/90 hover:bg-background-100"
             >
-              <FaPlay className="h-6 text-secondary-500 group-hover:text-primary-500 text-2xl md:text-3xl transition-colors" />
-              <span className="md:text-lg text-primary-600">Listen now</span>
-            </a>
+              {isPlaying ? (
+                <FaPause className="h-5 text-secondary-500 group-hover:text-primary-500 text-2xl transition-colors" />
+              ) : (
+                <FaPlay className="h-5 text-secondary-500 group-hover:text-primary-500 text-xl transition-colors ml-1" />
+              )}
+              <span className="text-lg text-primary-600 font-medium">
+                {isPlaying ? "Pause" : "Listen Now"}
+              </span>
+            </button>
           </div>
         </div>
       </div>
+      <audio
+        ref={audioRef}
+        src="/audio/preview.mp3" // <--- ACÁ PONES LA RUTA A TU ARCHIVO DE AUDIO
+        onEnded={handleAudioEnd}
+        className="hidden"
+      />
     </section>
   );
 };
