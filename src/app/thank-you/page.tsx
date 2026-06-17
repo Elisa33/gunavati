@@ -8,8 +8,10 @@ export default function ThankYou() {
           Thank you
         </h1>
         <p className="text-xl mb-8">
-          Your generosity helps keep this music alive. May it return to you in
-          harmony and peace.
+          Your generosity helps keep this music alive.{" "}
+          <span className="block">
+            May it return to you in harmony and peace.{" "}
+          </span>
         </p>
         <Link
           href="/"
