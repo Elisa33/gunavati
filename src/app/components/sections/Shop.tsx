@@ -103,12 +103,15 @@ const AlbumCard = ({
               showTracks ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
-            <p className="text-sm uppercase tracking-wider text-secondary-400 mb-2 font-semibold text-center">
+            <p className="text-xs lg:text-sm uppercase tracking-wider text-secondary-400 mb-2 font-semibold text-center">
               Tracklist
             </p>
             <ul className="space-y-1 overflow-y-auto h-[80%] text-center">
               {album.tracks.map((track, index) => (
-                <li key={index} className="text-sm text-background-100">
+                <li
+                  key={index}
+                  className="text-xs lg:text-sm text-background-100"
+                >
                   {index + 1}. {track}
                 </li>
               ))}
