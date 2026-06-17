@@ -87,14 +87,14 @@ const Videos = () => {
               <div className="flex md:gap-2 lg:gap-3 gap-3 mt-auto">
                 <button
                   onClick={() => setModal({ type: "video", id: video.id })}
-                  className="flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+                  className="flex items-center gap-2 text-sm px-4 py-2.5 min-h-11 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
                 >
                   <FaPlay className="text-xs" />
                   Watch
                 </button>
                 <button
                   onClick={() => setModal({ type: "audio", id: video.id })}
-                  className="flex items-center gap-2 text-sm px-4 py-2 rounded-full border border-primary-600 text-primary-600 hover:bg-primary-50 transition-colors"
+                  className="flex items-center gap-2 text-sm px-4 py-2.5 min-h-11 rounded-full border border-primary-600 text-primary-600 hover:bg-primary-50 transition-colors"
                 >
                   <FaHeadphones className="text-xs" />
                   Listen

@@ -80,39 +80,39 @@ const Navbar = () => {
           </button>
         </div>
 
-        <nav className="flex flex-col items-left justify-center pl-5 h-3/4 gap-4 text-xl text-primary-600">
+        <nav className="flex flex-col items-left justify-start pl-5 text-xl text-primary-600">
           <a
             href="#music"
             onClick={() => setIsMenuOpen(false)}
-            className="hover:text-primary-800 transition-colors"
+            className="hover:text-primary-800 transition-colors py-2.5"
           >
             my voice
           </a>
           <a
             href="#about"
             onClick={() => setIsMenuOpen(false)}
-            className="hover:text-primary-800 transition-colors"
+            className="hover:text-primary-800 transition-colors py-2.5"
           >
             my story
           </a>
           <a
             href="#shop"
             onClick={() => setIsMenuOpen(false)}
-            className="hover:text-primary-800 transition-colors"
+            className="hover:text-primary-800 transition-colors py-2.5"
           >
             my music
           </a>
           <a
             href="#support"
             onClick={() => setIsMenuOpen(false)}
-            className="hover:text-primary-800 transition-colors"
+            className="hover:text-primary-800 transition-colors py-2.5"
           >
             support
           </a>
           <a
             href="#contact"
             onClick={() => setIsMenuOpen(false)}
-            className="hover:text-primary-800 transition-colors"
+            className="hover:text-primary-800 transition-colors py-2.5"
           >
             contact me
           </a>
