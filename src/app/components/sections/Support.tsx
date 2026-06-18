@@ -14,12 +14,12 @@ const Support = () => {
     // Usamos el formato CGI estándar de PayPal (no el hosted button)
     // para poder pasarle el monto exacto y la URL de retorno
     const params = new URLSearchParams({
-      cmd: "_donations",
+      cmd: "_xclick",
       business: PAYPAL_EMAIL,
-      item_name: "Support the vision - Gunavati",
+      item_name: "Support Gunavati's Music Project",
       amount: amount.toString(),
       currency_code: "EUR",
-      // Aquí le decimos a PayPal que vuelva a tu sitio al terminar
+      no_shipping: "1",
       return: `${window.location.origin}/thank-you`,
     });
 

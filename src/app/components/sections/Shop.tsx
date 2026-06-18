@@ -168,11 +168,11 @@ const Shop = () => {
       ? `${window.location.origin}/download/${downloadSlug}` // Los lleva a la nueva página
       : `${window.location.origin}/thank-you`; // Para las donaciones generales
     const params = new URLSearchParams({
-      cmd: "_donations",
+      cmd: "_xclick",
       business: PAYPAL_EMAIL,
       item_name: selectedAlbum?.isAll
-        ? "Complete Discography"
-        : selectedAlbum?.title || "Donation",
+        ? "Complete Discography (Digital Download)"
+        : `${selectedAlbum?.title} (Digital Download)`,
       amount: amount.toString(),
       currency_code: "EUR",
       return: returnUrl,
