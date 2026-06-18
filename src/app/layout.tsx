@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Passions_Conflict, Raleway, Lavishly_Yours } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 // Configuramos la fuente
@@ -81,6 +82,7 @@ export default function RootLayout({
         className={`${passionsConflict.variable} ${raleway.variable} ${lavishlyYours.variable} antialiased`}
       >
         {children}
+        <GoogleAnalytics gaId="G-27GNXF67BM" />
       </body>
     </html>
   );
