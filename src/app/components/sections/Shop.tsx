@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { FaPaypal, FaTimes, FaDownload } from "react-icons/fa";
-
+import { FaPaypal, FaTimes, FaDownload, FaSpinner } from "react-icons/fa";
+import { createOrder } from "../../actions/orderActions";
 
 const albums = [
   {
@@ -136,17 +136,22 @@ const AlbumCard = ({
     </div>
   );
 };
-
 const Shop = () => {
   const [selectedAlbum, setSelectedAlbum] = useState<{
     title: string;
     minPrice: number;
     isAll: boolean;
     slug?: string;
-    tracks?: string[];
   } | null>(null);
 
-  const [customAmount, setCustomAmount] = useState("");
+  const [buyerEmail, setBuyerEmail] = useState("");
+  const [selectedAmount, setSelectedAmount] = useState(0); // <--- NUEVO
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<"paypal" | "bank">(
+    "paypal",
+  );
+  const [generatedCode, setGeneratedCode] = useState("");
 
   const openDonate = (album: {
     title: string;
@@ -155,42 +160,33 @@ const Shop = () => {
     slug?: string;
   }) => {
     setSelectedAlbum({ ...album, isAll: album.isAll || false });
-    setCustomAmount("");
+    setSelectedAmount(album.minPrice); // <--- Seteamos el mínimo por defecto
+    setBuyerEmail("");
+    setIsSuccess(false);
   };
 
-  const PAYPAL_EMAIL = "belotel13@gmail.com";
+  const handleSubmitOrder = async () => {
+    if (!buyerEmail || !selectedAlbum || selectedAmount === 0) return;
+    setIsProcessing(true);
 
-  const handleDonate = (amount: number) => {
-    const downloadSlug = selectedAlbum?.isAll
-      ? BUY_ALL_SLUG
-      : selectedAlbum?.slug;
-    const returnUrl = selectedAlbum
-      ? `${window.location.origin}/download/${downloadSlug}` // Los lleva a la nueva página
-      : `${window.location.origin}/thank-you`; // Para las donaciones generales
-    const params = new URLSearchParams({
-      cmd: "_xclick",
-      business: PAYPAL_EMAIL,
-      item_name: selectedAlbum?.isAll
-        ? "Complete Discography (Digital Download)"
-        : `${selectedAlbum?.title} (Digital Download)`,
-      amount: amount.toString(),
-      currency_code: "EUR",
-      return: returnUrl,
-    });
+    const albumSlug = selectedAlbum.isAll
+      ? "full-discography"
+      : selectedAlbum.slug;
 
-    window.open(
-      `https://www.paypal.com/cgi-bin/webscr?${params.toString()}`,
-      "_blank",
-      "noopener,noreferrer",
+    const result = await createOrder(
+      selectedAlbum.title,
+      albumSlug || "unknown",
+      buyerEmail,
+      selectedAmount,
+      paymentMethod, // <--- Le pasamos el método elegido
     );
 
-    setSelectedAlbum(null);
-  };
-
-  const handleCustomDonate = () => {
-    const amount = parseFloat(customAmount);
-    if (amount > 0) {
-      handleDonate(amount);
+    setIsProcessing(false);
+    if (result.success) {
+      setGeneratedCode(result.code || ""); // Guardamos el código para mostrarlo
+      setIsSuccess(true);
+    } else {
+      alert("Hubo un error al generar el código. Inténtalo de nuevo.");
     }
   };
 
@@ -275,12 +271,12 @@ const Shop = () => {
             onClick={() =>
               openDonate({
                 title: "Complete Discography",
-                minPrice: BUY_ALL_MIN,
+                minPrice: BUY_ALL_MIN, // (Asegurate de tener const BUY_ALL_MIN = 20; arriba)
                 isAll: true,
                 slug: "full-discography",
               })
             }
-            className="flex items-center gap-3 px-8 py-3 rounded-full bg-secondary-500 text-white md:text-lg font-semibold hover:bg-secondary-600 transition-colors shadow-md"
+            className="flex items-center gap-3 px-8 py-3 rounded-full bg-secondary-500 text-white text-lg font-semibold hover:bg-secondary-600 transition-colors shadow-md"
           >
             <FaDownload />
             Buy all discography €{BUY_ALL_MIN}+
@@ -288,7 +284,7 @@ const Shop = () => {
         </div>
       </div>
 
-      {/* Donate Modal */}
+      {/* Checkout Modal */}
       {selectedAlbum && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
@@ -305,78 +301,169 @@ const Shop = () => {
               <FaTimes className="text-xl" />
             </button>
 
-            <h3 className="text-3xl text-primary-600 mb-1">
-              {selectedAlbum.title}
-            </h3>
-            <p className="text-sm text-primary-400 mb-4">
-              Minimum €{selectedAlbum.minPrice} — or give more to support future
-              work
-            </p>
-
-            {selectedAlbum.tracks && selectedAlbum.tracks.length > 0 && (
-              <div className="mb-6 bg-primary-50 rounded-xl p-4 max-h-48 overflow-y-auto">
-                <p className="text-xs uppercase tracking-wider text-primary-400 mb-2 font-semibold">
-                  Tracklist
+            {isSuccess ? (
+              /* PANTALLA DE ÉXITO (Limpia y clara) */
+              <div className="text-center py-2">
+                <h3 className="text-2xl font-bold text-primary-800 mb-2">
+                  Almost there!
+                </h3>
+                <p className="text-primary-600 mb-6 text-sm">
+                  We've sent these instructions to <strong>{buyerEmail}</strong>
+                  .
                 </p>
-                <ul className="space-y-1">
-                  {selectedAlbum.tracks.map((track, index) => (
-                    <li
+
+                <div className="bg-primary-50 rounded-xl p-6 text-left mb-6">
+                  <p className="text-sm text-primary-700 mb-4">
+                    To complete your purchase, please send{" "}
+                    <strong>€{selectedAmount}</strong> using:
+                  </p>
+
+                  {paymentMethod === "paypal" ? (
+                    <div className="p-4 bg-white rounded-lg border border-primary-200 mb-4">
+                      <p className="font-semibold text-primary-800 text-sm mb-1">
+                        PayPal
+                      </p>
+                      <p className="text-sm text-primary-600">
+                        Send to: [Email/PayPal.me de Kateryna]
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="p-4 bg-white rounded-lg border border-primary-200 mb-4">
+                      <p className="font-semibold text-primary-800 text-sm mb-1">
+                        Bank Transfer (Russia)
+                      </p>
+                      <p className="text-sm text-primary-600">
+                        Bank: [Nombre del Banco]
+                        <br />
+                        Account: [Número de Cuenta]
+                        <br />
+                        Name: [Nombre]
+                      </p>
+                    </div>
+                  )}
+
+                  <div className="text-center mt-4">
+                    <p className="text-xs text-primary-600 font-bold uppercase tracking-wider mb-2">
+                      Important: Put this code in the transfer comment
+                    </p>
+                    <div className="inline-block bg-primary-800 text-white font-mono text-xl font-bold tracking-widest px-6 py-2 rounded-lg select-all">
+                      {generatedCode}
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-sm text-primary-500 mb-6">
+                  Once we confirm the transfer, your download links will arrive
+                  automatically.
+                </p>
+                <button
+                  onClick={() => setSelectedAlbum(null)}
+                  className="px-6 py-2 rounded-full bg-primary-100 text-primary-700 font-semibold hover:bg-primary-200 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
+              /* FORMULARIO DE COMPRA (Limpio y con contexto) */
+              <div>
+                <h3 className="text-2xl font-bold text-primary-800 mb-1">
+                  {selectedAlbum.title}
+                </h3>
+                <p className="text-sm text-primary-500 mb-4">
+                  Minimum €{selectedAlbum.minPrice} — or give more to support
+                  future work
+                </p>
+
+                {/* CONTEXTO HONESTO */}
+                <div className="bg-secondary-50 border border-secondary-200 text-secondary-800 text-xs p-3 rounded-lg mb-6">
+                  Due to international banking restrictions in Ukraine, payments
+                  are processed manually. Thank you for your understanding and
+                  support!
+                </div>
+
+                {/* Botones de Monto */}
+                <div className="grid grid-cols-4 gap-3 mb-6">
+                  {(selectedAlbum.isAll
+                    ? [20, 25, 30, 35]
+                    : [
+                        selectedAlbum.minPrice,
+                        selectedAlbum.minPrice * 2,
+                        20,
+                        30,
+                      ]
+                  ).map((amount, index) => (
+                    <button
                       key={index}
-                      className="text-sm text-primary-700 flex gap-2"
+                      onClick={() => setSelectedAmount(amount)}
+                      className={`py-3 rounded-xl border-2 font-semibold transition-all ${
+                        selectedAmount === amount
+                          ? "bg-primary-500 text-white border-primary-500"
+                          : "border-primary-200 text-primary-600 hover:bg-primary-50"
+                      }`}
                     >
-                      <span className="text-primary-400">{index + 1}.</span>
-                      {track}
-                    </li>
+                      €{amount}
+                    </button>
                   ))}
-                </ul>
+                </div>
+
+                {/* Selector de Método de Pago (PayPal Primero) */}
+                <div className="mb-6">
+                  <p className="text-xs text-primary-500 mb-2 uppercase tracking-wider font-semibold">
+                    Payment Method
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      onClick={() => setPaymentMethod("paypal")}
+                      className={`py-3 rounded-xl border-2 font-semibold transition-all text-sm ${
+                        paymentMethod === "paypal"
+                          ? "bg-primary-800 text-white border-primary-800"
+                          : "border-primary-200 text-primary-600 hover:bg-primary-50"
+                      }`}
+                    >
+                      PayPal
+                    </button>
+                    <button
+                      onClick={() => setPaymentMethod("bank")}
+                      className={`py-3 rounded-xl border-2 font-semibold transition-all text-sm ${
+                        paymentMethod === "bank"
+                          ? "bg-primary-800 text-white border-primary-800"
+                          : "border-primary-200 text-primary-600 hover:bg-primary-50"
+                      }`}
+                    >
+                      Bank Transfer
+                    </button>
+                  </div>
+                </div>
+
+                {/* Input de Email y Submit */}
+                <div className="flex flex-col gap-4">
+                  <input
+                    type="email"
+                    value={buyerEmail}
+                    onChange={(e) => setBuyerEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-primary-200 text-primary-600 focus:outline-none focus:border-primary-500 transition-colors"
+                  />
+                  <button
+                    onClick={handleSubmitOrder}
+                    disabled={!buyerEmail || isProcessing}
+                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    {isProcessing ? (
+                      <>
+                        <FaSpinner className="animate-spin" />
+                        Generating...
+                      </>
+                    ) : (
+                      <>
+                        <FaDownload />
+                        Get Instructions for €{selectedAmount}
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             )}
-
-            <div className="grid grid-cols-4 gap-3 mb-6">
-              {(selectedAlbum.isAll
-                ? [20, 25, 30, 35]
-                : [selectedAlbum.minPrice, selectedAlbum.minPrice * 2, 20, 30]
-              ).map((amount) => (
-                <button
-                  key={amount}
-                  onClick={() => handleDonate(amount)}
-                  className="py-3 rounded-xl border-2 border-primary-200 text-primary-600 font-semibold hover:bg-primary-500 hover:text-white hover:border-primary-500 transition-all"
-                >
-                  €{amount}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex gap-3">
-              <div className="relative flex-1">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-400">
-                  €
-                </span>
-                <input
-                  type="number"
-                  min={selectedAlbum.minPrice}
-                  value={customAmount}
-                  onChange={(e) => setCustomAmount(e.target.value)}
-                  placeholder="Other amount"
-                  className="w-full pl-8 pr-3 py-3 rounded-xl border-2 border-primary-200 text-primary-600 focus:outline-none focus:border-primary-500 transition-colors"
-                />
-              </div>
-              <button
-                onClick={handleCustomDonate}
-                disabled={
-                  !customAmount ||
-                  parseFloat(customAmount) < selectedAlbum.minPrice
-                }
-                className="px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                Give
-              </button>
-            </div>
-
-            <p className="text-xs text-primary-300 mt-4 flex items-center gap-1">
-              <FaPaypal />
-              Opens PayPal — no account needed, card accepted
-            </p>
           </div>
         </div>
       )}
