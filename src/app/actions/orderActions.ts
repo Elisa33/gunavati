@@ -56,13 +56,13 @@ export async function createOrder(
   // Email a Kateryna (Inglés) + Copia oculta a Elisa
   await resend.emails.send({
     from: "Gunavati Web <noreply@gunavati.art>",
-    to: "elisablange.tdf@gmail.com", // <--- Poné acá el email real de Kateryna
+    to: "belotel13@gmail.com", // <--- Poné acá el email real de Kateryna
     //bcc: "elisablange.tdf@gmail.com", // <--- Vos recibís copia oculta para monitorear
     subject: `New Pending Payment (${paymentMethod.toUpperCase()}): ${code} (€${amount})`,
     html: `
       <h2>Heads up!</h2>
       <p>The user <strong>${buyerEmail}</strong> is about to send you <strong>€${amount}</strong> for the album <strong>${albumTitle}</strong>.</p>
-      <p>Payment method chosen: <strong>${paymentMethod === "bank" ? "Russian Bank Transfer" : "PayPal"}</strong></p>
+      <p>Payment method chosen: <strong>${paymentMethod === "bank" ? "Russia Bank Transfer" : "PayPal"}</strong></p>
       <p>Please keep an eye on your accounts in the next few hours for this code:</p>
       <h1 style="color:green;">${code}</h1>
     `,
@@ -240,13 +240,13 @@ export async function createDonationOrder(
   // Email a Kateryna
   await resend.emails.send({
     from: "Gunavati Web <noreply@gunavati.art>",
-    to: "elisablange.tdf@gmail.com", // Email de Kateryna
+    to: "belotel13@gmail.com", // Email de Kateryna
     bcc: "elisablange.tdf@gmail.com", // Vos en copia oculta
     subject: `New Pending Donation (${paymentMethod.toUpperCase()}): ${code} (€${amount})`,
     html: `
       <h2>Heads up!</h2>
       <p>The user <strong>${buyerEmail}</strong> wants to send you a donation of <strong>€${amount}</strong>.</p>
-      <p>Method: <strong>${paymentMethod === "bank" ? "Russian Bank" : "PayPal"}</strong></p>
+      <p>Method: <strong>${paymentMethod === "bank" ? "Russia Bank" : "PayPal"}</strong></p>
       <p>Look out for this code:</p>
       <h1 style="color:green;">${code}</h1>
     `,

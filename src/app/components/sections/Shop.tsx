@@ -433,7 +433,7 @@ const Shop = () => {
                           : "border-primary-200 text-primary-600 hover:bg-primary-50"
                       }`}
                     >
-                      Bank Transfer (Russian)
+                      Bank Transfer (Russia)
                     </button>
                   </div>
                 </div>
