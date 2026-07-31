@@ -61,9 +61,9 @@ const Hero = () => {
 
       {/* Contenido */}
       <div className="relative z-10 w-full grow flex">
-        <div className="hidden md:block md:w-4/12"></div>
+        <div className="hidden md:block md:w-5/12"></div>
 
-        <div className="w-full md:w-8/12 flex flex-col justify-between pt-20 py-12 px-8 md:px-16 lg:px-24 text-background-100">
+        <div className="w-full md:w-7/12 flex flex-col justify-between pt-20 py-12 px-8 md:px-16 lg:px-24 text-background-100">
           <h1 className="text-[65px] sm:text-7xl lg:text-8xl font-script drop-shadow-lg leading-none">
             Sacred art
             <span className="block">for the journey</span>
