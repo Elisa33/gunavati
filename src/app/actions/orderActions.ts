@@ -27,9 +27,10 @@ export async function createOrder(albumTitle: string, albumSlug: string, buyerEm
   }
 
   // Textos de pago según el método elegido
-  const paymentDetails = paymentMethod === 'paypal' 
-    ? `<li><strong>PayPal:</strong><br/>Send to: [Email/PayPal.me de Kateryna]</li>`
-    : `<li><strong>Bank Transfer (Russia):</strong><br/>Bank: Sberbank<br/>Name: [Nombre del Papa]<br/>Account: [Número de Cuenta]</li>`;
+  const paymentDetails =
+    paymentMethod === "paypal"
+      ? `<li><strong>PayPal:</strong><br/>Send to: belotel13@gmail.com</li>`
+      : `<li><strong>Bank Transfer (Russia):</strong><br/>Phone: +79819564314 <br/>Name: Михаил А.<br/>Account: Тинькофф</li>`;
 
   // Email al comprador
   await resend.emails.send({
@@ -49,13 +50,13 @@ export async function createOrder(albumTitle: string, albumSlug: string, buyerEm
   // Email a Kateryna (Inglés) + Copia oculta a Elisa
   await resend.emails.send({
     from: "Gunavati Web <noreply@gunavati.art>",
-    to: "elisablange.tdf@gmail.com", // <--- Poné acá el email real de Kateryna
+    to: "belotel13@gmail.com", // <--- Poné acá el email real de Kateryna
     bcc: "elisablange.tdf@gmail.com", // <--- Vos recibís copia oculta para monitorear
     subject: `New Pending Payment (${paymentMethod.toUpperCase()}): ${code} (€${amount})`,
     html: `
       <h2>Heads up!</h2>
       <p>The user <strong>${buyerEmail}</strong> is about to send you <strong>€${amount}</strong> for the album <strong>${albumTitle}</strong>.</p>
-      <p>Payment method chosen: <strong>${paymentMethod === 'bank' ? 'Russian Bank Transfer' : 'PayPal'}</strong></p>
+      <p>Payment method chosen: <strong>${paymentMethod === "bank" ? "Russian Bank Transfer" : "PayPal"}</strong></p>
       <p>Please keep an eye on your accounts in the next few hours for this code:</p>
       <h1 style="color:green;">${code}</h1>
     `,

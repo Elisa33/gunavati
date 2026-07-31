@@ -25,9 +25,11 @@ export default function AdminPage() {
   return (
     <main className="min-h-dvh bg-background-100 flex items-center justify-center p-6">
       <div className="max-w-md w-full bg-white p-8 rounded-3xl shadow-xl text-center">
-        <h1 className="font-script text-5xl text-secondary-600 mb-2">Admin Panel</h1>
-        <p className="text-primary-400 mb-8">Validate payments and send downloads</p>
-        
+        <h1 className="text-4xl text-secondary-600 mb-2">Admin Panel</h1>
+        <p className="text-primary-400 mb-8">
+          Validate payments and send downloads
+        </p>
+
         <div className="flex flex-col gap-4">
           <input
             type="text"

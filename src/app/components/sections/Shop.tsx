@@ -60,7 +60,7 @@ const albums = [
   },
 ];
 
-const BUY_ALL_SLUG = "full-discography";
+//const BUY_ALL_SLUG = "full-discography";
 
 const BUY_ALL_MIN = 20;
 
@@ -324,7 +324,7 @@ const Shop = () => {
                         PayPal
                       </p>
                       <p className="text-sm text-primary-600">
-                        Send to: [Email/PayPal.me de Kateryna]
+                        Send to: belotel13@gmail.com
                       </p>
                     </div>
                   ) : (
@@ -333,11 +333,11 @@ const Shop = () => {
                         Bank Transfer (Russia)
                       </p>
                       <p className="text-sm text-primary-600">
-                        Bank: [Nombre del Banco]
+                        Phone: +79819564314
                         <br />
-                        Account: [Número de Cuenta]
+                        Account: Тинькофф
                         <br />
-                        Name: [Nombre]
+                        Name: Михаил А.
                       </p>
                     </div>
                   )}
@@ -375,10 +375,12 @@ const Shop = () => {
                 </p>
 
                 {/* CONTEXTO HONESTO */}
-                <div className="bg-secondary-50 border border-secondary-200 text-secondary-800 text-xs p-3 rounded-lg mb-6">
-                  Due to international banking restrictions in Ukraine, payments
-                  are processed manually. Thank you for your understanding and
-                  support!
+                <div className="bg-secondary-50 border border-secondary-200 text-secondary-800 text-center text-xs p-3 rounded-lg mb-6">
+                  <p>
+                    Due to international banking restrictions in Ukraine,
+                    payments are processed manually.
+                  </p>
+                  <p>Thank you for your understanding and support!</p>
                 </div>
 
                 {/* Botones de Monto */}
@@ -414,23 +416,24 @@ const Shop = () => {
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       onClick={() => setPaymentMethod("paypal")}
-                      className={`py-3 rounded-xl border-2 font-semibold transition-all text-sm ${
+                      className={`py-3 rounded-xl border-2 font-semibold transition-all text-sm flex items-center justify-center gap-2 ${
                         paymentMethod === "paypal"
-                          ? "bg-primary-800 text-white border-primary-800"
+                          ? "bg-primary-500 text-white border-primary-500"
                           : "border-primary-200 text-primary-600 hover:bg-primary-50"
                       }`}
                     >
+                      <FaPaypal className="text-xl" />
                       PayPal
                     </button>
                     <button
                       onClick={() => setPaymentMethod("bank")}
                       className={`py-3 rounded-xl border-2 font-semibold transition-all text-sm ${
                         paymentMethod === "bank"
-                          ? "bg-primary-800 text-white border-primary-800"
+                          ? "bg-primary-500 text-white border-primary-500"
                           : "border-primary-200 text-primary-600 hover:bg-primary-50"
                       }`}
                     >
-                      Bank Transfer
+                      Bank Transfer (Russian)
                     </button>
                   </div>
                 </div>
