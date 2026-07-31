@@ -5,23 +5,25 @@ import Image from "next/image";
 
 const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null); // Referencia al reproductor invisible
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null); // 👉 Referencia para el video
 
-  // Función para reproducir o pausar
-  const toggleAudio = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+  // Función para reproducir o pausar AMBOS (audio y video)
+  const toggleMedia = () => {
+    if (isPlaying) {
+      audioRef.current?.pause();
+      videoRef.current?.pause(); // Pausamos el video
+    } else {
+      audioRef.current?.play();
+      videoRef.current?.play(); // Reproducimos el video
     }
+    setIsPlaying(!isPlaying);
   };
 
-  // Cuando el audio termina sola, volvemos a poner el botón en "Play"
+  // Cuando el audio termina, pausamos todo y reiniciamos el botón
   const handleAudioEnd = () => {
     setIsPlaying(false);
+    videoRef.current?.pause(); // Nos aseguramos de pausar el video
   };
 
   return (
@@ -29,6 +31,7 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex flex-col pt-16 overflow-hidden"
     >
+      {/* Fondo Mobile (Imagen estática para no gastar datos) */}
       <Image
         src="/img/bg-mobile.webp"
         alt="Background"
@@ -37,18 +40,26 @@ const Hero = () => {
         priority
         sizes="(max-width: 767px) 100vw, 0px"
       />
-      <Image
-        src="/img/bg-desktop.webp"
-        alt="Background"
-        fill
-        className="object-cover hidden md:block object-[15%] z-0"
-        priority
-        fetchPriority="high"
-        sizes="(min-width: 768px) 100vw, 0px"
-      />
+
+      {/* Fondo Desktop (Video con poster de imagen) */}
+      {/* 👉 preload="none" asegura que no pese nada hasta que le den play */}
+      <video
+        ref={videoRef}
+        poster="/img/bg-desktop.webp"
+        preload="none"
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover object-[40%_20%] z-0 hidden md:block"
+      >
+        <source src="/video/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlays de gradiente */}
       <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent md:from-black/50 md:via-black/0 md:to-transparent z-1"></div>
       <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/0 to-transparent md:from-black/50 md:via-black/0 md:to-transparent z-1 md:hidden"></div>
 
+      {/* Contenido */}
       <div className="relative z-10 w-full grow flex">
         <div className="hidden md:block md:w-4/12"></div>
 
@@ -67,8 +78,10 @@ const Hero = () => {
                 that embrace your soul and fill your heart.
               </span>
             </p>
+
+            {/* Botón que controla todo */}
             <button
-              onClick={toggleAudio}
+              onClick={toggleMedia}
               className="group flex items-center gap-3 mt-3 p-2 pl-5 pr-6 rounded-full w-fit transition-all bg-background-100/90 hover:bg-background-100"
             >
               {isPlaying ? (
@@ -83,14 +96,15 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
       <audio
         ref={audioRef}
-        src="/audio/preview.mp3" // <--- ACÁ PONES LA RUTA A TU ARCHIVO DE AUDIO
+        src="/audio/preview.mp3"
         onEnded={handleAudioEnd}
         className="hidden"
       />
     </section>
   );
-};
+};;;;;;;;;
 
 export default Hero;
