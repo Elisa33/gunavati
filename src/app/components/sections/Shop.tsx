@@ -304,7 +304,7 @@ const Shop = () => {
             {isSuccess ? (
               /* PANTALLA DE ÉXITO (Limpia y clara) */
               <div className="text-center py-2">
-                <h3 className="text-2xl font-bold text-primary-800 mb-2">
+                <h3 className="text-2xl font-bold text-primary-600 mb-2">
                   Almost there!
                 </h3>
                 <p className="text-primary-600 mb-6 text-sm">
@@ -320,7 +320,7 @@ const Shop = () => {
 
                   {paymentMethod === "paypal" ? (
                     <div className="p-4 bg-white rounded-lg border border-primary-200 mb-4">
-                      <p className="font-semibold text-primary-800 text-sm mb-1">
+                      <p className="font-semibold text-primary-600 text-sm mb-1">
                         PayPal
                       </p>
                       <p className="text-sm text-primary-600">
@@ -329,7 +329,7 @@ const Shop = () => {
                     </div>
                   ) : (
                     <div className="p-4 bg-white rounded-lg border border-primary-200 mb-4">
-                      <p className="font-semibold text-primary-800 text-sm mb-1">
+                      <p className="font-semibold text-primary-600 text-sm mb-1">
                         Bank Transfer (Russia)
                       </p>
                       <p className="text-sm text-primary-600">
@@ -346,7 +346,7 @@ const Shop = () => {
                     <p className="text-xs text-primary-600 font-bold uppercase tracking-wider mb-2">
                       Important: Put this code in the transfer comment
                     </p>
-                    <div className="inline-block bg-primary-800 text-white font-mono text-xl font-bold tracking-widest px-6 py-2 rounded-lg select-all">
+                    <div className="inline-block bg-primary-500 text-white font-mono text-xl font-bold tracking-widest px-6 py-2 rounded-lg select-all">
                       {generatedCode}
                     </div>
                   </div>
@@ -366,7 +366,7 @@ const Shop = () => {
             ) : (
               /* FORMULARIO DE COMPRA (Limpio y con contexto) */
               <div>
-                <h3 className="text-2xl font-bold text-primary-800 mb-1">
+                <h3 className="text-2xl font-bold text-primary-600 mb-1">
                   {selectedAlbum.title}
                 </h3>
                 <p className="text-sm text-primary-500 mb-4">

@@ -43,6 +43,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://gunavati.art",
   },
+  metadataBase: new URL("https://gunavati.art"),
   openGraph: {
     title: "Gunavati — Sacred Art for the Heart's Journey",
     description:

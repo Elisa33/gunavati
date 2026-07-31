@@ -118,7 +118,7 @@ const Contact = () => {
 
           <p className="text-white">by</p>
           <a
-            href="https://elisa33.github.io/portfolio-all/"
+            href="https://elisablange.me/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-secondary-500 hover:text-secondary-300 hover:underline transition-colors"
