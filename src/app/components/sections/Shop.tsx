@@ -312,20 +312,31 @@ const Shop = () => {
                   .
                 </p>
 
-                <div className="bg-primary-50 rounded-xl p-6 text-left mb-6">
+                <div className="bg-primary-100/50 rounded-xl p-6 text-left mb-6">
                   <p className="text-sm text-primary-700 mb-4">
                     To complete your purchase, please send{" "}
                     <strong>€{selectedAmount}</strong> using:
                   </p>
 
                   {paymentMethod === "paypal" ? (
-                    <div className="p-4 bg-white rounded-lg border border-primary-200 mb-4">
-                      <p className="font-semibold text-primary-600 text-sm mb-1">
+                    <div className="p-4 rounded-lg mb-4 text-center">
+                      <p className="font-semibold text-primary-800 text-sm mb-1">
                         PayPal
                       </p>
-                      <p className="text-sm text-primary-600">
-                        Send to: belotel13@gmail.com
+                      <p className="text-sm text-primary-600 mb-3">
+                        Send to:{" "}
+                        <strong className="select-all">
+                          belotel13@gmail.com
+                        </strong>
                       </p>
+                      <a
+                        href="https://www.paypal.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block px-6 py-2 bg-[#0070ba] text-white text-sm font-semibold rounded-lg hover:bg-[#005ea6] transition-colors"
+                      >
+                        Go to PayPal
+                      </a>
                     </div>
                   ) : (
                     <div className="p-4 bg-white rounded-lg border border-primary-200 mb-4">
