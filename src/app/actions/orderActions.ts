@@ -36,7 +36,7 @@ export async function createOrder(
   const paymentDetails =
     paymentMethod === "paypal"
       ? `<li><strong>PayPal:</strong><br/>Please log in to your PayPal account and send €${amount} to this email: <strong>belotel13@gmail.com</strong><br/><br/><a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 24px; background: #0070ba; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Go to PayPal</a></li>`
-      : `<li><strong>Bank Transfer (Russia):</strong><br/>Phone: +79819564314 <br/>Name: Михаил А.<br/>Account: Тинькофф</li>`;
+      : `<li><strong>Bank Transfer (Russia):</strong><br/>Phone: +79819564314 <br/>Name: Михаил А.<br/>Account: Райффайзен</li>`;
 
   // Email al comprador
   await resend.emails.send({
@@ -57,7 +57,7 @@ export async function createOrder(
   await resend.emails.send({
     from: "Gunavati Web <noreply@gunavati.art>",
     to: "belotel13@gmail.com", // <--- Poné acá el email real de Kateryna
-    //bcc: "elisablange.tdf@gmail.com", // <--- Vos recibís copia oculta para monitorear
+    bcc: "elisablange.tdf@gmail.com", // <--- Vos recibís copia oculta para monitorear
     subject: `New Pending Payment (${paymentMethod.toUpperCase()}): ${code} (€${amount})`,
     html: `
       <h2>Heads up!</h2>
@@ -220,7 +220,7 @@ export async function createDonationOrder(
   const paymentDetails =
     paymentMethod === "paypal"
       ? `<li><strong>PayPal:</strong><br/>Please log in to your PayPal account and send €${amount} to this email: <strong>belotel13@gmail.com</strong><br/><br/><a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 24px; background: #0070ba; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Go to PayPal</a></li>`
-      : `<li><strong>Bank Transfer (Russia):</strong><br/>Phone: +79819564314 <br/>Name: Михаил А.<br/>Account: Тинькофф</li>`;
+      : `<li><strong>Bank Transfer (Russia):</strong><br/>Phone: +79819564314 <br/>Name: Михаил А.<br/>Account: Райффайзен</li>`;
 
   // Email al donante
   await resend.emails.send({

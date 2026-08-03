@@ -128,7 +128,7 @@ export default function Support() {
                       <p className="text-sm text-primary-600">
                         Phone: +79819564314
                         <br />
-                        Account: Тинькофф
+                        Account: Райффайзен
                         <br />
                         Name: Михаил А.
                       </p>
