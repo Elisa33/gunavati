@@ -41,7 +41,7 @@ const Videos = () => {
           my voice
         </h2>
         <p className="md:w-2/3 text-center text-accent2">
-          Let my music and poetry guide you on the path to your true self, to
+          Let my music and poetry guide you on the path to your true self, to{" "}
           <span className="lg:block">
             the quite place within, full of love and peace
           </span>
@@ -138,17 +138,6 @@ const Videos = () => {
               /* Audio only */
               <div className="flex flex-col items-center justify-center p-12 text-center">
                 <FaHeadphones className="text-5xl text-primary-500 mb-6" />
-                {/* <p className="text-lg text-primary-700 mb-6">
-                  Close your eyes and just listen
-                </p> */}
-                {/* <iframe
-                  src={`https://www.youtube.com/embed/${modal.id}?autoplay=1&rel=0`}
-                  title="Audio player"
-                  allow="autoplay; encrypted-media"
-                  className="w-full max-w-md"
-                  style={{ height: "80px" }}
-                /> */}
-
                 {modal.type === "audio" && <AudioPlayer videoId={modal.id} />}
               </div>
             )}
