@@ -27,7 +27,7 @@ const lavishlyYours = Lavishly_Yours({
 });
 
 export const metadata: Metadata = {
-  title: "Gunavati — Sacred Art for the Heart's Journey",
+  title: "Gunavati — Sacred Art for the journey of your heart",
   description:
     "Spiritual music and poetry by Gunavati. Download albums, listen to sacred songs, and support the creation of more music.",
   keywords: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://gunavati.art"),
   openGraph: {
-    title: "Gunavati — Sacred Art for the Heart's Journey",
+    title: "Gunavati — Sacred Art for the journey of your heart",
     description:
       "Spiritual music and poetry by Gunavati. Download albums, listen to sacred songs, and support the creation of more music.",
     url: "https://gunavati.art",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         url: "/img/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Gunavati — Sacred Art for the Heart's Journey",
+        alt: "Gunavati — Sacred Art for the journey of your heart",
       },
     ],
   },
