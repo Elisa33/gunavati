@@ -3,46 +3,80 @@ import { FaDownload, FaHome, FaShieldAlt } from "react-icons/fa";
 
 // 1. Base de datos local: acá mapeás el slug de la URL con los datos del álbum
 // Cuando subas los archivos a Google Drive/Cloudflare, ponés los links acá.
-const downloadData: Record<string, { title: string; links: { name: string; url: string }[] }> = {
+const downloadData: Record<
+  string,
+  { title: string; links: { name: string; url: string }[] }
+> = {
   "my-only-hope": {
     title: "My Only Hope",
     links: [
-      { name: "Download MP3", url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/My-Only-Hope-MP3.zip" }, // Reemplazá # con el link real
+      {
+        name: "Download MP3",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/My-Only-Hope-MP3.zip",
+      }, // Reemplazá # con el link real
       /*{ name: "Download FLAC", url: "#" },*/
     ],
   },
   "the-light-of-awakening": {
     title: "The Light of Awakening",
     links: [
-      { name: "Download MP3", url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/The-Light-Of-Awakening-MP3.zip" },
+      {
+        name: "Download MP3",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/The-Light-Of-Awakening-MP3.zip",
+      },
       /*{ name: "Download FLAC", url: "#" },*/
     ],
   },
   "a-new-world": {
     title: "A New World",
     links: [
-      { name: "Download MP3", url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/A-New-World-Kiirtan.zip" },
+      {
+        name: "Download MP3",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/A-New-World-Kiirtan.zip",
+      },
       /*{ name: "Download FLAC", url: "#" },*/
     ],
   },
-  "again": {
+  again: {
     title: "Again",
     links: [
-      { name: "Download MP3", url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/Again-MP3.zip" },
+      {
+        name: "Download MP3",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/Again-MP3.zip",
+      },
       /*{ name: "Download FLAC", url: "#" },*/
     ],
   },
   "kirtan-live-ananda-gaori": {
     title: "Kirtan Live Ananda Gaori",
     links: [
-      { name: "Download MP3", url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/Kirtan-Live-AG-MP3.zip" },
+      {
+        name: "Download MP3",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/Kirtan-Live-AG-MP3.zip",
+      },
       /*{ name: "Download FLAC", url: "#" },*/
+    ],
+  },
+  "tamasacchanna-dharay": {
+    title: "Tamasácchanna Dharáy",
+    links: [
+      {
+        name: "Download MP3",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/PS3530-Tamasacchanna-Dharay-MP3.zip",
+      },
+      {
+        name: "Download M4A",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/PS3530-Tamasacchanna-Dharay-M4A.zip",
+      },
     ],
   },
   "full-discography": {
     title: "The Complete Discography",
     links: [
-      { name: "Download All Albums (MP3)", url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/Full-Discography-mp3.zip" },
+      {
+        name: "Download All Albums (MP3)",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/Full-Discography-mp3.zip",
+      },
       /*{ name: "Download All Albums (FLAC)", url: "#" },*/
     ],
   },

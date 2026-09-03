@@ -126,6 +126,19 @@ const downloadLinks: Record<
       /*{ name: "Download FLAC", url: "#" },*/
     ],
   },
+  "tamasacchanna-dharay": {
+    title: "Tamasácchanna Dharáy",
+    links: [
+      {
+        name: "Download MP3",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/PS3530-Tamasacchanna-Dharay-MP3.zip",
+      },
+      {
+        name: "Download M4A",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/PS3530-Tamasacchanna-Dharay-M4A.zip",
+      },
+    ],
+  },
   "full-discography": {
     title: "The Complete Discography",
     links: [

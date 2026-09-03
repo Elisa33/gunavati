@@ -37,6 +37,7 @@ const albums = [
     ],
   },
   {
+    id: 4,
     title: "My Only Hope",
     slug: "my-only-hope",
     year: "2026",
@@ -57,6 +58,15 @@ const albums = [
       "⁠A Silent Moment Kiirtan",
       "⁠Fight for Truth Kiirtan",
     ],
+  },
+  {
+    id: 6,
+    title: "Tamasácchanna Dharáy",
+    slug: "tamasacchanna-dharay",
+    year: "2026",
+    cover: "/img/album-06.webp",
+    minPrice: 8,
+    tracks: ["Ei Tamasácchanna Dharáy (PS 3530)"],
   },
 ];
 
@@ -211,45 +221,35 @@ const Shop = () => {
             songs can find their way to those who need them.
           </p>
         </div>
-
         {/* Albums grid */}
         <div className="mb-12">
-          {/* Mobile: 2 cols, last centered same size */}
+          {/* Mobile: 2 cols (Centra el último si el total es impar) */}
           <div className="grid grid-cols-2 gap-6 md:hidden">
-            {albums.map((album, index) => (
-              <div
-                key={index}
-                className={index === 4 ? "col-span-2 flex justify-center" : ""}
-              >
+            {albums.map((album, index) => {
+              const isLastOdd =
+                albums.length % 2 !== 0 && index === albums.length - 1;
+              return (
                 <div
-                  className={index === 4 ? "w-[calc(50%-0.75rem)]" : "w-full"}
+                  key={album.id}
+                  className={isLastOdd ? "col-span-2 flex justify-center" : ""}
                 >
-                  <AlbumCard album={album} onDonate={openDonate} />
+                  <div
+                    className={isLastOdd ? "w-[calc(50%-0.75rem)]" : "w-full"}
+                  >
+                    <AlbumCard album={album} onDonate={openDonate} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          {/* Desktop: interleaved layout */}
-          <div className="hidden md:grid grid-cols-6 gap-14 max-w-4xl mx-auto">
-            {/* Row 1 */}
-            <div className="col-start-1 col-span-2">
-              <AlbumCard album={albums[0]} onDonate={openDonate} />
-            </div>
-            <div className="col-start-3 col-span-2">
-              <AlbumCard album={albums[1]} onDonate={openDonate} />
-            </div>
-            <div className="col-start-5 col-span-2">
-              <AlbumCard album={albums[2]} onDonate={openDonate} />
-            </div>
-
-            {/* Row 2 - interleaved */}
-            <div className="col-start-2 col-span-2">
-              <AlbumCard album={albums[3]} onDonate={openDonate} />
-            </div>
-            <div className="col-start-4 col-span-2">
-              <AlbumCard album={albums[4]} onDonate={openDonate} />
-            </div>
+          {/* Desktop: Grilla de 3 columnas rectas (3 arriba, 3 abajo) */}
+          <div className="hidden md:grid grid-cols-3 gap-14 max-w-4xl mx-auto">
+            {albums.map((album, index) => (
+              <div key={album.id}>
+                <AlbumCard album={album} onDonate={openDonate} />
+              </div>
+            ))}
           </div>
         </div>
 
