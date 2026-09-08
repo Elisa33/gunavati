@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaPaypal, FaTimes, FaDownload, FaSpinner } from "react-icons/fa";
 import { createOrder } from "../../actions/orderActions";
@@ -67,7 +67,7 @@ const albums = [
     cover: "/img/album-06.webp",
     minPrice: 8,
     tracks: ["Ei Tamasácchanna Dharáy (PS 3530)"],
-    releaseDate: "2026-09-08T14:55:00Z",
+    releaseDate: "2026-09-08T18:53:00Z",
   },
 ];
 
@@ -164,6 +164,16 @@ const Shop = () => {
     "paypal",
   );
   const [generatedCode, setGeneratedCode] = useState("");
+  const [visibleAlbums, setVisibleAlbums] = useState(albums);
+
+  useEffect(() => {
+    setVisibleAlbums(
+      albums.filter((album) => {
+        if (!album.releaseDate) return true;
+        return new Date() >= new Date(album.releaseDate);
+      }),
+    );
+  }, []);
 
   const openDonate = (album: {
     title: string;
@@ -201,11 +211,6 @@ const Shop = () => {
       alert("Hubo un error al generar el código. Inténtalo de nuevo.");
     }
   };
-
-   const visibleAlbums = albums.filter((album) => {
-     if (!album.releaseDate) return true; // Si no tiene fecha, siempre se ve
-     return new Date() >= new Date(album.releaseDate); // Compara la fecha actual
-   });
 
   return (
     <section
@@ -251,10 +256,10 @@ const Shop = () => {
             })}
           </div>
 
-          {/* Desktop: Grilla de 3 columnas rectas (3 arriba, 3 abajo) */}
-          <div className="hidden md:grid grid-cols-3 gap-14 max-w-4xl mx-auto">
-            {visibleAlbums.map((album, index) => (
-              <div key={album.id}>
+          {/* Desktop: Flexbox (Centra automáticamente si sobran 1 o 2) */}
+          <div className="hidden md:flex flex-wrap justify-center gap-14 max-w-4xl mx-auto">
+            {visibleAlbums.map((album) => (
+              <div key={album.id} className="w-[calc(33.333%-2.666rem)]">
                 <AlbumCard album={album} onDonate={openDonate} />
               </div>
             ))}
