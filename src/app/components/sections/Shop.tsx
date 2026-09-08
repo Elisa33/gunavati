@@ -67,6 +67,7 @@ const albums = [
     cover: "/img/album-06.webp",
     minPrice: 8,
     tracks: ["Ei Tamasácchanna Dharáy (PS 3530)"],
+    releaseDate: "2026-09-08T16:00:00Z",
   },
 ];
 
@@ -88,6 +89,7 @@ const AlbumCard = ({
   }) => void;
 }) => {
   const [showTracks, setShowTracks] = useState(false);
+
 
   return (
     <div className="group flex flex-col items-center w-full">
@@ -200,6 +202,11 @@ const Shop = () => {
     }
   };
 
+   const visibleAlbums = albums.filter((album) => {
+     if (!album.releaseDate) return true; // Si no tiene fecha, siempre se ve
+     return new Date() >= new Date(album.releaseDate); // Si la fecha ya llegó, se ve
+   });
+
   return (
     <section
       id="shop"
@@ -225,9 +232,10 @@ const Shop = () => {
         <div className="mb-12">
           {/* Mobile: 2 cols (Centra el último si el total es impar) */}
           <div className="grid grid-cols-2 gap-6 md:hidden">
-            {albums.map((album, index) => {
+            {visibleAlbums.map((album, index) => {
               const isLastOdd =
-                albums.length % 2 !== 0 && index === albums.length - 1;
+                visibleAlbums.length % 2 !== 0 &&
+                index === visibleAlbums.length - 1;
               return (
                 <div
                   key={album.id}
@@ -245,7 +253,7 @@ const Shop = () => {
 
           {/* Desktop: Grilla de 3 columnas rectas (3 arriba, 3 abajo) */}
           <div className="hidden md:grid grid-cols-3 gap-14 max-w-4xl mx-auto">
-            {albums.map((album, index) => (
+            {visibleAlbums.map((album, index) => (
               <div key={album.id}>
                 <AlbumCard album={album} onDonate={openDonate} />
               </div>
