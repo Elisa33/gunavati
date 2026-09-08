@@ -67,7 +67,7 @@ const albums = [
     cover: "/img/album-06.webp",
     minPrice: 8,
     tracks: ["Ei Tamasácchanna Dharáy (PS 3530)"],
-    releaseDate: "2026-09-08T18:53:00Z",
+    releaseDate: "2026-09-08T22:00:00Z",
   },
 ];
 
