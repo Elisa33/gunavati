@@ -67,7 +67,7 @@ const albums = [
     cover: "/img/album-06.webp",
     minPrice: 8,
     tracks: ["Ei Tamasácchanna Dharáy (PS 3530)"],
-    releaseDate: "2026-09-08T16:00:00Z",
+    releaseDate: "2026-09-08T14:55:00Z",
   },
 ];
 
@@ -204,7 +204,7 @@ const Shop = () => {
 
    const visibleAlbums = albums.filter((album) => {
      if (!album.releaseDate) return true; // Si no tiene fecha, siempre se ve
-     return new Date() >= new Date(album.releaseDate); // Si la fecha ya llegó, se ve
+     return new Date() >= new Date(album.releaseDate); // Compara la fecha actual
    });
 
   return (
