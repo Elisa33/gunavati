@@ -65,9 +65,9 @@ const albums = [
     slug: "tamasacchanna-dharay",
     year: "2026",
     cover: "/img/album-06.webp",
-    minPrice: 8,
+    minPrice: 2,
     tracks: ["Ei Tamasácchanna Dharáy (PS 3530)"],
-    releaseDate: "2026-09-08T22:00:00Z",
+    releaseDate: "2026-09-12T22:00:00Z",
   },
 ];
 
