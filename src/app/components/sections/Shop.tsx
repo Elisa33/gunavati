@@ -1,8 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { FaPaypal, FaTimes, FaDownload, FaSpinner } from "react-icons/fa";
+import {
+  FaPaypal,
+  FaTimes,
+  FaDownload,
+  FaSpinner,
+  FaPause,
+  FaPlay,
+} from "react-icons/fa";
 import { createOrder } from "../../actions/orderActions";
 
 const albums = [
@@ -13,7 +20,13 @@ const albums = [
     year: "2024",
     cover: "/img/album-03.webp",
     minPrice: 2,
-    tracks: ["A New World Kiirtan"],
+    tracks: [
+      {
+        name: "A New World Kiirtan",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/New-World-Kiirtan.mp3",
+      },
+    ],
   },
   {
     id: 2,
@@ -22,7 +35,18 @@ const albums = [
     year: "2024",
     cover: "/img/album-04.webp",
     minPrice: 4,
-    tracks: [" Again (Снова)", "Again Kiirtan"],
+    tracks: [
+      {
+        name: "Again (Снова)",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Again%20mastered.mp3",
+      },
+      {
+        name: "Again Kiirtan",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Again%20bhajans%20mastered.mp3",
+      },
+    ],
   },
   {
     id: 3,
@@ -32,8 +56,16 @@ const albums = [
     cover: "/img/album-02.webp",
     minPrice: 4,
     tracks: [
-      "The Light of Awakening (Свет пробудження)",
-      "The Light of Awakening Kiirtan",
+      {
+        name: "The Light of Awakening (Свет пробудження)",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Light%20Song.mp3",
+      },
+      {
+        name: "The Light of Awakening Kiirtan",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Light%20Kiirtan.mp3",
+      },
     ],
   },
   {
@@ -43,7 +75,28 @@ const albums = [
     year: "2026",
     cover: "/img/album-01.webp",
     minPrice: 8,
-    tracks: ["My Only Hope", "⁠I’m Yours", "⁠Між двох долонь", "⁠Mi Esperanza"],
+    tracks: [
+      {
+        name: "My Only Hope",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/My%20Only%20Hope.mp3",
+      },
+      {
+        name: "⁠I’m Yours",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/I'm%20Yours.mp3",
+      },
+      {
+        name: "⁠Між двох долонь",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/%D0%9C%D1%96%D0%B6%20%D0%B4%D0%B2%D0%BE%D1%85%20%D0%B4%D0%BE%D0%BB%D0%BE%D0%BD%D1%8C.mp3",
+      },
+      {
+        name: "⁠Mi Esperanza",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Mi%20Esperanza.mp3",
+      },
+    ],
   },
   {
     id: 5,
@@ -52,11 +105,28 @@ const albums = [
     year: "2026",
     cover: "/img/album-05.webp",
     minPrice: 8,
+
     tracks: [
-      "Between Two Palms Kiirtan",
-      "⁠Mystery Kiirtan",
-      "⁠A Silent Moment Kiirtan",
-      "⁠Fight for Truth Kiirtan",
+      {
+        name: "Between Two Palms Kiirtan",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Between%20Two%20Palms%20Kiirtan.mp3",
+      },
+      {
+        name: "⁠Mystery Kiirtan",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Mystery%20Kiirtan.mp3",
+      },
+      {
+        name: "⁠A Silent Moment Kiirtan",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/A%20Silent%20Moment.mp3",
+      },
+      {
+        name: "⁠Fight for Truth Kiirtan",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Fight%20for%20Truth.mp3",
+      },
     ],
   },
   {
@@ -66,7 +136,13 @@ const albums = [
     year: "2026",
     cover: "/img/album-06.webp",
     minPrice: 2,
-    tracks: ["Ei Tamasácchanna Dharáy (PS 3530)"],
+    tracks: [
+      {
+        name: "Ei Tamasácchanna Dharáy (PS 3530)",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/PS%203530%20Tamas%C3%A1cchanna%20dhar%C3%A1y-MP3.mp3",
+      },
+    ],
     releaseDate: "2026-09-12T22:00:00Z",
   },
 ];
@@ -85,20 +161,41 @@ const AlbumCard = ({
     minPrice: number;
     isAll?: boolean;
     slug?: string;
-    tracks?: string[];
+    tracks?: { name: string; previewUrl: string }[];
   }) => void;
 }) => {
   const [showTracks, setShowTracks] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
+  const togglePreview = (url: string) => {
+    if (!url) return;
+    if (currentTrack === url) {
+      audioRef.current?.pause();
+      setCurrentTrack(null);
+    } else {
+      setCurrentTrack(url);
+      setTimeout(() => audioRef.current?.play(), 100);
+    }
+  };
+
+  // Si el usuario saca el mouse o toca fuera en mobile, pausamos la música
+  const handleMouseLeave = () => {
+    setShowTracks(false);
+    if (currentTrack) {
+      audioRef.current?.pause();
+      setCurrentTrack(null);
+    }
+  };
 
   return (
     <div className="group flex flex-col items-center w-full">
       {/* Contenedor de la imagen con el overlay */}
       <div
         className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow cursor-pointer"
-        onMouseEnter={() => setShowTracks(true)} // Mostrar en desktop (hover)
-        onMouseLeave={() => setShowTracks(false)} // Ocultar al sacar el mouse
-        onClick={() => setShowTracks(!showTracks)} // Mostrar/Ocultar en mobile (tap)
+        onMouseEnter={() => setShowTracks(true)}
+        onMouseLeave={handleMouseLeave} // 👉 Pausamos al sacar el mouse
+        onClick={() => setShowTracks(!showTracks)}
       >
         <Image
           src={album.cover}
@@ -108,23 +205,32 @@ const AlbumCard = ({
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
 
-        {/* OVERLAY DEL TRACKLIST */}
+        {/* OVERLAY DEL TRACKLIST CON REPRODUCTOR */}
         {album.tracks && album.tracks.length > 0 && (
           <div
             className={`absolute inset-0 bg-primary-700/50 backdrop-blur-sm p-4 transition-opacity duration-300 ${
               showTracks ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
-            <p className="text-xs lg:text-sm uppercase tracking-wider text-secondary-400 mb-2 font-semibold text-center">
+            <p className="text-xs lg:text-sm uppercase tracking-wider text-secondary-400 mb-3 font-semibold text-center">
               Tracklist
             </p>
-            <ul className="space-y-1 overflow-y-auto h-[80%] text-center">
+            <ul className="space-y-2 overflow-y-auto h-[70%] text-left">
               {album.tracks.map((track, index) => (
                 <li
                   key={index}
-                  className="text-xs lg:text-sm text-background-100"
+                  className="text-xs lg:text-sm text-background-100 flex items-center justify-start gap-2 cursor-pointer hover:text-white transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation(); // 👉 Evita que se cierre el overlay en mobile al tocar el play
+                    togglePreview(track.previewUrl);
+                  }}
                 >
-                  {index + 1}. {track}
+                  {currentTrack === track.previewUrl ? (
+                    <FaPause className="text-secondary-400 text-[10px]" />
+                  ) : (
+                    <FaPlay className="text-secondary-400 text-[10px]" />
+                  )}
+                  <span>{track.name}</span>
                 </li>
               ))}
             </ul>
@@ -145,6 +251,14 @@ const AlbumCard = ({
         <FaDownload className="text-xs hidden lg:block" />
         Download €{album.minPrice}+
       </button>
+
+      {/* Reproductor de audio oculto para esta tarjeta */}
+      <audio
+        ref={audioRef}
+        src={currentTrack || undefined}
+        onEnded={() => setCurrentTrack(null)}
+        className="hidden"
+      />
     </div>
   );
 };
@@ -154,6 +268,7 @@ const Shop = () => {
     minPrice: number;
     isAll: boolean;
     slug?: string;
+    tracks?: { name: string; previewUrl: string }[];
   } | null>(null);
 
   const [buyerEmail, setBuyerEmail] = useState("");
@@ -164,22 +279,29 @@ const Shop = () => {
     "paypal",
   );
   const [generatedCode, setGeneratedCode] = useState("");
-  const [visibleAlbums, setVisibleAlbums] = useState(albums);
 
-  useEffect(() => {
-    setVisibleAlbums(
-      albums.filter((album) => {
-        if (!album.releaseDate) return true;
-        return new Date() >= new Date(album.releaseDate);
-      }),
-    );
-  }, []);
+    const [currentTrack, setCurrentTrack] = useState<string | null>(null);
+    const audioRef = useRef<HTMLAudioElement>(null);
+
+    const togglePreview = (url: string) => {
+      if (!url) return;
+      if (currentTrack === url) {
+        audioRef.current?.pause();
+        setCurrentTrack(null);
+      } else {
+        setCurrentTrack(url);
+        // Usamos un pequeño timeout para asegurar que el src se actualice antes de jugar
+        setTimeout(() => audioRef.current?.play(), 100);
+      }
+    };
+
 
   const openDonate = (album: {
     title: string;
     minPrice: number;
     isAll?: boolean;
     slug?: string;
+    tracks?: { name: string; previewUrl: string }[];
   }) => {
     setSelectedAlbum({ ...album, isAll: album.isAll || false });
     setSelectedAmount(album.minPrice); // <--- Seteamos el mínimo por defecto
@@ -237,10 +359,9 @@ const Shop = () => {
         <div className="mb-12">
           {/* Mobile: 2 cols (Centra el último si el total es impar) */}
           <div className="grid grid-cols-2 gap-6 md:hidden">
-            {visibleAlbums.map((album, index) => {
+            {albums.map((album, index) => {
               const isLastOdd =
-                visibleAlbums.length % 2 !== 0 &&
-                index === visibleAlbums.length - 1;
+                albums.length % 2 !== 0 && index === albums.length - 1;
               return (
                 <div
                   key={album.id}
@@ -258,7 +379,7 @@ const Shop = () => {
 
           {/* Desktop: Flexbox (Centra automáticamente si sobran 1 o 2) */}
           <div className="hidden md:flex flex-wrap justify-center gap-14 max-w-4xl mx-auto">
-            {visibleAlbums.map((album) => (
+            {albums.map((album) => (
               <div key={album.id} className="w-[calc(33.333%-2.666rem)]">
                 <AlbumCard album={album} onDonate={openDonate} />
               </div>
@@ -398,14 +519,40 @@ const Shop = () => {
                   future work
                 </p>
 
-                {/* CONTEXTO HONESTO */}
-                <div className="bg-secondary-50 border border-secondary-200 text-secondary-800 text-center text-xs p-3 rounded-lg mb-6">
-                  <p>
-                    Due to international banking restrictions in Ukraine,
-                    payments are processed manually.
-                  </p>
-                  <p>Thank you for your understanding and support!</p>
-                </div>
+                {selectedAlbum.tracks && selectedAlbum.tracks.length > 0 && (
+                  <div className="mb-6 bg-primary-50 rounded-xl p-4 max-h-60 overflow-y-auto">
+                    <p className="text-xs uppercase tracking-wider text-primary-400 mb-2 font-semibold">
+                      Tracklist (Click to preview)
+                    </p>
+                    <ul className="space-y-2">
+                      {selectedAlbum.tracks.map((track, index) => (
+                        <li
+                          key={index}
+                          className="text-sm text-primary-700 flex items-center gap-3 cursor-pointer hover:text-primary-900"
+                          onClick={() => togglePreview(track.previewUrl)}
+                        >
+                          <span className="text-primary-400 w-4">
+                            {index + 1}.
+                          </span>
+
+                          {currentTrack === track.previewUrl ? (
+                            <FaPause className="text-primary-500 text-xs" />
+                          ) : (
+                            <FaPlay className="text-primary-300 text-xs" />
+                          )}
+
+                          <span>{track.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <audio
+                      ref={audioRef}
+                      src={currentTrack || undefined}
+                      onEnded={() => setCurrentTrack(null)}
+                      className="hidden"
+                    />
+                  </div>
+                )}
 
                 {/* Botones de Monto */}
                 <div className="grid grid-cols-4 gap-3 mb-6">
@@ -430,6 +577,15 @@ const Shop = () => {
                       €{amount}
                     </button>
                   ))}
+                </div>
+
+                {/* CONTEXTO HONESTO */}
+                <div className="bg-secondary-50 border border-secondary-200 text-secondary-800 text-center text-xs p-3 rounded-lg mb-6">
+                  <p>
+                    Due to international banking restrictions in Ukraine,
+                    payments are processed manually.
+                  </p>
+                  <p>Thank you for your understanding and support!</p>
                 </div>
 
                 {/* Selector de Método de Pago (PayPal Primero) */}
