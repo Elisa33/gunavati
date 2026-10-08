@@ -39,12 +39,12 @@ const albums = [
       {
         name: "Again (Снова)",
         previewUrl:
-          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Again%20mastered.mp3",
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Again%20bhajans%20mastered.mp3",
       },
       {
         name: "Again Kiirtan",
         previewUrl:
-          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Again%20bhajans%20mastered.mp3",
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Again%20mastered.mp3",
       },
     ],
   },
