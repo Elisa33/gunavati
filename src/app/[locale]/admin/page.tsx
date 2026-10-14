@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FaCheckCircle, FaTimesCircle, FaSpinner } from "react-icons/fa";
-import { validateOrder } from "../../app/actions/orderActions";
+import { validateOrder } from "@/app/[locale]/actions/orderActions";
 
 export default function AdminPage() {
   const [code, setCode] = useState("");
