@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Passions_Conflict, Raleway, Lavishly_Yours } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { Passions_Conflict, Lavishly_Yours, Cormorant_Garamond, Raleway } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 
 // Configuramos la fuente
@@ -24,6 +26,12 @@ const lavishlyYours = Lavishly_Yours({
   weight: "400", // Lavishly Yours también solo tiene peso 400
   variable: "--font-lavishly-yours",
   display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin", "cyrillic"], // ¡Importante! Soporta cirílico
+  weight: ["500", "600"],
+  variable: "--font-cormorant",
 });
 
 export const metadata: Metadata = {
@@ -71,23 +79,28 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className="scroll-smooth">
-      {/* Pasamos las variables al body */}
+    <html lang={locale} className="scroll-smooth">
       <body
-        className={`${passionsConflict.variable} ${raleway.variable} ${lavishlyYours.variable} antialiased`}
+        className={`${passionsConflict.variable} ${raleway.variable} ${lavishlyYours.variable} ${cormorant.variable} antialiased ${locale === 'ru' ? 'lang-ru' : ''}`}
       >
-        {children}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+        
         <GoogleAnalytics gaId="G-27GNXF67BM" />
       </body>
     </html>
   );
 }
-
-
-

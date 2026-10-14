@@ -15,6 +15,14 @@
   }
 }
 
+.lang-ru .font-script {
+ font-family: var(--font-cormorant), serif;
+  font-weight: 600;
+  font-size: 90%;
+}
+.lang-ru .font-body {
+font-size: 90%;
+}
 @theme {
   /* Fuentes (las que ya configuramos) */
   --font-passions-conflict: var(--font-passions-conflict);

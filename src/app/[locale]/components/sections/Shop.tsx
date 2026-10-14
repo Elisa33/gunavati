@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import {
   FaPaypal,
@@ -10,7 +11,7 @@ import {
   FaPause,
   FaPlay,
 } from "react-icons/fa";
-import { createOrder } from "../../actions/orderActions";
+import { createOrder } from "@/app/[locale]/actions/orderActions";
 
 const albums = [
   {
@@ -263,6 +264,8 @@ const AlbumCard = ({
   );
 };
 const Shop = () => {
+  const t = useTranslations("Shop");
+
   const [selectedAlbum, setSelectedAlbum] = useState<{
     title: string;
     minPrice: number;
@@ -343,10 +346,11 @@ const Shop = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="uppercase lg:text-lg text-primary-600 tracking-wider">
+            {t("subtitle")}
             take the journey with you
           </span>
           <h2 className="font-script text-7xl md:text-8xl text-secondary-500">
-            my music
+            {t("title")}
           </h2>
           {/* Corregido el typo "f this" -> "If this" */}
           <p className="md:text-lg max-w-xl mx-auto mt-4 text-primary-600">
