@@ -65,14 +65,12 @@ const Hero = () => {
         <div className="hidden md:block md:w-5/12"></div>
 
         <div className="w-full md:w-7/12 flex flex-col justify-between pt-20 py-12 px-8 md:px-16 lg:px-24 text-background-100">
-          <h1 className="text-[65px] sm:text-7xl lg:text-8xl font-script drop-shadow-lg leading-none">
+          <h1 className="text-[65px] sm:text-7xl lg:text-8xl font-hero-title drop-shadow-lg leading-none">
             {t("title_line1")}
             <span className="block">{t("title_line2")}</span>
-            <span>
-              {t("title_line3")}
-            </span>
+            <span>{t("title_line3")}</span>
           </h1>
-          
+
           <div>
             <p className="text md:text-xl font-body drop-shadow-md">
               {t("paragraph")}

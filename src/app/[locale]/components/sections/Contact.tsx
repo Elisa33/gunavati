@@ -1,11 +1,13 @@
-
-import React from 'react'
+import React from "react";
 import Image from "next/image";
 import { HiMiniEnvelope } from "react-icons/hi2";
 import { BsAppleMusic } from "react-icons/bs";
 import { FaFacebookF, FaInstagram, FaYoutube, FaSpotify } from "react-icons/fa";
+import { getTranslations } from "next-intl/server";
 
-const Contact = () => {
+const Contact = async () => {
+  const t = await getTranslations("Contact");
+
   return (
     <section
       id="contact"
@@ -23,18 +25,17 @@ const Contact = () => {
       </div>
       <div className="relative mx-auto w-11/12 max-w-7xl pt-12 md:pt-20 pb-8 text-background-100 px-6 z-10">
         <div className="flex flex-col items-center ">
-          <span className="uppercase text-lg">GET IN TOUCH</span>
-          <h3 className="font-lavishly-yours text-7xl text-secondary-500">
-            let’s connect
+          <span className="uppercase text-lg">{t("tag")}</span>
+          <h3 className="font-script text-7xl text-secondary-500 font-subtitle text-center">
+            {t("title")}
           </h3>
-          <p className="md:w-2/3 md:text-lg text-center">
-            <span className="block ms:inline">For collaborations,</span> events,
-            or simply to share light.
-            <span className="block">Reach out through e-mail:</span>
+          <p className="md:w-2/3 md:text-lg text-center mt-2">
+            <span className="block md:inline">{t("text1")}</span>
+            <span className="block">{t("text2")}</span>
           </p>
           <a
             href="mailto:gunavati.art@gmail.com"
-            aria-label="Send email"
+            aria-label={t("email_label")}
             className="group flex items-center gap-4 py-2 px-4 rounded-xl w-fit transition-all hover:bg-white/20 mt-4"
           >
             <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-primary-500 transition-colors">
@@ -50,7 +51,7 @@ const Contact = () => {
             {/* spotify */}
             <a
               href="https://open.spotify.com/artist/7oIXVcqgLhHQFudWozZAIU?si=MsL-VwTDTD-pRx4BNwh8ZQ"
-              aria-label="Listen on Spotify"
+              aria-label={t("spotify_label")}
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -60,7 +61,7 @@ const Contact = () => {
             {/* youtube */}
             <a
               href="https://youtube.com/@gunavati?si=4ldPCVEB3AwiCrUo"
-              aria-label="Watch on You tube"
+              aria-label={t("youtube_label")}
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -70,7 +71,7 @@ const Contact = () => {
             {/* apple music */}
             <a
               href="https://music.apple.com/ua/artist/gunavati/1768795053?l=ru"
-              aria-label="Listen on Apple music"
+              aria-label={t("apple_label")}
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -80,7 +81,7 @@ const Contact = () => {
             {/* Instagram */}
             <a
               href="https://www.instagram.com/gunavati_kyiv?igsh=MW5lcXVscnNvZHFqMg==&utm_source=ig_contact_invite"
-              aria-label="Instagram"
+              aria-label={t("instagram_label")}
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -91,7 +92,7 @@ const Contact = () => {
             {/* Facebook */}
             <a
               href="https://www.facebook.com/share/1XVn8Uu1ps/?mibextid=wwXIfr"
-              aria-label="Facebook"
+              aria-label={t("facebook_label")}
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-secondary-500/80 hover:scale-110 transition-all"
@@ -102,7 +103,7 @@ const Contact = () => {
         </div>
         <div className="flex items-center justify-center text-center gap-1 w-full pt-12 text-sm">
           <p>© 2026 Gunavati.</p>
-          <p className="text-white"> Made with </p>
+          <p className="text-white"> {t("made_with")} </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -116,7 +117,7 @@ const Contact = () => {
             />
           </svg>
 
-          <p className="text-white">by</p>
+          <p className="text-white">{t("by")}</p>
           <a
             href="https://elisablange.me/"
             target="_blank"
@@ -130,6 +131,6 @@ const Contact = () => {
       </div>
     </section>
   );
-}
+};
 
-export default Contact
+export default Contact;

@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import { FaTimes, FaSpinner, FaHeart, FaPaypal } from "react-icons/fa";
 import { createDonationOrder } from "../../actions/orderActions";
+import { useTranslations } from "next-intl"; // 👉 Import
 
 const donationAmounts = [5, 10, 20, 50];
 
 export default function Support() {
+  const t = useTranslations("Support"); // 👉 Init
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const [buyerEmail, setBuyerEmail] = useState("");
   const [selectedAmount, setSelectedAmount] = useState(5);
@@ -43,15 +45,14 @@ export default function Support() {
       >
         <div className="mx-auto w-11/12 max-w-4xl text-center">
           <span className="uppercase lg:text-lg text-primary-600 tracking-wider">
-            keep this music alive
+            {t("tag")}
           </span>
-          <h2 className="font-script text-7xl text-primary-700 p-4">
-            Support <span className="block sm:inline">the vision</span>
+          <h2 className="font-script text-7xl text-primary-700 font-subtitle p-4">
+            {t("title_line1")}{" "}
+            <span className="block sm:inline">{t("title_line2")}</span>
           </h2>
-          <p className="md:text-lg max-w-xl mx-auto mt-6 text-primary-600">
-            If this work resonates with you and supports your own inner journey,
-            your contribution helps sustain this creative offering and allows
-            new songs, poems, recordings, and projects to come into being.
+          <p className="md:text-lg max-w-xl mx-auto mt-2 text-primary-600">
+            {t("paragraph")}
           </p>
 
           <button
@@ -62,7 +63,7 @@ export default function Support() {
             }}
             className="mt-10 flex items-center gap-3 mx-auto px-8 py-3 rounded-full bg-primary-700 text-white text-lg font-semibold hover:bg-primary-600 transition-colors shadow-md"
           >
-            <FaHeart /> Donate
+            <FaHeart /> {t("donate_btn")}
           </button>
         </div>
       </section>
@@ -88,25 +89,30 @@ export default function Support() {
               /* PANTALLA DE ÉXITO */
               <div className="text-center py-2">
                 <h3 className="text-2xl font-bold text-primary-600 mb-2">
-                  Thank you!
+                  {t("success_title")}
                 </h3>
                 <p className="text-primary-600 mb-6 text-sm">
-                  We've sent instructions to <strong>{buyerEmail}</strong>.
+                  {t.rich("success_email", {
+                    email: buyerEmail,
+                    strong: (chunks) => <strong>{chunks}</strong>,
+                  })}
                 </p>
 
                 <div className="bg-primary-100/50 rounded-xl p-6 text-left mb-6">
                   <p className="text-sm text-primary-700 mb-4">
-                    To complete your donation of{" "}
-                    <strong>€{selectedAmount}</strong>, please send it using:
+                    {t.rich("success_amount_donation", {
+                      amount: selectedAmount,
+                      strong: (chunks) => <strong>{chunks}</strong>,
+                    })}
                   </p>
 
                   {paymentMethod === "paypal" ? (
-                    <div className="p-4 rounded-lg  mb-4 text-center">
+                    <div className="p-4 rounded-lg mb-4 text-center">
                       <p className="font-semibold text-primary-800 text-sm mb-1">
-                        PayPal
+                        {t("success_paypal_title")}
                       </p>
                       <p className="text-sm text-primary-600 mb-3">
-                        Send to:{" "}
+                        {t("success_paypal_to")}{" "}
                         <strong className="select-all">
                           belotel13@gmail.com
                         </strong>
@@ -117,27 +123,27 @@ export default function Support() {
                         rel="noopener noreferrer"
                         className="inline-block px-6 py-2 bg-[#0070ba] text-white text-sm font-semibold rounded-lg hover:bg-[#005ea6] transition-colors"
                       >
-                        Go to PayPal
+                        {t("success_paypal_btn")}
                       </a>
                     </div>
                   ) : (
                     <div className="p-4 bg-white rounded-lg border border-primary-200 mb-4">
                       <p className="font-semibold text-primary-600 text-sm mb-1">
-                        Bank Transfer (Russia)
+                        {t("success_bank_title")}
                       </p>
                       <p className="text-sm text-primary-600">
-                        Phone: +79819564314
+                        {t("success_bank_phone")}
                         <br />
-                        Account: Райффайзен
+                        {t("success_bank_account")}
                         <br />
-                        Name: Михаил А.
+                        {t("success_bank_name")}
                       </p>
                     </div>
                   )}
 
                   <div className="text-center mt-4">
                     <p className="text-xs text-primary-600 font-bold uppercase tracking-wider mb-2">
-                      Important: Put this code in the transfer comment
+                      {t("success_code")}
                     </p>
                     <div className="inline-block bg-primary-500 text-white font-mono text-xl font-bold tracking-widest px-6 py-2 rounded-lg select-all">
                       {generatedCode}
@@ -149,25 +155,22 @@ export default function Support() {
                   onClick={() => setIsDonateOpen(false)}
                   className="px-6 py-2 rounded-full bg-primary-100 text-primary-700 font-semibold hover:bg-primary-200 transition-colors"
                 >
-                  Close
+                  {t("close_btn")}
                 </button>
               </div>
             ) : (
               /* FORMULARIO DE DONACIÓN */
               <div>
                 <h3 className="text-2xl font-bold text-primary-600 mb-1">
-                  Support the vision
+                  {t("modal_title")}
                 </h3>
                 <p className="text-sm text-primary-500 mb-4">
-                  Choose an amount — minimum €1
+                  {t("modal_min")}
                 </p>
 
                 <div className="bg-secondary-50 border border-secondary-200 text-secondary-800 text-center text-xs p-3 rounded-lg mb-6">
-                  <p>
-                    Due to international banking restrictions in Ukraine,
-                    payments are processed manually.
-                  </p>
-                  <p>Thank you for your support!</p>
+                  <p>{t("context_line1")}</p>
+                  <p>{t("context_line2")}</p>
                 </div>
 
                 <div className="grid grid-cols-4 gap-3 mb-6">
@@ -188,7 +191,7 @@ export default function Support() {
 
                 <div className="mb-6">
                   <p className="text-xs text-primary-500 mb-2 uppercase tracking-wider font-semibold">
-                    Payment Method
+                    {t("pay_method")}
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     <button
@@ -210,7 +213,7 @@ export default function Support() {
                           : "border-primary-200 text-primary-600 hover:bg-primary-50"
                       }`}
                     >
-                      Bank Transfer (Russia)
+                      {t("bank_btn")}
                     </button>
                   </div>
                 </div>
@@ -220,7 +223,7 @@ export default function Support() {
                     type="email"
                     value={buyerEmail}
                     onChange={(e) => setBuyerEmail(e.target.value)}
-                    placeholder="your@email.com"
+                    placeholder={t("email_placeholder")}
                     className="w-full px-4 py-3 rounded-xl border-2 border-primary-200 text-primary-600 focus:outline-none focus:border-primary-500 transition-colors"
                   />
                   <button
@@ -230,11 +233,12 @@ export default function Support() {
                   >
                     {isProcessing ? (
                       <>
-                        <FaSpinner className="animate-spin" /> Generating...
+                        <FaSpinner className="animate-spin" /> {t("submitting")}
                       </>
                     ) : (
                       <>
-                        <FaHeart /> Get Instructions for €{selectedAmount}
+                        <FaHeart />{" "}
+                        {t("submit_btn_donation", { amount: selectedAmount })}
                       </>
                     )}
                   </button>

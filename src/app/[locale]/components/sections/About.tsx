@@ -1,7 +1,9 @@
-import React from "react";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
-const About = () => {
+const About = async () => {
+  const t = await getTranslations("About");
+
   return (
     <section
       id="about"
@@ -42,27 +44,19 @@ const About = () => {
 
         {/* Content */}
         <div className="flex flex-col justify-center md:px-12 py-4 md:py-0">
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-3 w-11/12 max-w-7xl">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col w-11/12 max-w-7xl">
               <span className="uppercase lg:text-lg text-background-100">
-                about me
+                {t("tag")}
               </span>
-              <h2 className="font-lavishly-yours text-8xl sm:text-7xl xl:text-8xl -translate-y-8 text-secondary-500">
-                my story
+              <h2 className="font-script font-subtitle text-8xl sm:text-7xl xl:text-8xl -translate-y-9 text-secondary-500">
+                {t("title")}
               </h2>
             </div>
-
-            <p className="lg:text-lg leading-7">
-              Through original mantra melodies, heartfelt songs, and
-              contemplative verse, I weave music and poetry into invitations for
-              reflection, connection, and a deeper experience of the sacred.
-            </p>
-            <p className="lg:text-lg leading-7">
-              Music and poetry are not simply creative expressions for me—they
-              are a path of devotion, self-discovery, and service. Each melody
-              and each verse arises from a sincere desire to bring more peace,
-              beauty, and meaning into the world.
-            </p>
+            <div className="flex flex-col gap-6">
+              <p className="lg:text-lg leading-7">{t("paragraph1")}</p>
+              <p className="lg:text-lg leading-7">{t("paragraph2")}</p>
+            </div>
           </div>
         </div>
       </div>

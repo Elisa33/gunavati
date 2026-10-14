@@ -4,28 +4,17 @@ import React, { useState } from "react";
 import { FaPlay, FaHeadphones, FaTimes } from "react-icons/fa";
 import Image from "next/image";
 import AudioPlayer from "../AudioPlayer";
+import { useTranslations } from "next-intl"; // 👉 Importamos el hook
 
+// Sacamos los textos del array, dejamos solo los IDs
 const videos = [
-  {
-    id: "fjZ6YY8FrU8",
-    title: "Mantras",
-    description:
-      "Sacred sounds of the mantra Baba Nam Kevalam, woven into many melodies.",
-  },
-  {
-    id: "sIJZRo3NVp4",
-    title: "Spiritual Poetry",
-    description:
-      "Sacred words inspired by the soul's journey toward truth and meaning.",
-  },
-  {
-    id: "IMbZCh0apa8",
-    title: "Devotional Songs",
-    description: "Sacred melodies of love, longing, and devotion.",
-  },
+  { id: "fjZ6YY8FrU8" },
+  { id: "sIJZRo3NVp4" },
+  { id: "IMbZCh0apa8" },
 ];
 
 const Videos = () => {
+  const t = useTranslations("Art"); // 👉 Inicializamos
   const [modal, setModal] = useState<{
     type: "video" | "audio";
     id: string;
@@ -36,15 +25,13 @@ const Videos = () => {
   return (
     <section id="music" className="py-20 px-6">
       <div className="flex flex-col gap-3 items-center mx-auto max-w-7xl px-6">
-        <span className="uppercase lg:text-lg text-accent">LISTEN</span>
-        <h2 className="font-lavishly-yours text-8xl -translate-y-8 text-secondary-500">
-          my voice
+        <span className="uppercase lg:text-lg text-accent">{t("tag")}</span>
+        <h2 className="font-script text-8xl font-subtitle -translate-y-8 text-secondary-500">
+          {t("title")}
         </h2>
         <p className="md:w-2/3 text-center text-accent2">
-          Let my music and poetry guide you on the path to your true self, to{" "}
-          <span className="lg:block">
-            the quite place within, full of love and peace
-          </span>
+          {t("paragraph_start")}{" "}
+          <span className="lg:block">{t("paragraph_end")}</span>
         </p>
       </div>
 
@@ -59,7 +46,7 @@ const Videos = () => {
             <div className="relative aspect-video bg-primary-100 cursor-pointer overflow-hidden">
               <Image
                 src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                alt={video.title}
+                alt={t(`videos.${video.id}.title`)} // 👉 Alt traducido
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -79,10 +66,10 @@ const Videos = () => {
             {/* Info + buttons */}
             <div className="p-5">
               <h3 className="text-xl font-semibold text-primary-700 mb-1">
-                {video.title}
+                {t(`videos.${video.id}.title`)} {/* 👉 Título traducido */}
               </h3>
               <p className="text-sm text-primary-700 mb-4">
-                {video.description}
+                {t(`videos.${video.id}.description`)} {/* 👉 Desc traducida */}
               </p>
               <div className="flex md:gap-2 lg:gap-3 gap-3 mt-auto">
                 <button
@@ -90,14 +77,14 @@ const Videos = () => {
                   className="flex items-center gap-2 text-sm px-4 py-2.5 min-h-11 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
                 >
                   <FaPlay className="text-xs" />
-                  Watch
+                  {t("watch_btn")}
                 </button>
                 <button
                   onClick={() => setModal({ type: "audio", id: video.id })}
                   className="flex items-center gap-2 text-sm px-4 py-2.5 min-h-11 rounded-full border border-primary-600 text-primary-600 hover:bg-primary-50 transition-colors"
                 >
                   <FaHeadphones className="text-xs" />
-                  Listen
+                  {t("listen_btn")}
                 </button>
               </div>
             </div>

@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-//import { FaBars, FaTimes } from "react-icons/fa";
 import { LuMenu } from "react-icons/lu";
 import { IoClose } from "react-icons/io5";
-
-
+import { useTranslations } from "next-intl"; // 👉 Import
 
 const Navbar = () => {
+  const t = useTranslations("Navbar"); // 👉 Init
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -25,42 +24,42 @@ const Navbar = () => {
               href="#music"
               className="hover:text-secondary-300 transition-colors"
             >
-              my voice
+              {t("voice")}
             </a>
             <a
               href="#about"
               className="hover:text-secondary-300 transition-colors"
             >
-              my story
+              {t("story")}
             </a>
             <a
               href="#shop"
               className="hover:text-secondary-300 transition-colors"
             >
-              my music
+              {t("music")}
             </a>
             <a
               href="#support"
               className="hover:text-secondary-300 transition-colors"
             >
-              support
+              {t("support")}
             </a>
             <a
               href="#contact"
               className="hover:text-secondary-300 transition-colors"
             >
-              contact me
+              {t("contact")}
             </a>
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-6 ">
+          <div className="flex items-center gap-6">
             <div className="hidden text-sm">EN | UK | FR</div>
 
             <button
               className="lg:hidden text-2xl z-70"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={isMenuOpen ? t("close_menu") : t("open_menu")} // 👉 Traducido
             >
               {isMenuOpen ? <IoClose /> : <LuMenu />}
             </button>
@@ -86,35 +85,35 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors py-2.5"
           >
-            my voice
+            {t("voice")}
           </a>
           <a
             href="#about"
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors py-2.5"
           >
-            my story
+            {t("story")}
           </a>
           <a
             href="#shop"
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors py-2.5"
           >
-            my music
+            {t("music")}
           </a>
           <a
             href="#support"
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors py-2.5"
           >
-            support
+            {t("support")}
           </a>
           <a
             href="#contact"
             onClick={() => setIsMenuOpen(false)}
             className="hover:text-primary-800 transition-colors py-2.5"
           >
-            contact me
+            {t("contact")}
           </a>
 
           <div className="text-sm mt-8 invisible">EN | UK | FR</div>

@@ -13,12 +13,24 @@
   .font-script {
     font-family: var(--font-lavishly-yours);
   }
+  .font-hero-title {
+   font-family: var(--font-lavishly-yours);
+}
 }
 
+.lang-ru .font-hero-title {
+ font-family: var(--font-cormorant), serif;
+  font-weight: 600;
+}
+.lang-ru .font-subtitle {
+ font-family: var(--font-cormorant), serif;
+ translate:none;
+ padding: 15px 0 20px 0;
+  @apply text-[50px] sm:text-6xl lg:text-7xl;
+}
 .lang-ru .font-script {
  font-family: var(--font-cormorant), serif;
   font-weight: 600;
-  font-size: 90%;
 }
 .lang-ru .font-body {
 font-size: 90%;
