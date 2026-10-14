@@ -35,6 +35,11 @@
 .lang-ru .font-body {
 font-size: 90%;
 }
+
+.lang-ru .only {
+  display: none;
+}
+
 @theme {
   /* Fuentes (las que ya configuramos) */
   --font-passions-conflict: var(--font-passions-conflict);

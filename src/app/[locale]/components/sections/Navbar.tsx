@@ -3,23 +3,31 @@
 import React, { useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import { IoClose } from "react-icons/io5";
-import { useTranslations } from "next-intl"; // 👉 Import
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const t = useTranslations("Navbar"); // 👉 Init
+  const t = useTranslations("Navbar");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const switchLocale = (locale: string) => {
+    const newPath = pathname.replace(/^\/(en|ru)/, `/${locale}`);
+    return newPath;
+  };
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-accent/80 backdrop-blur-xs h-16 text-background-100">
         <div className="flex items-center justify-between h-full mx-auto w-11/12 lg:w-10/12 xl:max-w-7xl px-4">
-          {/* Logo */}
-          <a href="#hero" className="font-gunavati text-5xl sm:text-6xl">
+          {/* 1. LOGO (Izquierda) */}
+          <a href="#hero" className="font-gunavati text-5xl sm:text-6xl z-10">
             Gunavati
           </a>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex gap-8 text-lg font-medium">
+          {/* 2. MENÚ CENTRADO (Desktop) */}
+          <nav className="hidden lg:flex gap-8 text-lg font-medium items-center absolute left-1/2 -translate-x-1/2">
             <a
               href="#music"
               className="hover:text-secondary-300 transition-colors"
@@ -52,14 +60,30 @@ const Navbar = () => {
             </a>
           </nav>
 
-          {/* Right side */}
-          <div className="flex items-center gap-6">
-            <div className="hidden text-sm">EN | UK | FR</div>
+          {/* 3. SELECTOR DE IDIOMA (Derecha Desktop / Botón Mobile) */}
+          <div className="flex items-center gap-4 z-10">
+            {/* Selector Desktop */}
+            <div className="hidden lg:flex items-center gap-2">
+              <Link
+                href={switchLocale("en")}
+                className="hover:opacity-80 transition-opacity"
+              >
+                <span className="text-sm">EN</span>
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link
+                href={switchLocale("ru")}
+                className="hover:opacity-80 transition-opacity"
+              >
+                <span className="text-sm">RU</span>
+              </Link>
+            </div>
 
+            {/* Botón Hamburguesa Mobile */}
             <button
               className="lg:hidden text-2xl z-70"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? t("close_menu") : t("open_menu")} // 👉 Traducido
+              aria-label={isMenuOpen ? t("close_menu") : t("open_menu")}
             >
               {isMenuOpen ? <IoClose /> : <LuMenu />}
             </button>
@@ -69,17 +93,19 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-1/2 bg-secondary-500 z-60 transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed top-0 right-0 h-full w-1/2 bg-secondary-500 z-60 transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        {/* Botón de cerrar arriba */}
         <div className="flex justify-end p-6">
           <button onClick={() => setIsMenuOpen(false)} className="text-2xl">
             <IoClose />
           </button>
         </div>
 
-        <nav className="flex flex-col items-left justify-start pl-5 text-xl text-primary-600">
+        {/* Links del menú */}
+        <nav className="flex flex-col items-left justify-start pl-5 text-xl text-primary-600 flex-1">
           <a
             href="#music"
             onClick={() => setIsMenuOpen(false)}
@@ -115,9 +141,28 @@ const Navbar = () => {
           >
             {t("contact")}
           </a>
-
-          <div className="text-sm mt-8 invisible">EN | UK | FR</div>
         </nav>
+
+        {/* SELECTOR DE IDIOMA MOBILE (Abajo del todo) */}
+        <div className="p-6">
+          <div className="flex items-center gap-4">
+            <Link
+              href={switchLocale("en")}
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-primary-800 transition-colors"
+            >
+              EN
+            </Link>
+            <span className="text-primary-700/50">|</span>
+            <Link
+              href={switchLocale("ru")}
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-primary-800 transition-colors"
+            >
+              RU
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
