@@ -40,7 +40,7 @@ const Videos = () => {
         {videos.map((video) => (
           <div
             key={video.id}
-            className="relative group rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow"
+            className="relative group grid grid-rows-[auto-1fr] rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow"
           >
             {/* Thumbnail */}
             <div className="relative aspect-video bg-primary-100 cursor-pointer overflow-hidden">
@@ -64,11 +64,11 @@ const Videos = () => {
               </div>
             </div>
             {/* Info + buttons */}
-            <div className="p-5">
+            <div className="p-5 flex flex-col">
               <h3 className="text-xl font-semibold text-primary-700 mb-1">
                 {t(`videos.${video.id}.title`)} {/* 👉 Título traducido */}
               </h3>
-              <p className="text-sm text-primary-700 mb-4">
+              <p className="text-sm text-primary-700 mb-4 flex-1">
                 {t(`videos.${video.id}.description`)} {/* 👉 Desc traducida */}
               </p>
               <div className="flex md:gap-2 lg:gap-3 gap-3 mt-auto">

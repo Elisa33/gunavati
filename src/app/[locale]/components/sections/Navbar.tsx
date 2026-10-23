@@ -77,6 +77,7 @@ const Navbar = () => {
               >
                 <span className="text-sm">RU</span>
               </Link>
+              {/* FR y UK ocultos por el momento
               <span className="text-white/30">|</span>
               <Link
                 href={switchLocale("fr")}
@@ -91,6 +92,7 @@ const Navbar = () => {
               >
                 <span className="text-sm">UK</span>
               </Link>
+              */}
             </div>
 
             {/* Botón Hamburguesa Mobile */}
@@ -175,6 +177,7 @@ const Navbar = () => {
             >
               RU
             </Link>
+            {/* UK y FR ocultos por el momento
             <span className="text-primary-700/50">|</span>
             <Link
               href={switchLocale("uk")}
@@ -191,6 +194,7 @@ const Navbar = () => {
             >
               FR
             </Link>
+            */}
           </div>
         </div>
       </div>

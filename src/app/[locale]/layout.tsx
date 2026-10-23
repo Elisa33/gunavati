@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Passions_Conflict, Lavishly_Yours, Cormorant_Garamond, Raleway } from "next/font/google";
+import { Passions_Conflict, Lavishly_Yours, Cormorant_Garamond, Raleway, Great_Vibes } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -32,6 +32,13 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin", "cyrillic"], // ¡Importante! Soporta cirílico
   weight: ["500", "600"],
   variable: "--font-cormorant",
+});
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin", "cyrillic"], // Soporta cirílico
+  weight: "400", // Great Vibes solo tiene peso 400
+  variable: "--font-great-vibes",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -93,7 +100,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <body
-        className={`${passionsConflict.variable} ${raleway.variable} ${lavishlyYours.variable} ${cormorant.variable} antialiased lang-${locale}`}
+        className={`${passionsConflict.variable} ${raleway.variable} ${lavishlyYours.variable} ${cormorant.variable} ${greatVibes.variable} antialiased lang-${locale}`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
