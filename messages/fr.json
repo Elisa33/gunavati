@@ -1,0 +1,123 @@
+{
+  "Navbar": {
+    "voice": "my voice",
+    "story": "my story",
+    "music": "my music",
+    "support": "support",
+    "contact": "contact me",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu"
+  },
+  "Hero": {
+    "title_line1": "Sacred art",
+    "title_line2": "for the journey",
+    "title_line3": " your heart",
+    "paragraph": "Discover healing sounds and words that embrace your soul and fill your heart.",
+    "button_play": "Listen Now",
+    "button_pause": "Pause"
+  },
+  "About": {
+    "tag": "about me",
+    "title": "my story",
+    "paragraph1": "Through original mantra melodies, heartfelt songs, and contemplative verse, I weave music and poetry into invitations for reflection, connection, and a deeper experience of the sacred.",
+    "paragraph2": "Music and poetry are not simply creative expressions for me—they are a path of devotion, self-discovery, and service. Each melody and each verse arises from a sincere desire to bring more peace, beauty, and meaning into the world."
+  },
+  "Art": {
+    "tag": "LISTEN",
+    "title": "my voice",
+    "paragraph_start": "Let my music and poetry guide you on the path to your true self, to",
+    "paragraph_end": "the quiet place within, full of love and peace",
+    "watch_btn": "Watch",
+    "listen_btn": "Listen",
+    "videos": {
+      "fjZ6YY8FrU8": {
+        "title": "Mantras",
+        "description": "Sacred sounds of the mantra Baba Nam Kevalam, woven into many melodies."
+      },
+      "sIJZRo3NVp4": {
+        "title": "Spiritual Poetry",
+        "description": "Sacred words inspired by the soul's journey toward truth and meaning."
+      },
+      "IMbZCh0apa8": {
+        "title": "Devotional Songs",
+        "description": "Sacred melodies of love, longing, and devotion."
+      }
+    }
+  },
+  "Shop": {
+    "subtitle": "take the journey with you",
+    "title": "my music",
+    "paragraph": "If this music has touched you, you can help it continue. Every contribution goes directly into creating new work — so that more songs can find their way to those who need them.",
+    "tracklist": "Tracklist",
+    "tracklist_hover": "Tracklist (Click to preview)",
+    "download_btn": "Download",
+    "buy_all_title": "the full journey",
+    "buy_all_text1": "All albums, one place.",
+    "buy_all_text2": "Download the complete collection and carry",
+    "buy_all_text3": "the whole journey with you.",
+    "buy_all_btn": "Buy all discography",
+    "modal_min": "Minimum €{amount} — or give more to support future work",
+    "context_line1": "Due to international banking restrictions in Ukraine, payments are processed manually.",
+    "context_line2": "Thank you for your understanding and support!",
+    "pay_method": "Payment Method",
+    "bank_btn": "Bank Transfer (Russia)",
+    "email_placeholder": "your@email.com",
+    "submit_btn": "Get Instructions for €{amount}",
+    "submitting": "Generating...",
+    "success_title": "Almost there!",
+    "success_email": "We've sent these instructions to <strong>{email}</strong>.",
+    "success_amount": "To complete your purchase, please send <strong>€{amount}</strong> using:",
+    "success_paypal_title": "PayPal",
+    "success_paypal_to": "Send to:",
+    "success_paypal_btn": "Go to PayPal",
+    "success_bank_title": "Bank Transfer (Russia)",
+    "success_bank_phone": "Phone: +79819564314",
+    "success_bank_account": "Account: Райффайзен",
+    "success_bank_name": "Name: Михаил А.",
+    "success_code": "Important: Put this code in the transfer comment",
+    "success_note": "Once we confirm the transfer, your download links will arrive automatically.",
+    "close_btn": "Close"
+  },
+  "Support": {
+    "tag": "keep this music alive",
+    "title_line1": "Support",
+    "title_line2": "the vision",
+    "paragraph": "If this work resonates with you and supports your own inner journey, your contribution helps sustain this creative offering and allows new songs, poems, recordings, and projects to come into being.",
+    "donate_btn": "Donate",
+    "success_title": "Thank you!",
+    "success_email": "We've sent instructions to <strong>{email}</strong>.",
+    "success_amount_donation": "To complete your donation of <strong>€{amount}</strong>, please send it using:",
+    "modal_title": "Support the vision",
+    "modal_min": "Choose an amount — minimum €1",
+    "context_line1": "Due to international banking restrictions in Ukraine, payments are processed manually.",
+    "context_line2": "Thank you for your support!",
+    "pay_method": "Payment Method",
+    "bank_btn": "Bank Transfer (Russia)",
+    "email_placeholder": "your@email.com",
+    "submit_btn_donation": "Get Instructions for €{amount}",
+    "submitting": "Generating...",
+    "success_paypal_title": "PayPal",
+    "success_paypal_to": "Send to:",
+    "success_paypal_btn": "Go to PayPal",
+    "success_bank_title": "Bank Transfer (Russia)",
+    "success_bank_phone": "Phone: +79819564314",
+    "success_bank_account": "Account: Райффайзен",
+    "success_bank_name": "Name: Михаил А.",
+    "success_code": "Important: Put this code in the transfer comment",
+    "close_btn": "Close"
+  },
+  "Contact": {
+    "tag": "GET IN TOUCH",
+    "title": "let’s connect",
+    "text1": "For collaborations, events, or simply to share light.",
+    "text2": "Reach out through e-mail:",
+    "email_label": "Send email",
+    "spotify_label": "Listen on Spotify",
+    "youtube_label": "Watch on YouTube",
+    "apple_label": "Listen on Apple Music",
+    "instagram_label": "Instagram",
+    "facebook_label": "Facebook",
+    "made_with": "Made with",
+    "by": "by"
+  }
+}

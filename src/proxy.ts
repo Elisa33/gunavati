@@ -3,8 +3,8 @@ import type { NextRequest } from 'next/server';
 
 // Configuramos next-intl
 const intlMiddleware = createMiddleware({
-  locales: ['en', 'ru'],
-  defaultLocale: 'en'
+  locales: ["en", "ru", "uk", "fr"],
+  defaultLocale: "en",
 });
 
 // Exportamos por defecto (la forma más robusta)

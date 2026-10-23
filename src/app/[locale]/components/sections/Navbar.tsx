@@ -13,7 +13,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const switchLocale = (locale: string) => {
-    const newPath = pathname.replace(/^\/(en|ru)/, `/${locale}`);
+    const newPath = pathname.replace(/^\/(en|ru|fr|uk)/, `/${locale}`);
     return newPath;
   };
 
@@ -76,6 +76,20 @@ const Navbar = () => {
                 className="hover:opacity-80 transition-opacity"
               >
                 <span className="text-sm">RU</span>
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link
+                href={switchLocale("fr")}
+                className="hover:opacity-80 transition-opacity"
+              >
+                <span className="text-sm">FR</span>
+              </Link>
+              <span className="text-white/30">|</span>
+              <Link
+                href={switchLocale("uk")}
+                className="hover:opacity-80 transition-opacity"
+              >
+                <span className="text-sm">UK</span>
               </Link>
             </div>
 
@@ -160,6 +174,22 @@ const Navbar = () => {
               className="hover:text-primary-800 transition-colors"
             >
               RU
+            </Link>
+            <span className="text-primary-700/50">|</span>
+            <Link
+              href={switchLocale("uk")}
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-primary-800 transition-colors"
+            >
+              UK
+            </Link>
+            <span className="text-primary-700/50">|</span>
+            <Link
+              href={switchLocale("fr")}
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-primary-800 transition-colors"
+            >
+              FR
             </Link>
           </div>
         </div>

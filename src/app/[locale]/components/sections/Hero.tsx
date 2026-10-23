@@ -69,8 +69,9 @@ const Hero = () => {
             {t("title_line1")}
             <span className="block">{t("title_line2")}</span>
             <span>
-              <span className="only-en">of</span>
-              <span className="w-3 inline-block"></span>
+              <span className="only-en">
+                of<span className="w-3 inline-block"></span>
+              </span>
               {t("title_line3")}
             </span>
           </h1>

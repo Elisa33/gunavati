@@ -93,12 +93,12 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <body
-        className={`${passionsConflict.variable} ${raleway.variable} ${lavishlyYours.variable} ${cormorant.variable} antialiased ${locale === 'ru' ? 'lang-ru' : ''}`}
+        className={`${passionsConflict.variable} ${raleway.variable} ${lavishlyYours.variable} ${cormorant.variable} antialiased lang-${locale}`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
-        
+
         <GoogleAnalytics gaId="G-27GNXF67BM" />
       </body>
     </html>
