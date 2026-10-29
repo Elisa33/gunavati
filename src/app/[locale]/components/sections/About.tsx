@@ -22,7 +22,7 @@ const About = async () => {
 
       <div className="relative grid sm:grid-cols-2 gap-6 md:gap-0 mx-auto max-w-7xl py-20 px-6">
         {/* Image wrapper con alto controlado - Ajustado justify para mobile/desktop */}
-        <div className="max-h-[80vh] flex justify-center md:justify-end rounded-3xl overflow-hidden">
+        <div className="max-h-[80dvh] flex justify-center md:justify-end rounded-3xl overflow-hidden">
           {/* Imagen Mobile (Oculta en desktop) */}
           <Image
             src="/img/about-image-mobile.webp"
@@ -45,11 +45,11 @@ const About = async () => {
         {/* Content */}
         <div className="flex flex-col justify-center md:px-12 py-4 md:py-0">
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col w-11/12 max-w-7xl">
+            <div className="flex flex-col max-w-7xl">
               <span className="uppercase lg:text-lg text-background-100">
                 {t("tag")}
               </span>
-              <h2 className="font-script font-subtitle text-7xl sm:text-7xl xl:text-8xl text-secondary-500">
+              <h2 className="font-script font-subtitle text-7xl md:text-8xl md:max-lg:[.lang-ru_&]:text-[clamp(48px,calc((50vw-124px)/3.98),96px)] text-secondary-500">
                 {t("title")}
               </h2>
             </div>

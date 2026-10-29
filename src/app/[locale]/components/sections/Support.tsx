@@ -47,7 +47,7 @@ export default function Support() {
           <span className="uppercase lg:text-lg text-primary-600 tracking-wider">
             {t("tag")}
           </span>
-          <h2 className="font-script text-6xl md:text-7xl text-primary-700 font-subtitle p-4">
+          <h2 className="font-script text-6xl max-md:[.lang-ru_&]:text-[clamp(44px,calc((100vw-66px)/5.23),60px)] md:text-7xl text-primary-700 font-subtitle p-4">
             {t("title_line1")}{" "}
             <span className="block sm:inline">{t("title_line2")}</span>
           </h2>
@@ -71,11 +71,11 @@ export default function Support() {
       {/* Modal de Donación */}
       {isDonateOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex overflow-y-auto overscroll-contain bg-black/60 backdrop-blur-sm p-4"
           onClick={() => setIsDonateOpen(false)}
         >
           <div
-            className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-primary-700"
+            className="relative m-auto bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-primary-700"
             onClick={(e) => e.stopPropagation()}
           >
             <button

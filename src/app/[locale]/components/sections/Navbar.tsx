@@ -77,7 +77,6 @@ const Navbar = () => {
               >
                 <span className="text-sm">RU</span>
               </Link>
-              {/* FR y UK ocultos por el momento
               <span className="text-white/30">|</span>
               <Link
                 href={switchLocale("fr")}
@@ -92,12 +91,11 @@ const Navbar = () => {
               >
                 <span className="text-sm">UK</span>
               </Link>
-              */}
             </div>
 
             {/* Botón Hamburguesa Mobile */}
             <button
-              className="lg:hidden text-2xl z-70"
+              className="lg:hidden text-2xl z-70 p-2.5 -m-2.5"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? t("close_menu") : t("open_menu")}
             >
@@ -115,7 +113,7 @@ const Navbar = () => {
       >
         {/* Botón de cerrar arriba */}
         <div className="flex justify-end p-6">
-          <button onClick={() => setIsMenuOpen(false)} className="text-2xl">
+          <button onClick={() => setIsMenuOpen(false)} className="text-2xl p-2.5 -m-2.5" aria-label={t("close_menu")}>
             <IoClose />
           </button>
         </div>
@@ -161,40 +159,35 @@ const Navbar = () => {
 
         {/* SELECTOR DE IDIOMA MOBILE (Abajo del todo) */}
         <div className="p-6">
-          <div className="flex items-center gap-4">
+          <div className="grid grid-cols-2 w-fit gap-x-6">
             <Link
               href={switchLocale("en")}
               onClick={() => setIsMenuOpen(false)}
-              className="hover:text-primary-800 transition-colors"
+              className="hover:text-primary-800 transition-colors inline-flex min-h-11 items-center"
             >
               EN
             </Link>
-            <span className="text-primary-700/50">|</span>
             <Link
               href={switchLocale("ru")}
               onClick={() => setIsMenuOpen(false)}
-              className="hover:text-primary-800 transition-colors"
+              className="hover:text-primary-800 transition-colors inline-flex min-h-11 items-center"
             >
               RU
             </Link>
-            {/* UK y FR ocultos por el momento
-            <span className="text-primary-700/50">|</span>
             <Link
               href={switchLocale("uk")}
               onClick={() => setIsMenuOpen(false)}
-              className="hover:text-primary-800 transition-colors"
+              className="hover:text-primary-800 transition-colors inline-flex min-h-11 items-center"
             >
               UK
             </Link>
-            <span className="text-primary-700/50">|</span>
             <Link
               href={switchLocale("fr")}
               onClick={() => setIsMenuOpen(false)}
-              className="hover:text-primary-800 transition-colors"
+              className="hover:text-primary-800 transition-colors inline-flex min-h-11 items-center"
             >
               FR
             </Link>
-            */}
           </div>
         </div>
       </div>

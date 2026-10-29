@@ -392,7 +392,7 @@ const Shop = () => {
          {/* Buy all */}
          <div className="mx-auto w-11/12 max-w-7xl mt-20 px-6">
            <div className="text-center mb-8">
-             <h3 className="font-script text-6xl md:text-7xl text-primary-600 mt-2">
+             <h3 className="font-script text-6xl max-md:[.lang-en_&]:text-[clamp(32px,calc((91.67vw-118px)/4.27),60px)] max-md:[.lang-fr_&]:text-[clamp(32px,calc((91.67vw-118px)/4.96),60px)] md:text-7xl text-primary-600 mt-2">
                {t("buy_all_title")}
              </h3>
              <p className="md:text-lg mt-4 text-primary-600 pt-6">
@@ -423,11 +423,11 @@ const Shop = () => {
        {/* Checkout Modal */}
        {selectedAlbum && (
          <div
-           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+           className="fixed inset-0 z-50 flex overflow-y-auto overscroll-contain bg-black/60 backdrop-blur-sm p-4"
            onClick={() => setSelectedAlbum(null)}
          >
            <div
-             className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-primary-700"
+             className="relative m-auto bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-primary-700"
              onClick={(e) => e.stopPropagation()}
            >
              <button

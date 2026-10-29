@@ -31,7 +31,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col pt-16 pb-8 overflow-hidden"
+      className="relative min-h-dvh flex flex-col pt-16 pb-8 overflow-hidden"
     >
       {/* Fondo Mobile */}
       <Image
