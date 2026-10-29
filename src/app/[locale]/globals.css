@@ -19,7 +19,7 @@
 }
 /* Tamaños del título del hero (breakpoints de Tailwind: sm 640, md 768, lg 1024, xl 1280, 2xl 1536) */
 /* Ruso: 4 líneas. El tamaño lo limita el ancho (valor máximo) y el alto de pantalla (100svh - espacio fijo del hero) / 4. El h1 invade parte del padding derecho para ganar ancho */
-.lang-en .font-hero-title { font-size: 72px; }
+.lang-en .font-hero-title { font-size: clamp(48px, calc((100vw - 64px) / 4.1), 72px); }
 .lang-ru .font-hero-title { font-size: clamp(44px, calc((100svh - 390px) / 4), 70px); margin-right: -1rem; max-width: 5.6em; }
 @media (min-width: 640px) {
   .lang-en .font-hero-title { font-size: 84px; }
