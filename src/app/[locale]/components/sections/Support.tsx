@@ -47,7 +47,7 @@ export default function Support() {
           <span className="uppercase lg:text-lg text-primary-600 tracking-wider">
             {t("tag")}
           </span>
-          <h2 className="font-script text-7xl text-primary-700 font-subtitle p-4">
+          <h2 className="font-script text-6xl md:text-7xl text-primary-700 font-subtitle p-4">
             {t("title_line1")}{" "}
             <span className="block sm:inline">{t("title_line2")}</span>
           </h2>

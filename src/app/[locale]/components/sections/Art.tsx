@@ -26,7 +26,7 @@ const Videos = () => {
     <section id="music" className="py-20 px-6">
       <div className="flex flex-col gap-3 items-center mx-auto max-w-7xl px-6">
         <span className="uppercase lg:text-lg text-accent">{t("tag")}</span>
-        <h2 className="font-script text-8xl font-subtitle text-secondary-500">
+        <h2 className="font-script text-7xl font-subtitle text-secondary-500">
           {t("title")}
         </h2>
         <p className="md:w-2/3 text-center text-accent2">

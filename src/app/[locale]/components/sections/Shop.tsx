@@ -392,7 +392,7 @@ const Shop = () => {
          {/* Buy all */}
          <div className="mx-auto w-11/12 max-w-7xl mt-20 px-6">
            <div className="text-center mb-8">
-             <h3 className="font-script text-5xl md:text-6xl text-primary-600 mt-2">
+             <h3 className="font-script text-6xl md:text-7xl text-primary-600 mt-2">
                {t("buy_all_title")}
              </h3>
              <p className="md:text-lg mt-4 text-primary-600 pt-6">
