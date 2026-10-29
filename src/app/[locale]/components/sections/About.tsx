@@ -49,7 +49,7 @@ const About = async () => {
               <span className="uppercase lg:text-lg text-background-100">
                 {t("tag")}
               </span>
-              <h2 className="font-script font-subtitle text-8xl sm:text-7xl xl:text-8xl -translate-y-9 text-secondary-500">
+              <h2 className="font-script font-subtitle text-8xl sm:text-7xl xl:text-8xl text-secondary-500">
                 {t("title")}
               </h2>
             </div>
