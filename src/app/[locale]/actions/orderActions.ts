@@ -1,6 +1,8 @@
 "use server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
+import { cookies } from "next/headers";
+import { isValidAdminCookie } from "@/lib/adminAuth";
 import {
   getEmailStrings,
   linkLabel,
@@ -179,6 +181,12 @@ const downloadLinks: Record<
 };
 
 export async function validateOrder(code: string) {
+  // Solo el admin (cookie válida) puede validar pagos y enviar enlaces
+  const cookieStore = await cookies();
+  if (!isValidAdminCookie(cookieStore.get("admin_auth")?.value)) {
+    return { success: false, message: "Not authorized. Please log in again." };
+  }
+
   const { data, error } = await supabase
     .from("orders")
     .select("*")
