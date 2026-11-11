@@ -372,7 +372,7 @@ const Shop = () => {
       setGeneratedCode(result.code || ""); // Guardamos el código para mostrarlo
       setIsSuccess(true);
     } else {
-      alert("Hubo un error al generar el código. Inténtalo de nuevo.");
+      alert(t("error_generic"));
     }
   };
 

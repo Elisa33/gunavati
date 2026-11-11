@@ -84,7 +84,8 @@
     "success_bank_name": "Nom : Михаил А.",
     "success_code": "Important : Indique ce code dans le commentaire du virement",
     "success_note": "Une fois le virement confirmé, tes liens de téléchargement arriveront automatiquement.",
-    "close_btn": "Fermer"
+    "close_btn": "Fermer",
+    "error_generic": "Une erreur s'est produite. Réessaie."
   },
   "Support": {
     "tag": "FAIS VIVRE CETTE MUSIQUE",
@@ -112,7 +113,8 @@
     "success_bank_account": "Compte : Райффайзен",
     "success_bank_name": "Nom : Михаил А.",
     "success_code": "Important : Indique ce code dans le commentaire du virement",
-    "close_btn": "Fermer"
+    "close_btn": "Fermer",
+    "error_generic": "Une erreur s'est produite. Réessaie."
   },
   "Contact": {
     "tag": "CONTACTE-MOI",

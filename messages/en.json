@@ -84,7 +84,8 @@
     "success_bank_name": "Name: Михаил А.",
     "success_code": "Important: Put this code in the transfer comment",
     "success_note": "Once we confirm the transfer, your download links will arrive automatically.",
-    "close_btn": "Close"
+    "close_btn": "Close",
+    "error_generic": "Something went wrong. Please try again."
   },
   "Support": {
     "tag": "keep this music alive",
@@ -112,7 +113,8 @@
     "success_bank_account": "Account: Райффайзен",
     "success_bank_name": "Name: Михаил А.",
     "success_code": "Important: Put this code in the transfer comment",
-    "close_btn": "Close"
+    "close_btn": "Close",
+    "error_generic": "Something went wrong. Please try again."
   },
   "Contact": {
     "tag": "GET IN TOUCH",

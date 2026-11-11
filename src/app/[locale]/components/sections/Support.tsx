@@ -35,7 +35,7 @@ export default function Support() {
       setGeneratedCode(result.code || "");
       setIsSuccess(true);
     } else {
-      alert("Error. Try again.");
+      alert(t("error_generic"));
     }
   };
 
