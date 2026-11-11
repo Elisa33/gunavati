@@ -14,12 +14,16 @@ import {
 import { createOrder } from "@/app/[locale]/actions/orderActions";
 
 
+// Crédito del álbum: "producido por X" o "con X" (el texto sale de las traducciones)
+type Credit = { kind: "producedBy" | "with"; name: string };
+
 const albums = [
   {
     id: 1,
     title: "A New World",
     slug: "a-new-world",
     year: "2024",
+    credit: { kind: "producedBy", name: "Bjorn Tomter" } as Credit,
     cover: "/img/album-03.webp",
     minPrice: 2,
     tracks: [
@@ -35,6 +39,7 @@ const albums = [
     title: "Again",
     slug: "again",
     year: "2024",
+    credit: { kind: "producedBy", name: "Tantric Nation" } as Credit,
     cover: "/img/album-04.webp",
     minPrice: 4,
     tracks: [
@@ -55,6 +60,7 @@ const albums = [
     title: "The Light of Awakening",
     slug: "the-light-of-awakening",
     year: "2025",
+    credit: { kind: "producedBy", name: "Bjorn Tomter" } as Credit,
     cover: "/img/album-02.webp",
     minPrice: 4,
     tracks: [
@@ -75,6 +81,7 @@ const albums = [
     title: "My Only Hope",
     slug: "my-only-hope",
     year: "2026",
+    credit: { kind: "with", name: "Arpan K. Mischa" } as Credit,
     cover: "/img/album-01.webp",
     minPrice: 8,
     tracks: [
@@ -104,7 +111,8 @@ const albums = [
     id: 5,
     title: "Kirtan Live Ananda Gaori",
     slug: "kirtan-live-ananda-gaori",
-    year: "2026",
+    year: "2025",
+    credit: { kind: "producedBy", name: "Bhupesh" } as Credit,
     cover: "/img/album-05.webp",
     minPrice: 8,
 
@@ -136,6 +144,7 @@ const albums = [
     title: "Tamasácchanna Dharáy",
     slug: "tamasacchanna-dharay",
     year: "2026",
+    credit: { kind: "producedBy", name: "Bhupesh" } as Credit,
     cover: "/img/album-06.webp",
     minPrice: 2,
     tracks: [
@@ -151,6 +160,7 @@ const albums = [
     title: "Kirtan for The Journey Within",
     slug: "kirtan-for-the-journey-within",
     year: "2026",
+    credit: { kind: "producedBy", name: "Bjorn Tomter" } as Credit,
     cover: "/img/album-07.webp",
     minPrice: 2,
     tracks: [
@@ -177,6 +187,7 @@ const AlbumCard = ({
     minPrice: number;
     isAll?: boolean;
     slug?: string;
+    credit?: Credit;
     tracks?: { name: string; previewUrl: string }[];
   }) => void;
 }) => {
@@ -205,78 +216,88 @@ const AlbumCard = ({
     }
   };
 
-    return (
-      <div className="group flex flex-col items-center w-full">
-        {/* Contenedor de la imagen con el overlay */}
-        <div
-          className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow cursor-pointer"
-          onMouseEnter={() => setShowTracks(true)}
-          onMouseLeave={handleMouseLeave}
-          onClick={() => setShowTracks(!showTracks)}
-        >
-          <Image
-            src={album.cover}
-            alt={album.title}
-            fill
-            sizes="(max-width: 768px) 50vw, 20vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-
-          {/* OVERLAY DEL TRACKLIST CON REPRODUCTOR */}
-          {album.tracks && album.tracks.length > 0 && (
-            <div
-              className={`absolute inset-0 bg-primary-700/50 backdrop-blur-sm p-4 transition-opacity duration-300 ${
-                showTracks ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
-            >
-              <p className="text-xs lg:text-sm uppercase tracking-wider text-secondary-400 mb-3 font-semibold text-center">
-                {t("tracklist")}
-              </p>
-              <ul className="space-y-2 overflow-y-auto h-[70%] text-left">
-                {album.tracks.map((track, index) => (
-                  <li
-                    key={index}
-                    className="text-xs lg:text-sm text-background-100 flex items-center justify-start gap-2 cursor-pointer hover:text-white transition-colors"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePreview(track.previewUrl);
-                    }}
-                  >
-                    {currentTrack === track.previewUrl ? (
-                      <FaPause className="text-secondary-400 text-[10px]" />
-                    ) : (
-                      <FaPlay className="text-secondary-400 text-[10px]" />
-                    )}
-                    <span>{track.name}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-
-        {/* Info de abajo (Siempre visible) */}
-        <h3 className="mt-3 text-base text-primary-700 text-center line-clamp-2 min-h-10">
-          {album.title}
-        </h3>
-        <p className="text-xs text-primary-600">{album.year}</p>
-
-        <button
-          onClick={() => onDonate(album)}
-          className="mt-2 flex items-center gap-2 text-sm px-5 py-2 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
-        >
-          <FaDownload className="text-xs hidden lg:block" />
-          {t("download_btn")} €{album.minPrice}+
-        </button>
-
-        <audio
-          ref={audioRef}
-          src={currentTrack || undefined}
-          onEnded={() => setCurrentTrack(null)}
-          className="hidden"
+  return (
+    <div className="group flex flex-col items-center w-full">
+      {/* Contenedor de la imagen con el overlay */}
+      <div
+        className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow cursor-pointer"
+        onMouseEnter={() => setShowTracks(true)}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => setShowTracks(!showTracks)}
+      >
+        <Image
+          src={album.cover}
+          alt={album.title}
+          fill
+          sizes="(max-width: 768px) 50vw, 20vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
+
+        {/* OVERLAY DEL TRACKLIST CON REPRODUCTOR */}
+        {album.tracks && album.tracks.length > 0 && (
+          <div
+            className={`absolute inset-0 bg-primary-700/50 backdrop-blur-sm p-4 transition-opacity duration-300 ${
+              showTracks ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          >
+            <p className="text-xs lg:text-sm uppercase tracking-wider text-secondary-400 mb-3 font-semibold text-center">
+              {t("tracklist")}
+            </p>
+            <ul className="space-y-2 overflow-y-auto h-[70%] text-left">
+              {album.tracks.map((track, index) => (
+                <li
+                  key={index}
+                  className="text-xs lg:text-sm text-background-100 flex items-center justify-start gap-2 cursor-pointer hover:text-white transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePreview(track.previewUrl);
+                  }}
+                >
+                  {currentTrack === track.previewUrl ? (
+                    <FaPause className="text-secondary-400 text-[10px]" />
+                  ) : (
+                    <FaPlay className="text-secondary-400 text-[10px]" />
+                  )}
+                  <span>{track.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
-    );
+
+      {/* Info de abajo (Siempre visible) */}
+      <h3 className="mt-3 text-base text-primary-700 text-center line-clamp-2 min-h-12">
+        {album.title}
+      </h3>
+      <p className="text-xs text-primary-600">{album.year}</p>
+      {album.credit && (
+        <p className="mt-1 min-h-8 md:min-h-4 text-xs leading-4 italic text-center text-primary-600/80">
+          {t(
+            album.credit.kind === "with" ? "credit_with" : "credit_produced_by",
+            {
+              name: album.credit.name,
+            },
+          )}
+        </p>
+      )}
+
+      <button
+        onClick={() => onDonate(album)}
+        className="mt-2 flex items-center gap-2 text-sm px-5 py-2 rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+      >
+        <FaDownload className="text-xs hidden lg:block" />
+        {t("download_btn")} €{album.minPrice}+
+      </button>
+
+      <audio
+        ref={audioRef}
+        src={currentTrack || undefined}
+        onEnded={() => setCurrentTrack(null)}
+        className="hidden"
+      />
+    </div>
+  );
 };
 const Shop = () => {
   const t = useTranslations("Shop");
@@ -286,6 +307,7 @@ const Shop = () => {
     minPrice: number;
     isAll: boolean;
     slug?: string;
+    credit?: Credit;
     tracks?: { name: string; previewUrl: string }[];
   } | null>(null);
 
@@ -533,6 +555,16 @@ const Shop = () => {
                  <h3 className="text-2xl font-bold text-primary-600 mb-1">
                    {selectedAlbum.title}
                  </h3>
+                 {selectedAlbum.credit && (
+                   <p className="text-sm italic text-primary-500 mb-1">
+                     {t(
+                       selectedAlbum.credit.kind === "with"
+                         ? "credit_with"
+                         : "credit_produced_by",
+                       { name: selectedAlbum.credit.name },
+                     )}
+                   </p>
+                 )}
                  <p className="text-sm text-primary-500 mb-4">
                    {t("modal_min", { amount: selectedAlbum.minPrice })}
                  </p>

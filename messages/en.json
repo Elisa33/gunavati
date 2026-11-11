@@ -50,6 +50,8 @@
     "paragraph": "If this music has touched you, you can help it continue. Every contribution goes directly into creating new work — so that more songs can find their way to those who need them.",
     "tracklist": "Tracklist",
     "tracklist_hover": "Tracklist (Click to preview)",
+    "credit_produced_by": "produced by {name}",
+    "credit_with": "with {name}",
     "download_btn": "Download",
     "buy_all_title": "the full journey",
     "buy_all_text1": "All albums, one place.",

@@ -50,6 +50,8 @@
     "paragraph": "Si cette musique vous a touché, vous pouvez l'aider à perdurer. Chaque contribution va directement à la création de nouvelles œuvres — afin que davantage de chansons puissent trouver leur chemin vers ceux qui en ont besoin.",
     "tracklist": "Tracklist",
     "tracklist_hover": "Tracklist (Cliquez pour écouter)",
+    "credit_produced_by": "produit par {name}",
+    "credit_with": "avec {name}",
     "download_btn": "Télécharger",
     "buy_all_title": "le voyage complet",
     "buy_all_text1": "Tous les albums, en un seul lieu.",
