@@ -105,6 +105,7 @@ const Videos = () => {
             {/* Close button */}
             <button
               onClick={closeModal}
+              aria-label={t("close_btn")}
               className="absolute top-3 right-3 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/80 hover:bg-white text-primary-700 transition-colors shadow"
             >
               <FaTimes />
@@ -115,7 +116,7 @@ const Videos = () => {
               <div className="aspect-video">
                 <iframe
                   src={`https://www.youtube.com/embed/${modal.id}?autoplay=1&rel=0`}
-                  title="Video player"
+                  title={t("video_player_title")}
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                   className="w-full h-full"

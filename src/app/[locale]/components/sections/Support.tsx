@@ -80,6 +80,7 @@ export default function Support() {
           >
             <button
               onClick={() => setIsDonateOpen(false)}
+              aria-label={t("close_btn")}
               className="absolute top-4 right-4 text-primary-400 hover:text-primary-600 transition-colors"
             >
               <FaTimes className="text-xl" />

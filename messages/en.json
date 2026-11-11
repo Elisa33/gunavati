@@ -20,7 +20,8 @@
     "tag": "about me",
     "title": "my story",
     "paragraph1": "Through original mantra melodies, heartfelt songs, and contemplative verse, I weave music and poetry into invitations for reflection, connection, and a deeper experience of the sacred.",
-    "paragraph2": "Music and poetry are not simply creative expressions for me—they are a path of devotion, self-discovery, and service. Each melody and each verse arises from a sincere desire to bring more peace, beauty, and meaning into the world."
+    "paragraph2": "Music and poetry are not simply creative expressions for me—they are a path of devotion, self-discovery, and service. Each melody and each verse arises from a sincere desire to bring more peace, beauty, and meaning into the world.",
+    "portrait_alt": "Portrait of Gunavati"
   },
   "Art": {
     "tag": "LISTEN",
@@ -42,7 +43,12 @@
         "title": "Devotional Songs",
         "description": "Sacred melodies of love, longing, and devotion."
       }
-    }
+    },
+    "close_btn": "Close",
+    "video_player_title": "Video player",
+    "audio_hint": "Close your eyes and just listen",
+    "audio_play": "Play",
+    "audio_pause": "Pause"
   },
   "Shop": {
     "subtitle": "take the journey with you",
@@ -120,6 +126,7 @@
     "instagram_label": "Instagram",
     "facebook_label": "Facebook",
     "made_with": "Made with",
-    "by": "by"
+    "by": "by",
+    "portfolio_label": "Elisa's portfolio"
   }
 }

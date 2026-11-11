@@ -102,7 +102,7 @@ const Contact = async () => {
           </div>
         </div>
         <div className="flex items-center justify-center text-center gap-1 w-full pt-12 text-sm">
-          <p>© 2026 Gunavati.</p>
+          <p>© {new Date().getFullYear()} Gunavati.</p>
           <p className="text-white"> {t("made_with")} </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +123,7 @@ const Contact = async () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-secondary-500 hover:text-secondary-300 hover:underline transition-colors"
-            aria-label="Portfolio Elisa"
+            aria-label={t("portfolio_label")}
           >
             Elisa
           </a>

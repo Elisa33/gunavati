@@ -26,7 +26,7 @@ const About = async () => {
           {/* Imagen Mobile (Oculta en desktop) */}
           <Image
             src="/img/about-image-mobile.webp"
-            alt="Gunavati portrait"
+            alt={t("portrait_alt")}
             width={424}
             height={540}
             className="h-full w-auto rounded-3xl sm:hidden"
@@ -35,7 +35,7 @@ const About = async () => {
           {/* Imagen Desktop (Oculta en mobile) */}
           <Image
             src="/img/about-image.webp"
-            alt="Gunavati portrait"
+            alt={t("portrait_alt")}
             width={424}
             height={540}
             className="h-full w-auto object-cover rounded-3xl hidden sm:block"

@@ -36,7 +36,7 @@ const Hero = () => {
       {/* Fondo Mobile */}
       <Image
         src="/img/bg-mobile.webp"
-        alt="Background"
+        alt=""
         fill
         className="object-cover md:hidden z-0"
         priority

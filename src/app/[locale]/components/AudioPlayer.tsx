@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 interface YTPlayerEvent {
   target: YTPlayer;
@@ -36,6 +37,7 @@ declare global {
 } 
 
 const AudioPlayer = ({ videoId }: { videoId: string }) => {
+  const t = useTranslations("Art");
   const playerRef = useRef<YTPlayer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -115,13 +117,14 @@ const AudioPlayer = ({ videoId }: { videoId: string }) => {
       />
 
       <p className="text-lg text-primary-700 mb-8 text-center">
-        Close your eyes and just listen
+        {t("audio_hint")}
       </p>
 
       <div className="flex items-center gap-6 w-full">
         {/* Play/Pause */}
         <button
           onClick={togglePlay}
+          aria-label={isPlaying ? t("audio_pause") : t("audio_play")}
           disabled={!isReady}
           className="w-12 h-12 flex items-center justify-center rounded-full bg-primary-600 text-white hover:bg-primary-700 transition-colors disabled:opacity-40 shrink-0"
         >
