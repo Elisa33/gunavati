@@ -59,7 +59,7 @@ const albums = [
     minPrice: 4,
     tracks: [
       {
-        name: "The Light of Awakening (Свет пробудження)",
+        name: "The Light of Awakening (Свет пробуждения)",
         previewUrl:
           "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Light%20Song.mp3",
       },

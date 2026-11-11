@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import { IoClose } from "react-icons/io5";
 import { useTranslations } from "next-intl";
@@ -16,6 +16,34 @@ const Navbar = () => {
     const newPath = pathname.replace(/^\/(en|ru|fr|uk)/, `/${locale}`);
     return newPath;
   };
+
+  // Al cambiar de idioma la página se vuelve a montar y arrancaba arriba:
+  // guardamos la sección visible (y cuánto estaba desplazada) y la restauramos al montar.
+  const saveScroll = () => {
+    try {
+      const ids = ["hero", "music", "about", "shop", "support", "contact"];
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 80) current = id;
+      }
+      const top = document.getElementById(current)?.getBoundingClientRect().top ?? 0;
+      sessionStorage.setItem("gv-scroll", JSON.stringify({ id: current, offset: -top }));
+    } catch {}
+  };
+
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem("gv-scroll");
+      if (!saved) return;
+      sessionStorage.removeItem("gv-scroll");
+      const { id, offset } = JSON.parse(saved) as { id: string; offset: number };
+      const el = document.getElementById(id);
+      if (!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: top + Math.min(offset, el.offsetHeight), behavior: "instant" });
+    } catch {}
+  }, []);
 
   return (
     <>
@@ -66,6 +94,8 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center gap-2">
               <Link
                 href={switchLocale("en")}
+                onClick={saveScroll}
+                scroll={false}
                 className="hover:opacity-80 transition-opacity"
               >
                 <span className="text-sm">EN</span>
@@ -73,6 +103,8 @@ const Navbar = () => {
               <span className="text-white/30">|</span>
               <Link
                 href={switchLocale("ru")}
+                onClick={saveScroll}
+                scroll={false}
                 className="hover:opacity-80 transition-opacity"
               >
                 <span className="text-sm">RU</span>
@@ -80,6 +112,8 @@ const Navbar = () => {
               <span className="text-white/30">|</span>
               <Link
                 href={switchLocale("fr")}
+                onClick={saveScroll}
+                scroll={false}
                 className="hover:opacity-80 transition-opacity"
               >
                 <span className="text-sm">FR</span>
@@ -87,6 +121,8 @@ const Navbar = () => {
               <span className="text-white/30">|</span>
               <Link
                 href={switchLocale("uk")}
+                onClick={saveScroll}
+                scroll={false}
                 className="hover:opacity-80 transition-opacity"
               >
                 <span className="text-sm">UK</span>
@@ -162,28 +198,44 @@ const Navbar = () => {
           <div className="grid grid-cols-2 w-fit gap-x-6">
             <Link
               href={switchLocale("en")}
-              onClick={() => setIsMenuOpen(false)}
+              scroll={false}
+              onClick={() => {
+                saveScroll();
+                setIsMenuOpen(false);
+              }}
               className="hover:text-primary-800 transition-colors inline-flex min-h-11 items-center"
             >
               EN
             </Link>
             <Link
               href={switchLocale("ru")}
-              onClick={() => setIsMenuOpen(false)}
+              scroll={false}
+              onClick={() => {
+                saveScroll();
+                setIsMenuOpen(false);
+              }}
               className="hover:text-primary-800 transition-colors inline-flex min-h-11 items-center"
             >
               RU
             </Link>
             <Link
               href={switchLocale("uk")}
-              onClick={() => setIsMenuOpen(false)}
+              scroll={false}
+              onClick={() => {
+                saveScroll();
+                setIsMenuOpen(false);
+              }}
               className="hover:text-primary-800 transition-colors inline-flex min-h-11 items-center"
             >
               UK
             </Link>
             <Link
               href={switchLocale("fr")}
-              onClick={() => setIsMenuOpen(false)}
+              scroll={false}
+              onClick={() => {
+                saveScroll();
+                setIsMenuOpen(false);
+              }}
               className="hover:text-primary-800 transition-colors inline-flex min-h-11 items-center"
             >
               FR
