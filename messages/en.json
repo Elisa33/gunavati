@@ -128,5 +128,22 @@
     "made_with": "Made with",
     "by": "by",
     "portfolio_label": "Elisa's portfolio"
+  },
+  "Download": {
+    "thank_you": "Thank you",
+    "purchase": "Your purchase of <strong>{title}</strong> is complete. Here are your download links:",
+    "download_format": "Download {format}",
+    "download_all": "Download all albums ({format})",
+    "full_discography": "The Complete Discography",
+    "copyright": "Thank you for respecting copyright and not sharing this link with anyone.",
+    "back_home": "Go back to the home",
+    "not_found": "Album not found",
+    "go_home": "Go back home"
+  },
+  "ThankYou": {
+    "title": "Thank you",
+    "text1": "Your generosity helps keep this music alive.",
+    "text2": "May it return to you in harmony and peace.",
+    "back_home": "Back home"
   }
 }

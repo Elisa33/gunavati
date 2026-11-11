@@ -128,5 +128,22 @@
     "made_with": "Créé avec",
     "by": "par",
     "portfolio_label": "Portfolio d'Elisa"
+  },
+  "Download": {
+    "thank_you": "Merci",
+    "purchase": "Ton achat de <strong>{title}</strong> est terminé. Voici tes liens de téléchargement :",
+    "download_format": "Télécharger {format}",
+    "download_all": "Télécharger tous les albums ({format})",
+    "full_discography": "La discographie complète",
+    "copyright": "Merci de respecter le droit d'auteur et de ne partager ce lien avec personne.",
+    "back_home": "Retour à l'accueil",
+    "not_found": "Album introuvable",
+    "go_home": "Retour à l'accueil"
+  },
+  "ThankYou": {
+    "title": "Merci",
+    "text1": "Ta générosité aide à faire vivre cette musique.",
+    "text2": "Qu'elle te revienne en harmonie et en paix.",
+    "back_home": "Retour à l'accueil"
   }
 }
