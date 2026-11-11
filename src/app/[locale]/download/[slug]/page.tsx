@@ -4,6 +4,8 @@ import { FaDownload, FaHome, FaShieldAlt } from "react-icons/fa";
 
 // 1. Base de datos local: acá mapeás el slug de la URL con los datos del álbum
 // Cuando subas los archivos a Google Drive/Cloudflare, ponés los links acá.
+export const metadata = { robots: { index: false, follow: false }, alternates: {} };
+
 const downloadData: Record<
   string,
   { title: string; links: { format: string; all?: boolean; url: string }[] }
