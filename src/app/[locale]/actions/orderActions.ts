@@ -139,6 +139,19 @@ const downloadLinks: Record<
       },
     ],
   },
+  "kirtan-for-the-journey-within": {
+    title: "Kirtan for The Journey Within",
+    links: [
+      {
+        name: "Download MP3",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/Kiirtan-for-The-Journey-Within-MP3.zip",
+      },
+      /*{
+        name: "Download M4A",
+        url: "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/Kiirtan-for-The-Journey-Within-M4A.zip",
+      },*/
+    ],
+  },
   "full-discography": {
     title: "The Complete Discography",
     links: [

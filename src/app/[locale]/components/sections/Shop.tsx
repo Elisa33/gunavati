@@ -145,7 +145,21 @@ const albums = [
           "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/PS%203530%20Tamas%C3%A1cchanna%20dhar%C3%A1y-MP3.mp3",
       },
     ],
-    releaseDate: "2026-09-12T22:00:00Z",
+  },
+  {
+    id: 7,
+    title: "Kirtan for The Journey Within",
+    slug: "kirtan-for-the-journey-within",
+    year: "2026",
+    cover: "/img/album-07.webp",
+    minPrice: 2,
+    tracks: [
+      {
+        name: "Kirtan for The Journey Within",
+        previewUrl:
+          "https://pub-50f444247ef14eb0a9c838b46185174d.r2.dev/prelisten/Kiirtan%20for%20The%20Journey%20Within.mp3",
+      },
+    ],
   },
 ];
 
