@@ -1,6 +1,12 @@
 "use server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
+import {
+  getEmailStrings,
+  linkLabel,
+  normalizeLocale,
+  paymentDetailsHtml,
+} from "./emailTemplates";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -9,47 +15,55 @@ const supabase = createClient(
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Guarda el pedido con el idioma del comprador. Si la columna `locale` aún no
+// existe en la tabla, reintenta sin ella para no romper la compra.
+async function insertOrder(row: Record<string, string>, locale: string) {
+  const first = await supabase.from("orders").insert([{ ...row, locale }]);
+  if (!first.error) return first;
+  console.warn("Insert with locale failed, retrying without:", first.error);
+  return supabase.from("orders").insert([row]);
+}
+
 export async function createOrder(
   albumTitle: string,
   albumSlug: string,
   buyerEmail: string,
   amount: number,
   paymentMethod: "bank" | "paypal",
+  locale: string = "en",
 ) {
+  const loc = normalizeLocale(locale);
   const code = "GV-" + Math.random().toString(36).substring(2, 6).toUpperCase();
 
-  const { error } = await supabase.from("orders").insert([
+  const { error } = await insertOrder(
     {
       code: code,
       album_slug: albumSlug,
       buyer_email: buyerEmail,
       status: "pending",
     },
-  ]);
+    loc,
+  );
 
   if (error) {
     console.error("Error saving to Supabase:", error);
     return { success: false, message: "Error creating order" };
   }
 
-  // Textos de pago según el método elegido
-  const paymentDetails =
-    paymentMethod === "paypal"
-      ? `<li><strong>PayPal:</strong><br/>Please log in to your PayPal account and send €${amount} to this email: <strong>belotel13@gmail.com</strong><br/><br/><a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 24px; background: #0070ba; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Go to PayPal</a></li>`
-      : `<li><strong>Bank Transfer (Russia):</strong><br/>Phone: +79819564314 <br/>Name: Михаил А.<br/>Account: Райффайзен</li>`;
+  const m = getEmailStrings(loc);
 
-  // Email al comprador
+  // Email al comprador (en su idioma)
   await resend.emails.send({
     from: "Gunavati Music <noreply@gunavati.art>",
     to: buyerEmail,
-    subject: `Your payment instructions for ${albumTitle}`,
+    subject: m.orderSubject(albumTitle),
     html: `
-      <h2>Just one step left!</h2>
-      <p>To complete your order for <strong>${albumTitle}</strong>, please transfer <strong>€${amount}</strong> using the method you selected:</p>
-      <ul>${paymentDetails}</ul>
-      <p><strong>IMPORTANT: Include this code in the transfer comment so we can identify you:</strong></p>
+      <h2>${m.orderHeading}</h2>
+      <p>${m.orderIntro(albumTitle, amount)}</p>
+      <ul>${paymentDetailsHtml(m, paymentMethod, amount)}</ul>
+      <p><strong>${m.important}</strong></p>
       <h1 style="color:blue; letter-spacing: 2px;">${code}</h1>
-      <p>Once we confirm the transfer, we will send the download links directly to this email address.</p>
+      <p>${m.orderFooter}</p>
     `,
   });
 
@@ -180,15 +194,16 @@ export async function validateOrder(code: string) {
   }
 
   // Si es una donación, mandamos un email de agradecimiento
+  const m = getEmailStrings(data.locale);
   if (data.album_slug === "donation") {
     await resend.emails.send({
       from: "Gunavati Music <noreply@gunavati.art>",
       to: data.buyer_email,
-      subject: `Thank you for your donation!`,
+      subject: m.thanksDonationSubject,
       html: `
-        <h2>We received your donation!</h2>
-        <p>Thank you so much for your support. Your generosity helps sustain this creative offering and allows new songs to come into being.</p>
-        <p>With love,<br/>Gunavati</p>
+        <h2>${m.thanksDonationHeading}</h2>
+        <p>${m.thanksDonationBody}</p>
+        <p>${m.withLove}<br/>Gunavati</p>
       `,
     });
   } else {
@@ -201,14 +216,14 @@ export async function validateOrder(code: string) {
     await resend.emails.send({
       from: "Gunavati Music <noreply@gunavati.art>",
       to: data.buyer_email,
-      subject: `Your download links for ${album.title}`,
+      subject: m.downloadSubject(album.title),
       html: `
-        <h2>Thank you for your support!</h2>
-        <p>Your payment has been confirmed. Here are your download links for <strong>${album.title}</strong>:</p>
+        <h2>${m.downloadHeading}</h2>
+        <p>${m.downloadIntro(album.title)}</p>
         <div style="margin: 20px 0;">
-          ${album.links.map((link) => `<a href="${link.url}" style="display: inline-block; padding: 10px 20px; background: #5E7F45; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px;">${link.name}</a>`).join("")}
+          ${album.links.map((link) => `<a href="${link.url}" style="display: inline-block; padding: 10px 20px; background: #5E7F45; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px;">${linkLabel(m, link.name)}</a>`).join("")}
         </div>
-        <p>Thank you for respecting copyright and not sharing this link with anyone.</p>
+        <p>${m.copyright}</p>
       `,
     });
   }
@@ -226,40 +241,40 @@ export async function createDonationOrder(
   buyerEmail: string,
   amount: number,
   paymentMethod: "bank" | "paypal",
+  locale: string = "en",
 ) {
+  const loc = normalizeLocale(locale);
   const code = "DN-" + Math.random().toString(36).substring(2, 6).toUpperCase();
 
   // Guardamos en Supabase con el slug "donation"
-  const { error } = await supabase.from("orders").insert([
+  const { error } = await insertOrder(
     {
       code: code,
       album_slug: "donation", // Identificador especial
       buyer_email: buyerEmail,
       status: "pending",
     },
-  ]);
+    loc,
+  );
 
   if (error) {
     return { success: false, message: "Error creating donation" };
   }
 
-  const paymentDetails =
-    paymentMethod === "paypal"
-      ? `<li><strong>PayPal:</strong><br/>Please log in to your PayPal account and send €${amount} to this email: <strong>belotel13@gmail.com</strong><br/><br/><a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 12px 24px; background: #0070ba; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Go to PayPal</a></li>`
-      : `<li><strong>Bank Transfer (Russia):</strong><br/>Phone: +79819564314 <br/>Name: Михаил А.<br/>Account: Райффайзен</li>`;
+  const m = getEmailStrings(loc);
 
-  // Email al donante
+  // Email al donante (en su idioma)
   await resend.emails.send({
     from: "Gunavati Music <noreply@gunavati.art>",
     to: buyerEmail,
-    subject: `Your donation instructions`,
+    subject: m.donationSubject,
     html: `
-      <h2>Thank you for your support!</h2>
-      <p>To complete your donation of <strong>€${amount}</strong>, please send it using the method you selected:</p>
-      <ul>${paymentDetails}</ul>
-      <p><strong>IMPORTANT: Include this code in the transfer comment so we can identify you:</strong></p>
+      <h2>${m.donationHeading}</h2>
+      <p>${m.donationIntro(amount)}</p>
+      <ul>${paymentDetailsHtml(m, paymentMethod, amount)}</ul>
+      <p><strong>${m.important}</strong></p>
       <h1 style="color:blue; letter-spacing: 2px;">${code}</h1>
-      <p>We will confirm receipt shortly. Thank you for keeping this music alive!</p>
+      <p>${m.donationFooter}</p>
     `,
   });
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import {
   FaPaypal,
@@ -301,6 +301,7 @@ const AlbumCard = ({
 };
 const Shop = () => {
   const t = useTranslations("Shop");
+  const locale = useLocale();
 
   const [selectedAlbum, setSelectedAlbum] = useState<{
     title: string;
@@ -363,6 +364,7 @@ const Shop = () => {
       buyerEmail,
       selectedAmount,
       paymentMethod, // <--- Le pasamos el método elegido
+      locale,
     );
 
     setIsProcessing(false);

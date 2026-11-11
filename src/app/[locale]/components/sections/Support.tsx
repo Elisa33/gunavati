@@ -2,12 +2,13 @@
 import React, { useState } from "react";
 import { FaTimes, FaSpinner, FaHeart, FaPaypal } from "react-icons/fa";
 import { createDonationOrder } from "../../actions/orderActions";
-import { useTranslations } from "next-intl"; // 👉 Import
+import { useLocale, useTranslations } from "next-intl"; // 👉 Import
 
 const donationAmounts = [5, 10, 20, 50];
 
 export default function Support() {
   const t = useTranslations("Support"); // 👉 Init
+  const locale = useLocale();
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const [buyerEmail, setBuyerEmail] = useState("");
   const [selectedAmount, setSelectedAmount] = useState(5);
@@ -26,6 +27,7 @@ export default function Support() {
       buyerEmail,
       selectedAmount,
       paymentMethod,
+      locale,
     );
 
     setIsProcessing(false);
