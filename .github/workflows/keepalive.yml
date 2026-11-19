@@ -1,0 +1,24 @@
+# Respaldo del cron de Vercel: evita que Supabase (plan gratuito) pause el proyecto.
+# Llama cada día a /api/keepalive; si responde distinto de 200, el workflow falla
+# y GitHub envía un correo. Requiere el secreto CRON_SECRET en
+# Settings > Secrets and variables > Actions (mismo valor que en Vercel).
+name: Supabase keepalive
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call /api/keepalive
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          status=$(curl -sS -L -o body.txt -w "%{http_code}" --max-time 60 \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            https://www.gunavati.art/api/keepalive)
+          echo "HTTP $status"; cat body.txt; echo
+          [ "$status" = "200" ]
